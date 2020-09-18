@@ -23,14 +23,14 @@
 
                                 <div class="form-group mb-3">
                                     <label for="username">Tài khoản</label>
-                                    <input class="form-control" type="text" id="username" required=""
-                                        placeholder="Enter your username" name="username">
+                                    <input class="form-control" type="text" id="username" required
+                                    placeholder="Enter your username" name="username">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="password">Mật khẩu</label>
-                                    <input class="form-control" type="password" required="" id="password"
-                                        placeholder="Enter your password" name="password">
+                                    <input class="form-control" type="password" required id="password"
+                                    placeholder="Enter your password" name="password">
                                 </div>
                                 <div class="form-group mb-0 text-center">
                                     <button class="btn btn-primary btn-block" type="submit" name="submit"> Đăng nhập
