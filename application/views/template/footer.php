@@ -2,16 +2,12 @@
 <script src="<?= base_url() ?>assets\libs\jquery-knob\jquery.knob.min.js"></script>
 
 <!--Morris Chart-->
-<script src="<?= base_url() ?>assets\libs\morris-js\morris.min.js"></script>
-<script src="<?= base_url() ?>assets\libs\raphael\raphael.min.js"></script>
+<!-- <script src="<?= base_url() ?>assets\libs\morris-js\morris.min.js"></script>
+<script src="<?= base_url() ?>assets\libs\raphael\raphael.min.js"></script> -->
 
 <!-- Dashboard init js-->
-<script src="<?= base_url() ?>assets\js\pages\dashboard.init.js"></script>
-<!-- App js -->
-<script src="<?= base_url() ?>assets\js\app.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="<?= base_url() ?>assets\js\datatables.bundle.js"></script>
 
 <script src="<?= base_url() ?>assets\js\main.js"></script>
 <script src="<?= base_url() ?>assets\libs\custombox\custombox.min.js"></script>
