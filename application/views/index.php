@@ -56,8 +56,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($user as $value):?>
-                                    <tr id="table_<?= $value['id']; ?>">
+                                <?php $i = 0; foreach ($user as $value):?>
+                                    <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
 
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                             data-images="<?= $value['images']; ?>"

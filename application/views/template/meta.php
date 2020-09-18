@@ -8,6 +8,8 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="<?= base_url() ;?>assets/css/main.css" rel="stylesheet" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url() ?>assets\images\favicon.ico">
 

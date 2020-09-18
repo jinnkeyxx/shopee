@@ -27,4 +27,16 @@ class User_Model extends CI_Model
         $delete = $this->db->delete($this->tblName);
         return $delete?true:false;
     }
+    public function serach($keyword)
+    {
+        $this->db->where("serial" ,$keyword);
+        $this->db->where("serial2" , $keyword);
+        $this->db->where("serial3" , $keyword);
+        $result = $this->db->get('users');
+        if($result->num_rows() > 0){
+            return $result->row();
+        }else {
+            return false;
+        }
+    }
 }

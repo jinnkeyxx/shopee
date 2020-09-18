@@ -195,6 +195,12 @@ class Exportimport extends CI_Controller
             redirect('exportimport');
     }
         
-
+    public function checkout()
+    {
+        $data['title'] = "Checkout";
+        $this->load->view('template/meta', $data);
+        $this->load->view('checkout');
+        $this->load->view('template/footer', $data);
+    }
     
 }

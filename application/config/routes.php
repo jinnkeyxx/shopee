@@ -56,3 +56,4 @@ $route['exportimport']['post'] = 'exportimport/update';
 $route['login'] = 'Admin/login';
 $route['install'] = 'Admin/install';
 $route['logout'] = 'Admin/logout';
+$route['checkout'] = 'checkout/index';

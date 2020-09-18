@@ -154,8 +154,6 @@ $(document).ready(() => {
                    
                         toastr["success"]('Xóa thành công');
                         load(2000)
-                   
-                    
                 }
 
             })
@@ -204,5 +202,23 @@ $(document).ready(() => {
         }
         // count = 0;
     })
+    $('#search').submit((e) => {
+        e.preventDefault()
+        keyword =  $('#inputsearch')
+        if(keyword.val() == ""){
+            toastr["error"]('moi nhap keyword');
+        }
+        else {
+            $.ajax({
+                url: 'exportimport/serach',
+                method: "POST",
+                data: {keyword : keyword.val()},
+                success: function(data) {
+                   
+                }
 
+            })
+        }
+    })
+  
 })
