@@ -165,12 +165,7 @@ class userlist extends CI_Controller
         else {
             $laptop = "Yes";
         }
-        if($orther == NULL){
-            $orther = "No";
-        }
-        else {
-            $orther = "Yes";
-        }    
+          
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['file_name'] = 'img' . time();
