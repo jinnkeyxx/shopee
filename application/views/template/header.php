@@ -34,7 +34,7 @@
                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                  <!-- item-->
                  <div class="dropdown-header noti-title">
-                   <h6 class="text-overflow m-0">Welcome !</h6>
+                   <h6 class="text-overflow m-0">Xin chào !</h6>
                  </div>
 
 
@@ -44,7 +44,7 @@
                  <!-- item-->
                  <a href="logout" class="dropdown-item notify-item">
                    <i class="fe-log-out"></i>
-                   <span>Logout</span>
+                   <span>Đăng xuất</span>
                  </a>
 
                </div>
