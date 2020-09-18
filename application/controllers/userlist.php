@@ -4,7 +4,7 @@ require_once APPPATH . 'third_party/Spout/Autoloader/autoload.php';
 
 use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
 
-class Exportimport extends CI_Controller
+class userlist extends CI_Controller
 {
 
     public function __construct()
@@ -67,7 +67,7 @@ class Exportimport extends CI_Controller
                 $reader->close();
                 unlink('uploads/' . $file['file_fullname']);
                 $this->session->set_flashdata('pesan', 'import Data Berhasil');
-                redirect('exportimport');
+                redirect('userlist');
             }
         } else {
             echo "Error :" . $this->upload->display_errors();
@@ -192,7 +192,7 @@ class Exportimport extends CI_Controller
             );
             $this->User_model->import_data($data);
             $this->session->set_flashdata('Thêm thành công');
-            redirect('exportimport');
+            redirect('userlist');
     }
         
     public function checkout()

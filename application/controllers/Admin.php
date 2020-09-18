@@ -38,7 +38,7 @@ class Admin extends CI_Controller
         if($check > 0)
         {
             if($this->session->userdata('login')){
-                redirect('exportimport'); 
+                redirect('userlist'); 
             }
             else {
                 $data['title'] = "login";

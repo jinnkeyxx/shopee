@@ -49,7 +49,7 @@ $(document).ready(function(){
         }
         else
         {
-        load_data();
+        
         }
     });
 

@@ -5,11 +5,11 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     data-whatever="@mdo"><i class="fas fa-user-plus"></i> ĐĂNG KÝ VÀO</button>
-
+                    <a type="button" class="btn btn-primary" href="checkout"><i class="fas fa-user-plus"></i> ĐĂNG KÝ Ra</a>
                     <hr>
                     <h4>Tải lên danh sách người dùng</h4>
 
-                    <?= form_open_multipart('exportimport/uploaddata') ?>
+                    <?= form_open_multipart('userlist/uploaddata') ?>
                     <div class="form-row">
                         <div class="col-4">
                             <input type="file" class="form-control-file" id="importexcel" name="importexcel"
@@ -27,13 +27,13 @@
             </div>
             <div class="card mt-2">
                 <div class="card-body">
-                    <form method="post" id="update_form" action="exportimport/update">
+                    <form method="post" id="update_form" action="userlist/update">
                         <div align="left">
                             <button type="submit" name="multiple_update" id="multiple_update" class="btn btn-info"><i class="fas fa-edit"></i> Cập nhật</button>
                             
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit" id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
 
-                            <a class="btn-success btn" href="exportimport/excel"><i class="fas fa-download"></i> Tải danh sách xuống </a>
+                            <a class="btn-success btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh sách xuống </a>
 
                         </div>
                         <br>
@@ -113,7 +113,7 @@ aria-hidden="true">
             </button>
         </div>
         <div class="modal-body">
-            <?= form_open_multipart('exportimport/add') ?>
+            <?= form_open_multipart('userlist/add') ?>
             <div class="form-group">
                 <label for="fullname" class="col-form-label">Họ Tên:</label>
                 <input type="text" class="form-control" id="fullname" name="fullname" required>

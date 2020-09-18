@@ -147,7 +147,7 @@ $(document).ready(() => {
     $('#bulk_delete_submit').click(() => {
         if ($('.check_box:checked').length > 0) {
             $.ajax({
-                url: 'exportimport/delete',
+                url: 'userlist/delete',
                 method: "POST",
                 data: $('#update_form').serialize(),
                 success: function(data) {
@@ -210,7 +210,7 @@ $(document).ready(() => {
         }
         else {
             $.ajax({
-                url: 'exportimport/serach',
+                url: 'userlist/serach',
                 method: "POST",
                 data: {keyword : keyword.val()},
                 success: function(data) {
