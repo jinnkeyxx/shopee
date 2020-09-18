@@ -25,15 +25,16 @@
 <script src="<?= base_url()?>assets\libs\pdfmake\pdfmake.min.js"></script>
 <script src="<?= base_url()?>assets\libs\pdfmake\vfs_fonts.js"></script>
 <script src="<?= base_url()?>assets\js\pages\datatables.init.js"></script>
-<script src="<?= base_url() ;?>assets/js/extention/choices.js"></script>
-    <script>
-      const choices = new Choices('[data-trigger]',
-      {
-        searchEnabled: false,
-        itemSelectText: '',
-      });
+<script src="<?= base_url()?>assets\js\extention\choices.js"></script>
 
-    </script>
+<script>
+	const choices = new Choices('[data-trigger]',
+	{
+		searchEnabled: false,
+		itemSelectText: '',
+	});
+
+</script>
+
 </body>
-
 </html>

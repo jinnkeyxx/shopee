@@ -19,7 +19,7 @@ class userlist extends CI_Controller
     public function index()
     {
         if($this->session->userdata('login')){
-            $data['title'] = 'Export Import';
+            $data['title'] = 'User List';
             $data['user'] = $this->User_model->getDataBarang();
             $data['admin'] = $this->Admin_model->get_row();
             $data['admin']->id;

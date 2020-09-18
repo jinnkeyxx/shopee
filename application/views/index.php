@@ -1,3 +1,10 @@
+<style type="text/css" media="screen">
+    tr th{
+        background-color: #10c469;
+        color: #424242;
+    }
+</style>
+
 <div class="container py-5">
     <div class="row ">
         <div class="col-12 py-5">
@@ -5,7 +12,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     data-whatever="@mdo"><i class="fas fa-user-plus"></i> ĐĂNG KÝ VÀO</button>
-                    <a type="button" class="btn btn-primary" href="checkout"><i class="fas fa-user-plus"></i> ĐĂNG KÝ Ra</a>
+                    <a type="button" class="btn btn-success" href="checkout"><i class="fas fa-user-plus"></i> ĐĂNG KÝ RA</a>
                     <hr>
                     <h4>Tải lên danh sách người dùng</h4>
 
@@ -33,13 +40,13 @@
                             
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit" id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
 
-                            <a class="btn-success btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh sách xuống </a>
+                            <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh sách xuống </a>
 
                         </div>
                         <br>
                         <div class="table-responsive">
                             <table id="datatable"
-                            class="table table-bordered table-hover table-checkable dt-responsive nowrap"
+                            class="table table-bordered table-hover table-checkable nowrap"
                             style="margin-top: 13px !important">
                             <thead>
                                 <tr role="row">
@@ -58,7 +65,6 @@
                             <tbody>
                                 <?php $i = 0; foreach ($user as $value):?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
-
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                             data-images="<?= $value['images']; ?>"
                                             data-fullname="<?= $value['fullname'];?>"
@@ -74,7 +80,7 @@
                                             <div class="media" style="margin-top:-10px">
                                                 <div class="avatar">
                                                     <img class="mt-1 ml-2 mr-3"
-                                                    style="margin-left:0px;width:50%;height:50px"
+                                                    style="margin-left:0px;width:70%;height:70px"
                                                     src="<?= $value['images']; ?>">
                                                 </div>
                                             </div>

@@ -3,68 +3,85 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class checkout  extends CI_Controller {
 
- function index()
- {
-    $data['title'] = "checkout";
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model('User_model');
+    $this->load->model('Admin_model');
+  }
+
+  function index()
+  {
+    $data['admin'] = $this->Admin_model->get_row();
+    $data['admin']->id;
+
+    $data['title'] = "Check Out User";
     $this->load->view('template/meta' ,$data);
     $this->load->view('template/header' ,$data);
     $this->load->view('checkout');
-    $this->load->view('template/footer');   
- }
+    $this->load->view('template/footer');
 
- function fetch()
- {
-  $output = '';
-  $query = '';
-  $this->load->model('checkout_model');
-  if($this->input->post('query'))
-  {
-   $query = $this->input->post('query');
   }
-  $data = $this->checkout_model->fetch_data($query);
-  $output .= '
-  <div class="table-responsive">
-     <table class="table table-bordered table-hover table-checkable dt-responsive nowrap">
-      <tr>
-       <th>fullname</th>
-       <th>images</th>
-       <th>team</th>
-       <th>phone</th>
-       <th>serial#1</th>
-       <th>laptop</th>
-       <th>serial#2</th>
-       <th>orther</th>
-       <th>serial#3</th>
-      </tr>
-  ';
-  if($data->num_rows() > 0)
+
+  function fetch()
   {
-   foreach($data->result() as $row)
-   {
-    $output .= '
-      <tr>
-       <td>'.$row->fullname.'</td>
-       <td> <img class="img-fluid" src='.$row->images.'></td>
-       <td>'.$row->team.'</td>
-       <td>'.$row->phone.'</td>
-       <td>'.$row->serial.'</td>
-       <td>'.$row->laptop.'</td>
-       <td>'.$row->serial2.'</td>
-       <td>'.$row->orther.'</td>
-       <td>'.$row->serial3.'</td>
-      </tr>
-    ';
+    $output = '';
+    $query = '';
+    $this->load->model('checkout_model');
+    if($this->input->post('query'))
+    {
+     $query = $this->input->post('query');
    }
+   $data = $this->checkout_model->fetch_data($query);
+   $output .= '
+   <div class="table-responsive">
+   <table class="table table-bordered table-hover table-checkable nowrap">
+   <thead>
+   <tr role="row">
+   <th>STT</th>
+   <th>Ảnh</th>
+   <th>Họ và Tên</th>
+   <th>Team</th>
+   <th>Điện thoại</th>
+   <th>Serial#1</th>
+   <th>Laptop</th>
+   <th>Serial#2</th>
+   <th>Khác</th>
+   <th>Serial#3</th>
+   </tr>
+   </thead>
+   <tbody>
+   ';
+   if($data->num_rows() > 0)
+   {
+     foreach($data->result() as $key=>$row)
+     {
+      $output .= '
+      <tr>
+      <td>'.($key+1).'</td>
+      <td> <img class="img-fluid" src='.$row->images.'></td>
+      <td>'.$row->fullname.'</td>
+      <td>'.$row->team.'</td>
+      <td>'.$row->phone.'</td>
+      <td>'.$row->serial.'</td>
+      <td>'.$row->laptop.'</td>
+      <td>'.$row->serial2.'</td>
+      <td>'.$row->orther.'</td>
+      <td>'.$row->serial3.'</td>
+      </tr>
+      </tbody>
+      ';
+    }
   }
   else
   {
    $output .= '<tr>
-       <td colspan="5">No Data Found</td>
-      </tr>';
-  }
-  $output .= '</table>';
-  echo $output;
+   <td colspan="5">No Data Found</td>
+   </tr>';
  }
- 
+ $output .= '</table>';
+ echo $output;
+}
+
 }
 
