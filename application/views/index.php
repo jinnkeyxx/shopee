@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     data-whatever="@mdo"><i class="fas fa-user-plus"></i> ĐĂNG KÝ VÀO</button>
-                    
+
                     <hr>
                     <h4>Tải lên danh sách người dùng</h4>
 
@@ -33,7 +33,7 @@
                             
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit" id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
 
-                            <a class="btn-success btn" href="exportimport/excel"><i class="fas fa-download"></i> Tải danh sách Người dùng </a>
+                            <a class="btn-success btn" href="exportimport/excel"><i class="fas fa-download"></i> Tải danh sách xuống </a>
 
                         </div>
                         <br>
