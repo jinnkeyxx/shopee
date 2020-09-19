@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'Admin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['userlist']['post'] = 'userlist/update';
+$route['userlist']['post'] = 'Userlist/update';
 $route['login'] = 'Admin/login';
 $route['install'] = 'Admin/install';
 $route['logout'] = 'Admin/logout';

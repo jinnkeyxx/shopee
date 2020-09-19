@@ -25,8 +25,8 @@
     <link href="<?= base_url() ?>assets\libs\datatables\buttons.bootstrap4.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url() ?>assets\libs\datatables\select.bootstrap4.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url() ?>assets\css\bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"
-    type="text/css">
-    
+        type="text/css">
+
     <!-- Icons Css -->
     <link href="<?= base_url() ?>assets\css\icons.min.css" rel="stylesheet" type="text/css">
     <!-- App Css-->
@@ -37,20 +37,21 @@
 
 
     <style type="text/css">
-        body{
-            background-color: #F25220 !important;
-        }
-        body[data-topbar=dark] .navbar-custom {
-            background-color: #FFF;
-            color: black;
-        }
-        .navbar-custom .topnav-menu .nav-link{
-            color: #6c757d !important;
-        }
+    body {
+        background-color: #F25220 !important;
+    }
 
-        .text-muted{
-            color: #fff !important;
-        }
+    body[data-topbar=dark] .navbar-custom {
+        background-color: #FFF;
+        color: black;
+    }
 
+    .navbar-custom .topnav-menu .nav-link {
+        color: #6c757d !important;
+    }
+
+    .text-muted {
+        color: #fff !important;
+    }
     </style>
 </head>

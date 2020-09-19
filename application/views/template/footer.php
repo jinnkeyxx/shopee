@@ -29,28 +29,32 @@
 
 <!-- Custom Export DataTable -->
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#datatable').DataTable( {
-			dom: 'Bfrtip',
-			lengthMenu: [
-			[ 10, 25, 50, 100, -1 ],
-			[ '10 rows', '25 rows', '50 rows', '100 rows', 'Show all' ]
-			],
-			buttons: [
-			'pageLength'
-			]
-		} );
-	} );
+$(document).ready(function() {
+    $('#datatable').DataTable({
+        dom: 'Bfrtip',
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+        ],
+        buttons: [
+            'pageLength'
+        ]
+    });
+});
 </script>
 
 <script>
-	const choices = new Choices('[data-trigger]',
-	{
-		searchEnabled: false,
-		itemSelectText: '',
-	});
-
+const choices = new Choices('[data-trigger]', {
+    searchEnabled: false,
+    itemSelectText: '',
+});
 </script>
 
+<?php  if(isset($this->session)){
+    echo "<script>toastr['success']('{$this->session->flashdata('Success')}') </script>";
+}
+?>
+
 </body>
+
 </html>

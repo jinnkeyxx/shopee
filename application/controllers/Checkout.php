@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class checkout  extends CI_Controller {
+class Checkout  extends CI_Controller {
 
   public function __construct()
   {
@@ -84,4 +84,3 @@ class checkout  extends CI_Controller {
 }
 
 }
-

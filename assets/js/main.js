@@ -51,7 +51,7 @@ $(document).ready(() => {
                     success: (reps) => {
                         if (reps.status != true) {
                             toastr["error"]('Đăng nhập thất bại')
-                            
+
                         } else {
                             toastr["success"]('Đăng nhập thành công vui lòng đợi 2s');
                             load(2000)
@@ -98,21 +98,21 @@ $(document).ready(() => {
     $(document).on('click', '.check_box', function() {
         var html = '';
         if (this.checked) {
-            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-images="' + $(this).data('images') + '" data-fullname="' + $(this).data('fullname') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" class="check_box" checked /></td>';
-            html += '<td><input type="text" name="images[]" class="form-control" value="' + $(this).data("images") + '" /></td>';
+            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
+
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
             html += '<td><input type="text" name="team[]" class="form-control" value="' + $(this).data("team") + '" /></td>';
             html += '<td><input type="text" name="phone[]" class="form-control" value="' + $(this).data("phone") + '" /></td>';
-
             html += '<td><input type="text" name="serial1[]" class="form-control" value="' + $(this).data("serial1") + '" /></td>';
             html += '<td><input type="text" name="laptop[]" class="form-control" value="' + $(this).data("laptop") + '" /></td>';
             html += '<td><input type="text" name="serial2[]" class="form-control" value="' + $(this).data("serial2") + '" /></td>';
             html += '<td><input type="text" name="orther[]" class="form-control" value="' + $(this).data("orther") + '" /></td>';
 
             html += '<td><input type="text" name="serial3[]" class="form-control" value="' + $(this).data("serial3") + '" /><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+            html += '<td><input type="file" name="image" class="form-control"/></td>';
+            html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
         } else {
-            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-images="' + $(this).data('images') + '" data-fullname="' + $(this).data('fullname') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" class="check_box" /></td>';
-            html += '<td>' + $(this).data('images') + '</td>';
+            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-images="' + $(this).data('images') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" class="check_box" /></td>';
             html += '<td>' + $(this).data('fullname') + '</td>';
             html += '<td>' + $(this).data('team') + '</td>';
             html += '<td>' + $(this).data('phone') + '</td>';
@@ -121,29 +121,25 @@ $(document).ready(() => {
             html += '<td>' + $(this).data('serial2') + '</td>';
             html += '<td>' + $(this).data('orther') + '</td>';
             html += '<td>' + $(this).data('serial3') + '</td>';
+            html += '<td> <img class="mt-1 ml-2 mr-3" src=' + $(this).data('images') + '></td>';
         }
         $(this).closest('tr').html(html);
 
     });
 
-    $('#update_form').on('submit', function(event) {
-        event.preventDefault();
-        if ($('.check_box:checked').length > 0) {
-            $.ajax({
-                url: $(this).attr('action'),
-                method: "POST",
-                data: $(this).serialize(),
-                success: function(data) {
-                    toastr["success"]('Thay đổi thành công');
-                    load(2000)
+    var options = {
+        beforeSend: function() {
+            // Replace this with your loading gif image
 
-                }
-            })
+        },
+        complete: function(response) {
+            // Output AJAX response to the div container
+            alert('ac')
+
         }
-        else {
-            toastr["error"]('Không có danh sách được chọn');
-        }
-    });
+    };
+    $('#update_form').ajaxForm(options);
+    // alert('the form was successfully processed');
     $('#bulk_delete_submit').click(() => {
         if ($('.check_box:checked').length > 0) {
             $.ajax({
@@ -151,21 +147,20 @@ $(document).ready(() => {
                 method: "POST",
                 data: $('#update_form').serialize(),
                 success: function(data) {
-                   
-                        toastr["success"]('Xóa thành công');
-                        load(2000)
+
+                    toastr["success"]('Xóa thành công');
+                    load(2000)
                 }
 
             })
-        }
-        else {
+        } else {
             toastr["error"]('Không có danh sách được chọn');
         }
-    })
+    });
     $('#add').on('submit', function(event) {
         event.preventDefault();
 
-      
+
 
     });
     var count = 0;
@@ -179,7 +174,7 @@ $(document).ready(() => {
             $('input#serial1').css('display', 'none');
         }
 
-    })
+    });
     $('#laptop').click(() => {
         count = 1
         if (count == 1) {
@@ -190,35 +185,33 @@ $(document).ready(() => {
             $('input#serial2').css('display', 'none');
         }
         // count = 0;
-    })
+    });
     $('#orther').keyup(() => {
         let text = $('#orther').val()
-        if(text == ""){
-            $( "#serial3" ).prop( "disabled", true );
+        if (text == "") {
+            $("#serial3").prop("disabled", true);
             $('#serial3').val('');
 
-        }
-        else {
+        } else {
             $('#serial3').removeAttr('disabled');
         }
-    })
+    });
     $('#search').submit((e) => {
         e.preventDefault()
-        keyword =  $('#inputsearch')
-        if(keyword.val() == ""){
+        keyword = $('#inputsearch')
+        if (keyword.val() == "") {
             toastr["error"]('moi nhap keyword');
-        }
-        else {
+        } else {
             $.ajax({
                 url: 'userlist/serach',
                 method: "POST",
-                data: {keyword : keyword.val()},
+                data: { keyword: keyword.val() },
                 success: function(data) {
-                   
+
                 }
 
             })
         }
     })
-  
+
 })

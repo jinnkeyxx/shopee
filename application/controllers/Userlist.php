@@ -4,7 +4,7 @@ require_once APPPATH . 'third_party/Spout/Autoloader/autoload.php';
 
 use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
 
-class userlist extends CI_Controller
+class Userlist extends CI_Controller
 {
 
     public function __construct()
@@ -12,6 +12,8 @@ class userlist extends CI_Controller
         parent::__construct();
         $this->load->model('User_model');
         $this->load->model('Admin_model');
+        // $this->load->helper('url');
+        $this->load->helper(array('form', 'url'));
     }
 
 
@@ -86,30 +88,71 @@ class userlist extends CI_Controller
             $serial3 = $_POST['serial3'];
             $orther = $_POST['orther'];
             $serial1 = $_POST['serial1'];
-            $images = $_POST['images'];
+            $images_old = $_POST['image_old'];
+            
             $id = $_POST['hidden_id'];
+            $data = [];
+            $img=[];
             
             for($count = 0; $count < count($id); $count++)
             {
-            $data = array(
-            'fullname'   => $fullname[$count],
-            'team'  => $team[$count],
-            'phone'  => $phone[$count],
-            'serial' => $serial1[$count],
-            'laptop'   => $laptop[$count],
-            'serial2' => $serial2[$count],
-            'orther' => $orther[$count],
-            'serial3' => $serial3[$count],
-            'images'   => $images[$count],
-            'id'   => $id[$count]
-            );
+                $path = './uploads/';
+                $this->load->library('upload');
+           
             
-            $this->User_model->import_data($data);
+                $this->upload->initialize(array(
+                    "upload_path"       =>  $path,
+                    "allowed_types"     =>  "gif|jpg|png",
+                    
+                ));
+           
+                if($this->upload->do_upload("image"))
+                {
+                
+                    $file = $this->upload->data();
+                    $data = array(
+                        'fullname'   => $fullname[$count],
+                        'team'  => $team[$count],
+                        'phone'  => $phone[$count],
+                        'serial' => $serial1[$count],
+                        'laptop'   => $laptop[$count],
+                        'serial2' => $serial2[$count],
+                        'orther' => $orther[$count],
+                        'serial3' => $serial3[$count],
+                        'images' => base_url().'uploads/'. $file['file_name'],
+                        'id'   => $id[$count]
+                    );
+                    $this->User_model->import_data($data);
+                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+
+                    redirect('userlist'); 
+                
+                
+                }
+                else 
+                {
+                    $data = array(
+                        'fullname'   => $fullname[$count],
+                        'team'  => $team[$count],
+                        'phone'  => $phone[$count],
+                        'serial' => $serial1[$count],
+                        'laptop'   => $laptop[$count],
+                        'serial2' => $serial2[$count],
+                        'orther' => $orther[$count],
+                        'serial3' => $serial3[$count],
+                        'images' => $images_old[$count],
+                        'id'   => $id[$count]
+                    );
+                    $this->User_model->import_data($data);
+                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+
+                    redirect('userlist'); 
+                }
             }
        
         }
        
-        
+          
 
     }
     public function excel()
