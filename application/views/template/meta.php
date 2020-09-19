@@ -13,8 +13,8 @@
     <link href="<?= base_url() ;?>assets/css/main.css" rel="stylesheet" />
 
     <!-- App favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/images/favicon.png">
-    <link rel="icon" type="image/png" sizes="180x180" href="<?= base_url() ?>assets/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/images/favicon-180.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="<?= base_url() ?>assets/images/favicon-180.png">
 
     <link rel="shortcut icon" href="<?= base_url() ?>assets\images\favicon.ico">
 
