@@ -147,24 +147,40 @@ class userlist extends CI_Controller
         $img = "";
         $fullname = $_POST['fullname'];
         $team = $_POST['team'];
-        $laptop = $_POST['laptop'];            
-        $phone = $_POST['phone'];
         $serial = $_POST['serial1'];
         $serial2 = $_POST['serial2'];
-        $serial3 = $_POST['serial3'];
+        
+        if(isset($_POST['serial3'])){
+            $serial3 = $_POST['serial3'];
+        }
+        else {
+            $serial3 = "";
+        }
         $orther = $_POST['orther'];
-        if($phone == NULL){
+        if(isset($_POST['phone'])){
+            $phone = $_POST['phone'];
+            if($phone == NULL){
+                $phone = "No";
+            }
+            else {
+                $phone = "Yes";
+            }
+        } else {
             $phone = "No";
         }
-        else {
-            $phone = "Yes";
-        }
-        if($laptop == NULL){
+        
+        if(isset($_POST['laptop'])){
+            $laptop = $_POST['laptop'];
+            if($laptop == NULL){
+                $laptop = "No";
+            }
+            else {
+                $laptop = "Yes";
+            }
+        }else {
             $laptop = "No";
         }
-        else {
-            $laptop = "Yes";
-        }
+        
           
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'jpg|png|jpeg';
