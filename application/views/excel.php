@@ -9,20 +9,20 @@ echo "\xEF\xBB\xBF"; //UTF-8 BOM
 <table>
     <thead>
         <tr>
-            <td>stt</td>
-            <td>anhr</td>
-            <td>ho ten</td>
-            <td>team</td>
-            <td>phone</td>
-            <td>serial1</td>
-            <td>laptop</td>
-            <td>serial2</td>
-            <td>orther</td>
-            <td>serial3</td>
+            <td>STT</td>
+            <td>Hình ảnh</td>
+            <td>Họ Tên</td>
+            <td>Team</td>
+            <td>Điện thoại</td>
+            <td>Serial#1</td>
+            <td>Laptop</td>
+            <td>Serial#2</td>
+            <td>Khác</td>
+            <td>Serial#3</td>
         </tr>
     </thead>
     <tbody>
-    <?php  $i = 0;?>
+    <?php  $i = 1;?>
         <?php foreach($user as $value):?>
         <tr>
             <td><?= $i++ ?></td>

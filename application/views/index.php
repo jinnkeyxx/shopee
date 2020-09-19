@@ -3,11 +3,14 @@
         background-color: #10c469;
         color: #424242;
     }
+    .pt-2, .py-2 {
+        padding-top: 1.3rem !important;
+    }
 </style>
 
 <div class="container py-5">
     <div class="row ">
-        <div class="col-12 py-5">
+        <div class="col-12 py-2">
             <div class="card">
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
@@ -51,7 +54,6 @@
                             <thead>
                                 <tr role="row">
                                     <th>STT</th>
-                                    <th>Ảnh</th>
                                     <th>Họ và Tên</th>
                                     <th>Team</th>
                                     <th>Điện thoại</th>
@@ -60,13 +62,13 @@
                                     <th>Serial#2</th>
                                     <th>Khác</th>
                                     <th>Serial#3</th>
+                                    <th>Hình ảnh</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 0; foreach ($user as $value):?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
-                                            data-images="<?= $value['images']; ?>"
                                             data-fullname="<?= $value['fullname'];?>"
                                             data-team="<?= $value['team']; ?>"
                                             data-serial1="<?= $value['serial']; ?>"
@@ -74,22 +76,11 @@
                                             data-laptop="<?= $value['laptop'] ?>"
                                             data-serial2="<?= $value['serial2'] ?>"
                                             data-orther="<?= $value['orther']; ?>"
-                                            data-serial3="<?= $value['serial3'] ?>">
+                                            data-serial3="<?= $value['serial3'] ?>"
+                                            data-images="<?= $value['images']; ?>">
                                         </td>
-                                        <td>
-                                            <div class="media" style="margin-top:-10px">
-                                                <div class="avatar">
-                                                    <img class="mt-1 ml-2 mr-3"
-                                                    style="margin-left:0px;width:70%;height:70px"
-                                                    src="<?= $value['images']; ?>">
-                                                </div>
-                                            </div>
-                                            <!-- /./ -->
-                                        </td>
-                                        <td>
-                                            <?= $value['fullname']; ?>
-                                            <!-- /./ -->
-                                        </td>
+                                        
+                                        <td><?= $value['fullname']; ?></td>
                                         <td><?= $value['team']; ?></td>
                                         <td><?= $value['phone']; ?></td>
                                         <td><?= $value['serial']; ?></td>
@@ -97,6 +88,16 @@
                                         <td><?= $value['serial2']; ?></td>
                                         <td><?= $value['orther']; ?></td>
                                         <td><?= $value['serial3']; ?></td>
+                                        <td>
+                                            <div class="media" style="margin-top:-10px">
+                                                <div class="avatar">
+                                                    <img class="mt-1 ml-2 mr-3"
+                                                    style="margin-left:0px;width:80px;height:80px"
+                                                    src="<?= $value['images']; ?>">
+                                                </div>
+                                            </div>
+                                            <!-- /./ -->
+                                        </td>
                                     </tr>
                                 <?php  endforeach;  ?>
                             </tbody>

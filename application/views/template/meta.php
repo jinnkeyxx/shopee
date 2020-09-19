@@ -26,6 +26,7 @@
     <link href="<?= base_url() ?>assets\libs\datatables\select.bootstrap4.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url() ?>assets\css\bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"
     type="text/css">
+    
     <!-- Icons Css -->
     <link href="<?= base_url() ?>assets\css\icons.min.css" rel="stylesheet" type="text/css">
     <!-- App Css-->
@@ -33,6 +34,7 @@
     <link href="<?= base_url() ?>assets\libs\custombox\custombox.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 
     <style type="text/css">
         body{

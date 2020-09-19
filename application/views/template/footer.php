@@ -6,7 +6,6 @@
 <script src="<?= base_url() ?>assets\libs\raphael\raphael.min.js"></script> -->
 
 <!-- Dashboard init js-->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script src="<?= base_url() ?>assets\js\main.js"></script>
@@ -18,14 +17,31 @@
 <script src="<?= base_url()?>assets\libs\datatables\dataTables.buttons.min.js"></script>
 <script src="<?= base_url()?>assets\libs\datatables\buttons.bootstrap4.min.js"></script>
 <script src="<?= base_url()?>assets\libs\datatables\buttons.html5.min.js"></script>
+<script src="<?= base_url()?>assets\libs\datatables\jszip.min.js"></script>
 <script src="<?= base_url()?>assets\libs\datatables\buttons.flash.min.js"></script>
 <script src="<?= base_url()?>assets\libs\datatables\buttons.print.min.js"></script>
 <script src="<?= base_url()?>assets\libs\datatables\dataTables.keyTable.min.js"></script>
 <script src="<?= base_url()?>assets\libs\datatables\dataTables.select.min.js"></script>
 <script src="<?= base_url()?>assets\libs\pdfmake\pdfmake.min.js"></script>
 <script src="<?= base_url()?>assets\libs\pdfmake\vfs_fonts.js"></script>
-<script src="<?= base_url()?>assets\js\pages\datatables.init.js"></script>
+<!-- <script src="<?= base_url()?>assets\js\pages\datatables.init.js"></script> -->
 <script src="<?= base_url()?>assets\js\extention\choices.js"></script>
+
+<!-- Custom Export DataTable -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#datatable').DataTable( {
+			dom: 'Bfrtip',
+			lengthMenu: [
+			[ 10, 25, 50, 100, -1 ],
+			[ '10 rows', '25 rows', '50 rows', '100 rows', 'Show all' ]
+			],
+			buttons: [
+			'pageLength'
+			]
+		} );
+	} );
+</script>
 
 <script>
 	const choices = new Choices('[data-trigger]',

@@ -51,14 +51,14 @@ class userlist extends CI_Controller
                     if ($numRow > 0) {
                         $databarang = array(
                             'fullname'  => $row->getCellAtIndex(0),
-                            'team'  => $row->getCellAtIndex(1),
-                            'phone'       => $row->getCellAtIndex(2),
-                            'serial'       => $row->getCellAtIndex(3),
-                            'laptop'       => $row->getCellAtIndex(4),
-                            'serial2'       => $row->getCellAtIndex(5),
-                            'orther'       => $row->getCellAtIndex(6),
-                            'serial3'       => $row->getCellAtIndex(7),
-                            'images'       => $row->getCellAtIndex(8),
+                            'team'      => $row->getCellAtIndex(1),
+                            'phone'     => $row->getCellAtIndex(2),
+                            'serial'    => $row->getCellAtIndex(3),
+                            'laptop'    => $row->getCellAtIndex(4),
+                            'serial2'   => $row->getCellAtIndex(5),
+                            'orther'    => $row->getCellAtIndex(6),
+                            'serial3'   => $row->getCellAtIndex(7),
+                            'images'    => $row->getCellAtIndex(8),
                         );
                         $this->User_model->import_data($databarang);
                     }
@@ -66,7 +66,7 @@ class userlist extends CI_Controller
                 }
                 $reader->close();
                 unlink('uploads/' . $file['file_fullname']);
-                $this->session->set_flashdata('pesan', 'import Data Berhasil');
+                $this->session->set_flashdata('Success', 'Thêm Data thành công !!!');
                 redirect('userlist');
             }
         } else {
