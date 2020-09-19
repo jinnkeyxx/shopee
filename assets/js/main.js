@@ -191,16 +191,16 @@ $(document).ready(() => {
         }
         // count = 0;
     })
-    $('#orther').click(() => {
-        count = 1
-        if (count == 1) {
-            $('input#serial3').removeClass('d-none')
-            $('input#serial3').css('display', 'block');
-            count = 2
-        } else {
-            $('input#serial3').css('display', 'none');
+    $('#orther').keyup(() => {
+        let text = $('#orther').val()
+        if(text == ""){
+            $( "#serial3" ).prop( "disabled", true );
+            $('#serial3').val('');
+
         }
-        // count = 0;
+        else {
+            $('#serial3').removeAttr('disabled');
+        }
     })
     $('#search').submit((e) => {
         e.preventDefault()

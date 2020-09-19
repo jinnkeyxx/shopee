@@ -146,8 +146,13 @@ aria-hidden="true">
             </div>
             <div class="form-group">
                 <label for="orther" class="col-form-label">Khác</label>
-                <input type="checkbox" id="orther" name="orther">
-                <input type="text" class="form-control d-none" id="serial3" name="serial3">
+                <input type="text" id="orther" name="orther" class="form-control">
+               
+            </div>
+            <div class="form-group">
+            <label for="orther" class="col-form-label">serial</label>
+
+                <input type="text" class="form-control " disabled id="serial3" name="serial3">
             </div>
             <div class="form-group">
                 <label for="images" class="col-form-label">Hình ảnh</label>
