@@ -131,6 +131,13 @@ $(document).ready(() => {
     });
     $(document).on('click', '.check_box_user', function() {
         var html = '';
+        var role = "";
+        if($(this).data('role') == "1"){
+            role = "MOD";
+        }
+        else {
+            role = "ADMIN";
+        }
         if (this.checked) {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-email="' + $(this).data('email') + '" data-username="' + $(this).data('username') + '" data-password="' + $(this).data('password') + '" data-role="' + $(this).data('role') + '" data-images="' + $(this).data('images') + '" class="check_box_user" checked /></td>';
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
@@ -148,7 +155,7 @@ $(document).ready(() => {
 
             html += '<td>' + $(this).data('username') + '</td>';
             html += '<td>' + $(this).data('password') + '</td>';
-            html += '<td>' + $(this).data('role') + '</td>';
+            html += '<td>' + role + '</td>';
             html += '<td> <img class="mt-1 ml-2 mr-3 img-fluid" style="margin-left:0px;width:80px;height:80px" src=' + $(this).data('images') + '></td>';
         }
         $(this).closest('tr').html(html);
