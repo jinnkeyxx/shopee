@@ -86,18 +86,19 @@ class Userlist extends CI_Controller
                         if($data['admin']->role == 0)
                         {
                             $databarang = array(
-                                'fullname'  => $row->getCellAtIndex(0),
-                                'team'      => $row->getCellAtIndex(1),
-                                'phone'     => $row->getCellAtIndex(2),
-                                'modem_phone' => $row->getCellAtIndex(3),
-                                'serial'    => $row->getCellAtIndex(4),
-                                'laptop'    => $row->getCellAtIndex(5),
-                                'modem_laptop'    => $row->getCellAtIndex(6),
-                                'serial2'   => $row->getCellAtIndex(7),
-                                'orther'    => $row->getCellAtIndex(8),
-                                'serial3'   => $row->getCellAtIndex(9),
-                                'images'    => $row->getCellAtIndex(10),
-                                'manv' => $row->getCellAtIndex(11),
+                                'manv' => $row->getCellAtIndex(0),
+                                'fullname'  => $row->getCellAtIndex(1),
+                                'team'      => $row->getCellAtIndex(2),
+                                'phone'     => $row->getCellAtIndex(3),
+                                'modem_phone' => $row->getCellAtIndex(4),
+                                'serial'    => $row->getCellAtIndex(5),
+                                'laptop'    => $row->getCellAtIndex(6),
+                                'modem_laptop'    => $row->getCellAtIndex(7),
+                                'serial2'   => $row->getCellAtIndex(8),
+                                'orther'    => $row->getCellAtIndex(9),
+                                'serial3'   => $row->getCellAtIndex(10),
+                                'images'    => $row->getCellAtIndex(11),
+                                
                                 'user_post' => $data['admin']->username, 
                                 
                             );
@@ -106,18 +107,18 @@ class Userlist extends CI_Controller
                         else 
                         {
                             $databarang = array(
-                                'fullname'  => $row->getCellAtIndex(0),
-                                'team'      => $row->getCellAtIndex(1),
-                                'phone'     => $row->getCellAtIndex(2),
-                                'modem_phone' => $row->getCellAtIndex(3),
-                                'serial'    => $row->getCellAtIndex(4),
-                                'laptop'    => $row->getCellAtIndex(5),
-                                'modem_laptop'    => $row->getCellAtIndex(6),
-                                'serial2'   => $row->getCellAtIndex(7),
-                                'orther'    => $row->getCellAtIndex(8),
-                                'serial3'   => $row->getCellAtIndex(9),
-                                'images'    => $row->getCellAtIndex(10),
-                                'manv' => $row->getCellAtIndex(11),
+                                'manv' => $row->getCellAtIndex(0),
+                                'fullname'  => $row->getCellAtIndex(1),
+                                'team'      => $row->getCellAtIndex(2),
+                                'phone'     => $row->getCellAtIndex(3),
+                                'modem_phone' => $row->getCellAtIndex(4),
+                                'serial'    => $row->getCellAtIndex(5),
+                                'laptop'    => $row->getCellAtIndex(6),
+                                'modem_laptop'    => $row->getCellAtIndex(7),
+                                'serial2'   => $row->getCellAtIndex(8),
+                                'orther'    => $row->getCellAtIndex(9),
+                                'serial3'   => $row->getCellAtIndex(10),
+                                'images'    => $row->getCellAtIndex(11),
                                 $status = 1,
                                 'user_post' => $data['admin']->username, 
                             );
