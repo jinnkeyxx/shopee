@@ -75,7 +75,7 @@ tr th {
                                 style="margin-top: 13px !important">
                                 <thead>
                                     <tr role="row">
-                                       <th>STT</th>
+                                    <th>STT</th>
 
                                         <th>Họ và Tên</th>
                                         <th>Mã Nhân Viên</th>
@@ -97,7 +97,7 @@ tr th {
                                     <?php if($value['user_post'] == $admin->username && $value['status'] == 1){  ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
-                                                 data-fullname="<?= $value['fullname'];?>"
+                                        data-fullname="<?= $value['fullname'];?>"
                                                 data-manv="<?= $value['manv']; ?>" data-team="<?= $value['team']; ?>"
                                                 data-serial1="<?= $value['serial']; ?>"
                                                 data-phone="<?= $value['phone']; ?>"
@@ -109,11 +109,10 @@ tr th {
                                                 data-serial3="<?= $value['serial3'] ?>"
                                                 data-images="<?= $value['images']; ?>"
                                                 data-image_old="<?= $value['images']; ?>"
-                                                data-user_post="<?= $value['user_post']; ?>
-                                                ">
+                                                data-user_post="<?= $value['user_post']; ?>"> <?= $i++; ?>
                                         </td>
 
-                                         <td><?= $value['fullname']; ?></td>
+                                        <td><?= $value['fullname']; ?></td>
                                         <td><?= $value['manv']; ?></td>
                                         <td><?= $value['team']; ?></td>
                                         <td><?= $value['phone']; ?></td>
