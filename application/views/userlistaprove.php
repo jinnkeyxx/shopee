@@ -54,7 +54,8 @@ tr th {
 
 
                             <?php if($admin->role == 0){?>
-                            <a class="btn-primary btn" href="userlogin"><i class="fas fa-download"></i>Danh sach admin
+                            <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i>Danh sach
+                                admin
                             </a>
 
                             <?php } ?>

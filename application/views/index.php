@@ -58,7 +58,8 @@ tr th {
                             <?php if($admin->role == 0){?>
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
-                            <a class="btn-primary btn" href="userlogin"><i class="fas fa-download"></i>Danh sach admin
+                            <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i>Danh sach
+                                admin
                             </a>
                             <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
                                 cho duyet <span class="text-danger"><?= $aproveAll;  ?></span>
