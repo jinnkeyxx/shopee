@@ -99,7 +99,7 @@ $(document).ready(() => {
         var team = $(this).data('team')
             // alert(phone)
         if (this.checked) {
-            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-manv="' + $(this).data('manv') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-model_phone="' + $(this).data('model_phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-model_laptop="' + $(this).data('model_laptop') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
+            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-manv="' + $(this).data('manv') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-model_phone="' + $(this).data('model_phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-model_laptop="' + $(this).data('model_laptop') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked />  </td>';
 
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
             html += '<td><input type="text" name="manv[]" class="form-control" value="' + $(this).data("manv") + '" /></td>';
@@ -174,11 +174,11 @@ $(document).ready(() => {
             html += '<td><input type="email" name="email[]" class="form-control" value="' + $(this).data("email") + '" /></td>';
             html += '<td><input type="text" name="username[]" class="form-control" value="' + $(this).data("username") + '" /></td>';
             html += '<td><input type="text" name="password[]" class="form-control" value="' + $(this).data("password") + '" /></td>';
-            if (role == 'ADMIN') {
+            if (role == 'ADMIN' || role == 'Admin') {
                 html += '<td><select name="role[]" class="form-control"> <option value="0"> Admin  </option> <option value="1"> Mod</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
 
             } else {
-                html += '<td><select name="role[]" class="form-control"> <option value="0"> MOD  </option> <option value="1"> Admin</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+                html += '<td><select name="role[]" class="form-control"> <option value="1"> MOD  </option> <option value="0"> Admin</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
 
             }
             html += '<td><input type="file" name="image" class="form-control"/></td>';
