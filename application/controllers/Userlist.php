@@ -529,41 +529,48 @@ class Userlist extends CI_Controller
         $username = $_POST['username'];
         $password = $_POST['password'];
         $role = $_POST['role'];
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['file_name'] = 'img' . time();
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('img')) {
-            $file = $this->upload->data();
-            $img = $file['file_name'];
-            $data = array(
-                'fullname'   => $fullname,
-                'email'  => $email,
-                'username'  => $username,
-                'password' => $password,
-                'role'   => $role,
-                'image' => base_url().'uploads/'.$img,
-            );
-            $this->Admin_model->import_data($data);
-            $this->session->set_flashdata('Success', 'Thêm mới thành công!!!');
+        if($this->Admin_model->add_user($username)){
 
+            
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['file_name'] = 'img' . time();
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('img'))
+            {
+                $file = $this->upload->data();
+                $img = $file['file_name'];
+                $data = array(
+                    'fullname'   => $fullname,
+                    'email'  => $email,
+                    'username'  => $username,
+                    'password' => $password,
+                    'role'   => $role,
+                    'image' => base_url().'uploads/'.$img,
+                );
+                $this->Admin_model->import_data($data);
+                $this->session->set_flashdata('Success', 'Thêm mới thành công!!!');
+
+            }else {
+                $data = array(
+                    'fullname'   => $fullname,
+                    'email'  => $email,
+                    'username'  => $username,
+                    'password' => $password,
+                    'role'   => $role,
+                    
+                    'image' => base_url().'assets\images\users\profile2.png',
+
+                );
+                $this->Admin_model->import_data($data);
+                $this->session->set_flashdata('Success', 'Thêm mới thành công!!!');
+
+            }
         }else {
-            $data = array(
-                'fullname'   => $fullname,
-                'email'  => $email,
-                'username'  => $username,
-                'password' => $password,
-                'role'   => $role,
-                
-                'image' => base_url().'assets\images\users\profile2.png',
-
-            );
-            $this->Admin_model->import_data($data);
-            $this->session->set_flashdata('Success', 'Thêm mới thành công!!!');
-
+            $this->session->set_flashdata('Error' ,'Tên tài khoản đã tồn tại');
         }
         
-            $this->session->set_flashdata('Thêm thành công');
+            
             redirect('userlogin');
     }
         

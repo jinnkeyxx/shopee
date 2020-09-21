@@ -50,7 +50,17 @@ class Admin_Model extends CI_Model
         $delete = $this->db->delete($this->tblName);
         return $delete?true:false;
     }
-   
+    public function add_user($username)
+    {
+        $this->db->where("username" ,$username);
+        
+        $result = $this->db->get('admin');
+        if($result->num_rows() > 0){
+            return false;
+        }else {
+            return true;
+        }
+    }
    
     
 }
