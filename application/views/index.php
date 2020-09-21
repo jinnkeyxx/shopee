@@ -43,7 +43,7 @@ tr th {
             </div>
             <div class="card mt-2">
                 <div class="card-body">
-                    <form method="post" id="update_form" action="userlist/update" enctype='multipart/form-data'>
+                    <form method="post" id="update_form" action="userlist/aprove" enctype='multipart/form-data'>
 
 
                         <div align="left">
