@@ -112,7 +112,8 @@ tr th {
                                                 data-serial3="<?= $value['serial3'] ?>"
                                                 data-images="<?= $value['images']; ?>"
                                                 data-image_old="<?= $value['images']; ?>"
-                                                data-user_post="<?= $value['user_post']; ?>"> <?= $i++; ?>
+                                                data-user_post="<?= $value['user_post']; ?>
+                                                "> <?= $i++; ?>
                                         </td>
                                         <?php } else { ?>
                                         <td> <?= $i++; ?> </td>
@@ -168,13 +169,11 @@ tr th {
                     <div class="form-group">
                         <label for="manv" class="col-form-label">mã nhân viên</label>
 
-                        <input type="text" class="form-control " id="manv" name="manv" placeholder="Mã nhân viên"
-                            required>
+                        <input type="text" class="form-control " id="manv" name="manv" placeholder="Mã nhân viên" required>
                     </div>
                     <div class="form-group">
                         <label for="fullname" class="col-form-label">Họ Tên:</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname" required
-                            placeholder="Họ Tên">
+                        <input type="text" class="form-control" id="fullname" name="fullname" required placeholder="Họ Tên">
                     </div>
                     <div class="form-group">
                         <label for="Team" class="col-form-label">Team</label>

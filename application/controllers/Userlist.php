@@ -28,7 +28,7 @@ class Userlist extends CI_Controller
             $data['aprove'] = $this->User_model->getuser();
             
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
-            $data['admin']->id;
+            // $data['admin']->id;
 
            
             $this->load->view('template/meta', $data);
@@ -404,9 +404,31 @@ class Userlist extends CI_Controller
         $team = $_POST['team'];
         $serial = $_POST['serial1'];
         $serial2 = $_POST['serial2'];
-        $model_phone = $_POST['model_phone'];
-        $model_laptop = $_POST['model_laptop'];
-        $manv = $_POST['manv'];
+        if(isset($_POST['model_phone'])){
+            $model_phone = $_POST['model_phone'];
+
+        }
+        else {
+            $model_phone = "";
+
+        }
+        if(isset($_POST['model_laptop'])){
+            $model_laptop = $_POST['model_laptop'];
+
+        }
+        else {
+            $model_laptop = "";
+
+        }
+        if(isset($_POST['manv'])){
+            $manv = $_POST['manv'];
+
+        }
+        else {
+            $manv = "";
+
+        }
+        // $manv = $_POST['manv'];
         if(isset($_POST['serial3'])){
             $serial3 = $_POST['serial3'];
         }
@@ -466,7 +488,7 @@ class Userlist extends CI_Controller
             'user_post' => $data['admin']->username,
             );
             $this->User_model->import_data($data);
-            $this->session->set_flashdata('Thêm thành công');
+            $this->session->set_flashdata('Success','Thêm thành công');
         }else {
             $data = array(
             'fullname'   => $fullname,
@@ -485,7 +507,8 @@ class Userlist extends CI_Controller
             'user_post' => $data['admin']->username,
             );
             $this->User_model->import_data($data);
-            $this->session->set_flashdata('Thêm thành công');
+            $this->session->set_flashdata('Success','Thêm thành công');
+
             // redirect('userlist');
         }
             redirect('userpost');

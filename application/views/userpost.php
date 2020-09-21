@@ -43,7 +43,7 @@ tr th {
             </div>
             <div class="card mt-2">
                 <div class="card-body">
-                    <form method="post" id="update_form" action="userlist/update" enctype='multipart/form-data'>
+                    <form method="post" id="update_form" action="userlist/aprove" enctype='multipart/form-data'>
 
 
                         <div align="left">
@@ -75,12 +75,16 @@ tr th {
                                 style="margin-top: 13px !important">
                                 <thead>
                                     <tr role="row">
-                                        <th>STT</th>
+                                       <th>STT</th>
+
                                         <th>Họ và Tên</th>
+                                        <th>Mã Nhân Viên</th>
                                         <th>Team</th>
                                         <th>Điện thoại</th>
+                                        <th>Modem điện thoại</th>
                                         <th>Serial#1</th>
                                         <th>Laptop</th>
+                                        <th>Modem laptop</th>
                                         <th>Serial#2</th>
                                         <th>Khác</th>
                                         <th>Serial#3</th>
@@ -93,24 +97,30 @@ tr th {
                                     <?php if($value['user_post'] == $admin->username && $value['status'] == 1){  ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
-                                                data-fullname="<?= $value['fullname'];?>"
-                                                data-team="<?= $value['team']; ?>"
+                                                 data-fullname="<?= $value['fullname'];?>"
+                                                data-manv="<?= $value['manv']; ?>" data-team="<?= $value['team']; ?>"
                                                 data-serial1="<?= $value['serial']; ?>"
                                                 data-phone="<?= $value['phone']; ?>"
+                                                data-model_phone="<?= $value['model_phone']; ?>"
+                                                data-model_laptop="<?= $value['model_laptop']; ?>"
                                                 data-laptop="<?= $value['laptop'] ?>"
                                                 data-serial2="<?= $value['serial2'] ?>"
                                                 data-orther="<?= $value['orther']; ?>"
                                                 data-serial3="<?= $value['serial3'] ?>"
                                                 data-images="<?= $value['images']; ?>"
                                                 data-image_old="<?= $value['images']; ?>"
-                                                data-user_post="<?= $value['user_post']; ?>">
+                                                data-user_post="<?= $value['user_post']; ?>
+                                                ">
                                         </td>
 
-                                        <td><?= $value['fullname']; ?></td>
+                                         <td><?= $value['fullname']; ?></td>
+                                        <td><?= $value['manv']; ?></td>
                                         <td><?= $value['team']; ?></td>
                                         <td><?= $value['phone']; ?></td>
+                                        <td><?= $value['model_phone']; ?></td>
                                         <td><?= $value['serial']; ?></td>
                                         <td><?= $value['laptop']; ?></td>
+                                        <td><?= $value['model_laptop']; ?></td>
                                         <td><?= $value['serial2']; ?></td>
                                         <td><?= $value['orther']; ?></td>
                                         <td><?= $value['serial3']; ?></td>
