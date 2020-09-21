@@ -513,6 +513,7 @@ class Userlist extends CI_Controller
         }else {
             $this->session->set_flashdata('Error','Lỗi trùng mã nhân viên');
         }
+        redirect('userlist');
           
         
 

@@ -96,7 +96,7 @@ tr th {
 
                                     <?php $i = 0; foreach ($user as $value):?>
                                     <?php if($value['user_post'] == $admin->username && $value['status'] == 1){  ?>
-                                    <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
+                                    <tr id="table_<?= $value['id']; ?>" class="sorting_">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                                 data-fullname="<?= $value['fullname'];?>"
                                                 data-manv="<?= $value['manv']; ?>" data-team="<?= $value['team']; ?>"
