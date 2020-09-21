@@ -486,6 +486,8 @@ class Userlist extends CI_Controller
                 );
                 $this->User_model->import_data($data);
                 $this->session->set_flashdata('Success','Thêm thành công');
+                redirect('userlist');
+
 
             }else {
                 $data = array(
@@ -506,14 +508,13 @@ class Userlist extends CI_Controller
                 );
                 $this->User_model->import_data($data);
                 $this->session->set_flashdata('Thêm thành công');
-             // redirect('userlist');
+             redirect('userpost');
             }
         }else {
             $this->session->set_flashdata('Error','Lỗi trùng mã nhân viên');
         }
           
         
-            redirect('userlist');
 
           
             
