@@ -132,7 +132,8 @@ class Admin extends CI_Controller
         if($this->session->userdata('login'))
         {
             if($this->session->userdata('role') == 0){
-                 $data['aprove'] = $this->User_model->getuser();
+                $data['aprove'] = $this->User_model->getuser($this->session->userdata('id'));
+                $data['aproveAll'] = $this->User_model->getusers(); 
                 $data['title'] = "User login";
                 $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
                 // var_dump($data['admin']->fullname);

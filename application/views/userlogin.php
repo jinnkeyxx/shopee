@@ -51,7 +51,7 @@ tr th {
 
                             <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
                                 cho duyet <?php if($aprove > 0){ ?><span
-                                    class="text-danger"><?= $aprove;  ?></span><?php } ?>
+                                    class="text-danger"><?= $aproveAll;  ?></span><?php } ?>
                             </a>
                             <?php } ?>
                         </div>

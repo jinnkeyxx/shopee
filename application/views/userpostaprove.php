@@ -57,13 +57,14 @@ tr th {
                             <a class="btn-primary btn" href="userlogin"><i class="fas fa-download"></i>Danh sach admin
                             </a>
                             <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
-                                cho duyet <span> 0 </span>
+                                cho duyet <span>  </span>
                             </a>
                             <?php } else {?>
                             <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i>Danh sach
                                 cho duyet cua ban </a>
                             <a class="btn-primary btn" href="userpostaprove"><i class="fas fa-download"></i>Danh sach
-                                da duyet cua ban </a>
+                                da duyet cua ban  <?php if($aprove > 0){ ?><span
+                                    class="text-danger"><?= $aprove;  ?></span><?php  } ?></a>
                             <?php } ?>
 
                         </div>
