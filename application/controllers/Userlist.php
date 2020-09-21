@@ -25,7 +25,7 @@ class Userlist extends CI_Controller
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();
-            $data['aprove'] = $this->User_model->getuser($this->session->userdata('id'));
+            $data['aprove'] = $this->User_model->getuser($this->session->userdata('fullname'));
             $data['aproveAll'] = $this->User_model->getusers();
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
@@ -705,7 +705,7 @@ class Userlist extends CI_Controller
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();
-            $data['aprove'] = $this->User_model->getuser($this->session->userdata('id'));
+            $data['aprove'] = $this->User_model->getuser($this->session->userdata('fullname'));
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 
@@ -725,7 +725,7 @@ class Userlist extends CI_Controller
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();
-            $data['aprove'] = $this->User_model->getuser($this->session->userdata('id'));
+            $data['aprove'] = $this->User_model->getuser($this->session->userdata('fullname'));
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 

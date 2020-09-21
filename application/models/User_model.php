@@ -44,9 +44,10 @@ class User_Model extends CI_Model
     {
         $this->db->update('users' , $data);
     }
-    public function getuser($id)
+    public function getuser($username)
     {
         $this->db->where("status" , 1);
+        $this->db->where("user_post" , $username);
         $result = $this->db->get('users');
         
         return $result->num_rows();
