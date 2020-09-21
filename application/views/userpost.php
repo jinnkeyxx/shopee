@@ -63,7 +63,8 @@ tr th {
                             </a>
                             <?php } else {?>
                             <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i>Danh sach
-                                cho duyet cua ban </a>
+                                cho duyet cua ban <?php if($aprove > 0){ ?><span
+                                    class="text-danger"><?= $aprove;  ?></span><?php  } ?> </a>
                             <a class="btn-primary btn" href="userpostaprove"><i class="fas fa-download"></i>Danh sach
                                 da duyet cua ban </a>
                             <?php } ?>

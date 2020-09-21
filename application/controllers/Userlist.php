@@ -405,7 +405,7 @@ class Userlist extends CI_Controller
         $serial = $_POST['serial1'];
         $serial2 = $_POST['serial2'];
         $model_laptop = $_POST['model_laptop'];
-        $manv = $_POST['manv'];
+        // $manv = $_POST['manv'];
         if(isset($_POST['serial3'])){
             $serial3 = $_POST['serial3'];
         }
@@ -587,6 +587,25 @@ class Userlist extends CI_Controller
             $serial1 = $_POST['serial1'];
             $images_old = $_POST['image_old'];
             $user_post = $_POST['user_post'];
+            // $manv = $_POST['manv'];
+            if(isset($_POST['model_phone'])){
+                $model_phone = $_POST['model_phone'];
+                
+            } else {
+                $model_phone = "";
+            }
+            if(isset($_POST['model_laptop'])){
+                $model_laptop = $_POST['model_laptop'];
+                
+            } else {
+                $model_laptop = "";
+            }
+            if(isset($_POST['manv'])){
+                $manv = $_POST['manv'];
+                
+            } else {
+                $manv = "";
+            }
             // var_dump($user_post);
             // exit();
             $id = $_POST['hidden_id'];
@@ -595,10 +614,10 @@ class Userlist extends CI_Controller
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             if($data['admin']->role == 0)
             { 
-                $trangthai = 0;
+                $trangthai = '0';
             }
             else {
-                $trangthai = 1;
+                $trangthai = '1';
             }
            
             for($count = 0; $count < count($id); $count++)
@@ -619,12 +638,15 @@ class Userlist extends CI_Controller
                     $file = $this->upload->data();
                     $data = array(
                         'fullname'   => $fullname[$count],
+                        'manv' => $manv[$count],
                         'team'  => $team[$count],
                         'phone'  => $phone[$count],
                         'serial' => $serial1[$count],
                         'laptop'   => $laptop[$count],
                         'serial2' => $serial2[$count],
                         'orther' => $orther[$count],
+                        'model_phone' =>$model_phone[$count],
+                        'model_laptop' =>$model_laptop[$count],
                         'serial3' => $serial3[$count],
                         'images' => base_url().'uploads/'. $file['file_name'],
                         'status' => $trangthai[$count],
@@ -643,17 +665,19 @@ class Userlist extends CI_Controller
                     
                     $data = array(
                         'fullname'   => $fullname[$count],
+                        'manv' => $manv[$count],
                         'team'  => $team[$count],
                         'phone'  => $phone[$count],
                         'serial' => $serial1[$count],
                         'laptop'   => $laptop[$count],
                         'serial2' => $serial2[$count],
                         'orther' => $orther[$count],
+                        'model_phone' =>$model_phone[$count],
+                        'model_laptop' =>$model_laptop[$count],
                         'serial3' => $serial3[$count],
-                        'images' => $images_old[$count],
                         'status' => $trangthai[$count],
                         'user_post' => $user_post[$count],
-                        'status' => $trangthai,
+                        'status' => $trangthai[$count],
                         'id'   => $id[$count]
                     );
                     $this->User_model->import_data($data);
@@ -676,7 +700,7 @@ class Userlist extends CI_Controller
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();
-            
+            $data['aprove'] = $this->User_model->getuser();
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 

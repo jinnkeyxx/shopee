@@ -93,16 +93,32 @@ $(document).ready(() => {
     })
     $(document).on('click', '.check_box', function() {
         var html = '';
+        var laptop = $(this).data('laptop')
+        var phone = $(this).data('model_phone')
+        // alert(laptop)
         if (this.checked) {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-manv="' + $(this).data('manv') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-model_phone="' + $(this).data('model_phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-model_laptop="' + $(this).data('model_laptop') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
 
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
             html += '<td><input type="text" name="manv[]" class="form-control" value="' + $(this).data("manv") + '" /></td>';
+            
             html += '<td><select  name="team[]" class="form-control"><option value="Inventory" >Inventory</option> <option value="Inbound" >Inbound</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
-            html += '<td><select name="phone[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
+            if(phone == 'Yes'){
+                html += '<td><select name="phone[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
+
+            }else {
+                html += '<td><select name="phone[]" class="form-control"> <option value="No" >No</option><option value="No"> Yes </option></select></td>';
+
+            }
             html += '<td><input type="text" name="model_phone[]" class="form-control" value="' + $(this).data("model_phone") + '" /></td>';
             html += '<td><input type="text" name="serial1[]" class="form-control" value="' + $(this).data("serial1") + '" /></td>';
-            html += '<td><select name="laptop[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
+            if(laptop == 'Yes'){
+                html += '<td><select name="laptop[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
+            }
+            else {
+                html += '<td><select name="laptop[]" class="form-control"> <option value="No" >No</option><option value="Yes"> Yes </option></select></td>';
+            }
+            
             html += '<td><input type="text" name="model_laptop[]" class="form-control" value="' + $(this).data("model_laptop") + '" /></td>';
             html += '<td><input type="text" name="serial2[]" class="form-control" value="' + $(this).data("serial2") + '" /></td>';
             html += '<td><input type="text" name="orther[]" class="form-control" value="' + $(this).data("orther") + '" /></td>';
@@ -144,7 +160,14 @@ $(document).ready(() => {
             html += '<td><input type="email" name="email[]" class="form-control" value="' + $(this).data("email") + '" /></td>';
             html += '<td><input type="text" name="username[]" class="form-control" value="' + $(this).data("username") + '" /></td>';
             html += '<td><input type="text" name="password[]" class="form-control" value="' + $(this).data("password") + '" /></td>';
-            html += '<td><select name="role[]" class="form-control"> <option value="0"> Admin  </option> <option value="1"> Mod</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+            if(role == 'ADMIN'){
+                html += '<td><select name="role[]" class="form-control"> <option value="0"> Admin  </option> <option value="1"> Mod</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+
+            }
+            else {
+            html += '<td><select name="role[]" class="form-control"> <option value="0"> MOD  </option> <option value="1"> Admin</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+
+            }
             html += '<td><input type="file" name="image" class="form-control"/></td>';
             html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
 
