@@ -95,14 +95,33 @@ $(document).ready(() => {
         var html = '';
         var laptop = $(this).data('laptop')
         var phone = $(this).data('model_phone')
+        var team = $(this).data('team')
         // alert(laptop)
         if (this.checked) {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-manv="' + $(this).data('manv') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-model_phone="' + $(this).data('model_phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-model_laptop="' + $(this).data('model_laptop') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
 
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
             html += '<td><input type="text" name="manv[]" class="form-control" value="' + $(this).data("manv") + '" /></td>';
-            
-            html += '<td><select  name="team[]" class="form-control"><option value="Inventory" >Inventory</option> <option value="Inbound" >Inbound</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
+            if(team == 'Inventory'){
+                html += '<td><select  name="team[]" class="form-control"><option value="Inventory" >Inventory</option> <option value="Inbound" >Inbound</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
+
+            }
+            else if(team == 'Inbound'){
+                html += '<td><select  name="team[]" class="form-control"> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
+
+            }
+            else if(team == 'Outbound'){
+                html += '<td><select  name="team[]" class="form-control"> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option>  <option value="Return" >Return</option> </select></td>';
+
+            }
+            else if(team == 'Return'){
+                html += '<td><select  name="team[]" class="form-control">  <option value="Return" >Return</option> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option>  </select></td>';
+
+            }
+            else{
+                html += '<td><select  name="team[]" class="form-control"> <option value="Khác">Khác </option> <option value="Return" >Return</option> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option>  </select></td>';
+
+            }
             if(phone == 'Yes'){
                 html += '<td><select name="phone[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
 
