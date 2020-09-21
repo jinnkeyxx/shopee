@@ -407,7 +407,7 @@ class Userlist extends CI_Controller
         $team = $_POST['team'];
         $serial = $_POST['serial1'];
         $serial2 = $_POST['serial2'];
-        $model_laptop = $_POST['model_laptop'];
+        // $model_laptop = $_POST['model_laptop'];
         // $manv = $_POST['manv'];
         if(isset($_POST['serial3'])){
             $serial3 = $_POST['serial3'];
@@ -445,6 +445,7 @@ class Userlist extends CI_Controller
         } else {
             $manv = "";
         }
+        
         if(isset($_POST['laptop'])){
             $laptop = $_POST['laptop'];
             if($laptop == NULL){
@@ -456,57 +457,62 @@ class Userlist extends CI_Controller
         }else {
             $laptop = "No";
         }
-        
-          
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['file_name'] = 'img' . time();
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('img')) {
-            $file = $this->upload->data();
-            $img = $file['file_name'];
-        }
-        $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
-        if($data['admin']->role == 0)
-        {
-            $data = array(
-            'fullname'   => $fullname,
-            'team'  => $team,
-            'phone'  => $phone,
-            'serial' => $serial,
-            'laptop'   => $laptop,
-            'model_phone' =>$model_phone,
-            'model_laptop' =>$model_laptop,
-            'orther' => $orther,
-            'manv' => $manv,
-            'serial2' => $serial2,
-            'serial3' => $serial3,
-            'images' => base_url().'uploads/'.$img,
-            'user_post' => $data['admin']->username,
-            );
-            $this->User_model->import_data($data);
-            $this->session->set_flashdata('Thêm thành công');
+        if($this->User_model->checkMaNV($manv)){
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['file_name'] = 'img' . time();
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('img')) {
+                $file = $this->upload->data();
+                $img = $file['file_name'];
+            }
+            $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+            if($data['admin']->role == 0)
+            {
+                $data = array(
+                'fullname'   => $fullname,
+                'team'  => $team,
+                'phone'  => $phone,
+                'serial' => $serial,
+                'laptop'   => $laptop,
+                'model_phone' =>$model_phone,
+                'model_laptop' =>$model_laptop,
+                'orther' => $orther,
+                'manv' => $manv,
+                'serial2' => $serial2,
+                'serial3' => $serial3,
+                'images' => base_url().'uploads/'.$img,
+                'user_post' => $data['admin']->username,
+                );
+                $this->User_model->import_data($data);
+                $this->session->set_flashdata('Thêm thành công');
+
+            }else {
+                $data = array(
+                'fullname'   => $fullname,
+                'team'  => $team,
+                'phone'  => $phone,
+                'serial' => $serial,
+                'laptop'   => $laptop,
+                'model_phone' =>$model_phone,
+                'model_laptop' =>$model_laptop,
+                'orther' => $orther,
+                'manv' => $manv,
+                'serial2' => $serial2,
+                'serial3' => $serial3,
+                'status' => 1,
+                'images' => base_url().'uploads/'.$img,
+                'user_post' => $data['admin']->username,
+                );
+                $this->User_model->import_data($data);
+                $this->session->set_flashdata('Thêm thành công');
+             // redirect('userlist');
+            }
         }else {
-            $data = array(
-            'fullname'   => $fullname,
-            'team'  => $team,
-            'phone'  => $phone,
-            'serial' => $serial,
-            'laptop'   => $laptop,
-            'model_phone' =>$model_phone,
-            'model_laptop' =>$model_laptop,
-            'orther' => $orther,
-            'manv' => $manv,
-            'serial2' => $serial2,
-            'serial3' => $serial3,
-            'status' => 1,
-            'images' => base_url().'uploads/'.$img,
-            'user_post' => $data['admin']->username,
-            );
-            $this->User_model->import_data($data);
-            $this->session->set_flashdata('Thêm thành công');
-            // redirect('userlist');
+            $this->session->set_flashdata('Error','Lỗi trùng mã nhân viên');
         }
+          
+        
             redirect('userpost');
 
           

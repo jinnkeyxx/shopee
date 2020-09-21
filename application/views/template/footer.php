@@ -55,6 +55,10 @@ const choices = new Choices('[data-trigger]', {
 {
     echo "<script>toastr['success']('{$this->session->flashdata('Success')}') </script>";
 }
+ if($this->session->flashdata('Error'))
+{
+    echo "<script>toastr['error']('{$this->session->flashdata('Error')}') </script>";
+}
 ?>
 
 </body>

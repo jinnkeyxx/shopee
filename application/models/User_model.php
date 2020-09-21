@@ -61,4 +61,15 @@ class User_Model extends CI_Model
         return $result->num_rows();
 
     }
+    public function checkMaNV($manv)
+    {
+        $this->db->where("manv" ,$manv);
+        
+        $result = $this->db->get('users');
+        if($result->num_rows() > 0){
+            return false;
+        }else {
+            return true;
+        }
+    }
 }
