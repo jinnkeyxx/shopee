@@ -587,6 +587,7 @@ class Userlist extends CI_Controller
             $serial1 = $_POST['serial1'];
             $images_old = $_POST['image_old'];
             $user_post = $_POST['user_post'];
+            $phone = $_POST['phone'];
             // $manv = $_POST['manv'];
             if(isset($_POST['model_phone'])){
                 $model_phone = $_POST['model_phone'];
