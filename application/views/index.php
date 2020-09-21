@@ -61,13 +61,13 @@ tr th {
                             <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i>Danh sach
                                 admin
                             </a>
-                            <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
+                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i>Danh sach
                                 cho duyet <span class="text-danger"><?= $aproveAll;  ?></span>
                             </a>
                             <?php } else {?>
                             <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i>Danh sach
                                 cho duyet cua ban <span class="text-danger"><?= $aprove;  ?></span> </a>
-                            <a class="btn-primary btn" href="userpostaprove"><i class="fas fa-download"></i>Danh sach
+                            <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i>Danh sach
                                 da duyet cua ban </a>
                             <?php } ?>
 

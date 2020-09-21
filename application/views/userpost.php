@@ -43,7 +43,7 @@ tr th {
             </div>
             <div class="card mt-2">
                 <div class="card-body">
-                    <form method="post" id="update_form" action="userlist/aprove" enctype='multipart/form-data'>
+                    <form method="post" id="update_form" action="userlist/aprove" eenctype='multipart/form-data'>
 
 
                         <div align="left">
@@ -59,14 +59,14 @@ tr th {
                             <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i>Danh sach
                                 admin
                             </a>
-                            <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
+                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i>Danh sach
                                 cho duyet
                             </a>
                             <?php } else {?>
                             <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i>Danh sach
                                 cho duyet cua ban <?php if($aprove > 0){ ?><span
                                     class="text-danger"><?= $aprove;  ?></span><?php  } ?> </a>
-                            <a class="btn-primary btn" href="userpostaprove"><i class="fas fa-download"></i>Danh sach
+                            <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i>Danh sach
                                 da duyet cua ban </a>
                             <?php } ?>
 
@@ -169,7 +169,8 @@ tr th {
                     </div>
                     <div class="form-group">
                         <label for="fullname" class="col-form-label">Họ Tên:</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname" required>
+                        <input type="text" class="form-control" id="fullname" name="fullname" required
+                            placeholder="Họ Tên">
                     </div>
                     <div class="form-group">
                         <label for="Team" class="col-form-label">Team</label>
@@ -184,27 +185,35 @@ tr th {
                     <div class="form-group">
                         <label for="phone" class="col-form-label">Điện thoại</label>
                         <input type="checkbox" id="phone" name="phone">
-                        <input type="text" class="form-control d-none" id="serial1" name="serial1">
+                        <input type="text" class="form-control my-1 d-none" id="model_phone" name="model_phone"
+                            placeholder="MoDem Phone">
+                        <input type="text" class="form-control my-1 d-none" id="serial1" name="serial1"
+                            placeholder="Serial Phone">
                     </div>
                     <div class="form-group">
                         <label for="laptop" class="col-form-label">Laptop</label>
                         <input type="checkbox" id="laptop" name="laptop">
-                        <input type="text" class="form-control d-none" id="serial2" name="serial2">
+                        <input type="text" class="form-control my-1 d-none" id="model_laptop" name="model_laptop"
+                            placeholder="MoDem Laptop">
+                        <input type="text" class="form-control my-1 d-none" id="serial2" name="serial2"
+                            placeholder="Serial Phone">
                     </div>
                     <div class="form-group">
                         <label for="orther" class="col-form-label">Khác</label>
-                        <input type="text" id="orther" name="orther" class="form-control">
+                        <input type="text" id="orther" name="orther" class="form-control" placeholder="Thiết bị khác">
 
                     </div>
                     <div class="form-group">
-                        <label for="orther" class="col-form-label">serial</label>
+                        <label for="serial3" class="col-form-label">serial</label>
 
-                        <input type="text" class="form-control " disabled id="serial3" name="serial3">
+                        <input type="text" class="form-control " disabled id="serial3" name="serial3"
+                            placeholder="Serial">
                     </div>
+
                     <div class="form-group">
                         <label for="images" class="col-form-label">Hình ảnh</label>
 
-                        <input type="file" class="form-control" id="images" name="img">
+                        <input type="file" class="form-control" id="images" name="img" required>
                     </div>
                 </div>
                 <div class="modal-footer">

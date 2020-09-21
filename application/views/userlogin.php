@@ -49,7 +49,7 @@ tr th {
                                 sách xuống </a>
                             <?php if($admin->role == 0){?>
 
-                            <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
+                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i>Danh sach
                                 cho duyet
                             </a>
                             <?php } ?>

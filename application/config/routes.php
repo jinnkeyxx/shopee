@@ -60,5 +60,5 @@ $route['checkout'] = 'checkout/index';
 $route['approvelistuser'] = 'Admin/userlogin';
 $route['profile'] = 'Userlist/profile';
 $route['userpost'] = 'Userlist/userpost';
-$route['userlistaprove'] = 'Userlist/userlistaprove';
-$route['userpostaprove'] = 'Userlist/userpostaprove';
+$route['userlistapprove'] = 'Userlist/userlistaprove';
+$route['userpostapprove'] = 'Userlist/userpostaprove';

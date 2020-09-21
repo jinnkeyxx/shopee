@@ -318,12 +318,25 @@ $('#checkout').submit(function(e) {
     if (search != '') {
         $.ajax({
             url: "Checkout/fetch",
+            dataType: 'json',
             method: "POST",
             data: {
                 query: search
             },
             success: function(data) {
                 $('#result').html(data);
+                $('#search_text').val('');
+                if (data.status == false) {
+                    alert('no data');
+                } else {
+                    alert(data.output)
+                        // console.log(data.output)
+                    for (var key in data.output) {
+                        var value = data.output[key];
+                        console.log(value['images']);
+                        $('#result').html(`<img src="${value['images']}"/>`);
+                    }
+                }
             }
         })
     } else {

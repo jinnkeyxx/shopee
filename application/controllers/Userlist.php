@@ -175,105 +175,7 @@ class Userlist extends CI_Controller
             echo "Error :" . $this->upload->display_errors();
         };
     }
-    public function update()
-    {
-      
-            
-            $fullname = $_POST['fullname'];
-            
-            $team = $_POST['team'];
-            $laptop = $_POST['laptop'];   
-            $model_laptop = $_POST['model_laptop'];
-            $phone = $_POST['phone'];
-            $model_phone = $_POST['model_phone'];
-            $serial1 = $_POST['serial1'];
-            $serial2 = $_POST['serial2'];
-            $serial3 = $_POST['serial3'];
-            $orther = $_POST['orther'];
-            $serial1 = $_POST['serial1'];
-            $manv = $_POST['manv'];
-            
-            $images_old = $_POST['image_old'];
-            $user_post = $_POST['user_post'];
-            $id = $_POST['hidden_id'];
-            $data = [];
-            $img=[];
-            
-            for($count = 0; $count < count($id); $count++)
-            
-            {
-                
-                
-                $path = './uploads/';
-                $this->load->library('upload');
-           
-            
-                $this->upload->initialize(array(
-                    "upload_path"       =>  $path,
-                    "allowed_types"     =>  "gif|jpg|png",
-                    
-                ));
-           
-                if($this->upload->do_upload("image"))
-                {
-                
-                    $file = $this->upload->data();
-                    $data = array(
-                        'fullname'   => $fullname[$count],
-                        'team'  => $team[$count],
-                        'phone'  => $phone[$count],
-                        'model_phone' => $model_phone[$count],
-                        'serial' => $serial1[$count],
-                        'laptop'   => $laptop[$count],
-                        'model_laptop' => $model_laptop[$count],
-                        'serial2' => $serial2[$count],
-                        'orther' => $orther[$count],
-                        'serial3' => $serial3[$count],
-                        'images' => base_url().'uploads/'. $file['file_name'],
-                        'user_post'=>$user_post[$count],
-                        'manv' => $manv[$count],
-                        'id'   => $id[$count],
-
-                    );
-                    $this->User_model->import_data($data);
-                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
-
-                   
-                
-                
-                }
-                else 
-                {
-                    $data = array(
-                        'fullname'   => $fullname[$count],
-                        'team'  => $team[$count],
-                         'phone'  => $phone[$count],
-                        'model_phone' => $model_phone[$count],
-                        'serial' => $serial1[$count],
-                        'laptop'   => $laptop[$count],
-                        'model_laptop' => $model_laptop[$count],
-                        'serial2' => $serial2[$count],
-                        'orther' => $orther[$count],
-                        'serial3' => $serial3[$count],
-                        'images' => $images_old[$count],
-                        'user_post'=>$user_post[$count],
-                        'manv' => $manv[$count],
-                        'id'   => $id[$count]
-                    );
-                    
-                    $this->User_model->import_data($data);
-                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
-
-                    
-                }
-               
-            }
-             redirect('userlist'); 
-        
-       
-          
-
-    }
+   
     public function update_user()
     {
        if(isset($_POST['hidden_id']))
@@ -569,7 +471,7 @@ class Userlist extends CI_Controller
         }
         
             
-            redirect('userlogin');
+            redirect('approvelistuser');
     }
         
     public function checkout()
@@ -590,7 +492,7 @@ class Userlist extends CI_Controller
     }
     public function aprove()
     {
-       if(isset($_POST['hidden_id']))
+        if(isset($_POST['hidden_id']))
         {
             
             $fullname = $_POST['fullname'];
@@ -604,7 +506,7 @@ class Userlist extends CI_Controller
             $serial1 = $_POST['serial1'];
             $images_old = $_POST['image_old'];
             $user_post = $_POST['user_post'];
-           
+            
             // $manv = $_POST['manv'];
             if(isset($_POST['model_phone'])){
                 $model_phone = $_POST['model_phone'];
@@ -640,19 +542,28 @@ class Userlist extends CI_Controller
            
             for($count = 0; $count < count($id); $count++)
             {
-                $path = './uploads/';
-                $this->load->library('upload');
-           
-            
-                $this->upload->initialize(array(
-                    "upload_path"       =>  $path,
-                    "allowed_types"     =>  "gif|jpg|png",
+                if($phone[$count] == 'No'){
+                    $model_phone = "";
+                    $serial1 = "";
+                }
+                if($laptop[$count] == 'No'){
+                    $model_laptop = "";
+                    $serial2 = "";
+                }
+                if($orther[$count] == ''){
                     
-                ));
+                    $serial3 = "";
+                }
+                $config['upload_path'] = './uploads/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
+                $config['file_name'] = 'img' . time();
+                $this->load->library('upload', $config);
+                
            
                 if($this->upload->do_upload("image"))
                 {
-                
+                    
+                    
                     $file = $this->upload->data();
                     $data = array(
                         'fullname'   => $fullname[$count],
@@ -696,6 +607,7 @@ class Userlist extends CI_Controller
                         'status' => $trangthai[$count],
                         'user_post' => $user_post[$count],
                         'status' => $trangthai[$count],
+                        'images' => $images_old[$count],
                         'id'   => $id[$count]
                     );
                     $this->User_model->import_data($data);
@@ -707,7 +619,6 @@ class Userlist extends CI_Controller
             redirect('userlist'); 
        
         }
-       
           
 
     }
