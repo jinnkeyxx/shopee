@@ -327,19 +327,68 @@ $('#checkout').submit(function(e) {
                 $('#result').html(data);
                 $('#search_text').val('');
                 if (data.status == false) {
-                    alert('no data');
+
+                    swall('Không tìm thấy Serial#', 'error')
+                    $('#result').html(`<img src="assets/images/loader3.gif" style="width: 100%"/>`);
                 } else {
-                    alert(data.output)
-                        // console.log(data.output)
+
+                    // console.log(data.output)
                     for (var key in data.output) {
+                        var serial = "";
+                        var serial2 = "";
+                        var orther = "";
+                        var serial3 = "";
+                        var team = "";
+
                         var value = data.output[key];
-                        console.log(value['images']);
-                        $('#result').html(`<img src="${value['images']}"/>`);
+                        // swall('Đã tìm thấy Serial#', 'success')
+                        // console.log(value['phone'])
+
+                        if (value['team'] !== "") {
+                            team = value['team'] + " Team";
+                        } else {
+                            team = '';
+                        }
+                        if (value['phone'] === "Yes") {
+                            serial = value['serial'] + ', ';
+                            // $flag = 'true';
+                        } else {
+                            serial = '';
+                        }
+                        if (value['laptop'] === "Yes") {
+                            serial2 = value['serial2'] + ', ';
+                            // $flag = 'true';
+                        } else {
+                            serial2 = '';
+                        }
+                        if (value['orther'] !== "") {
+                            // orther = value['orther'];
+                            serial3 = value['serial3'];
+                            // $flag = 'true';
+                        } else {
+                            orther = '';
+                            serial3 = "";
+                        }
+
+                        $('#result').html(`<img src="${value['images']}" class="" style="width: 60%"/>
+                        <h2>${value['fullname']}</h2>
+                        <h2>${team}</h2>
+                        <h2>${serial} ${serial2} ${serial3}</h1>
+                        `);
                     }
                 }
             }
         })
     } else {
-        $('#result').html("");
+        $('#result').html(`<img src="assets/images/loader2.gif" style="width: 100%"/>`);
+    }
+
+    function swall(text, icon) {
+        return Swal.fire(
+            'Thông báo!',
+            text,
+            icon
+        )
+
     }
 });

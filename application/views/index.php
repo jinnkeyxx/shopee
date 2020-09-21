@@ -58,17 +58,13 @@ tr th {
                             <?php if($admin->role == 0){?>
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
-                            <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i>Danh sach
-                                admin
+                            <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i> Quản lý tài khoản
                             </a>
-                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i>Danh sach
-                                cho duyet <span class="text-danger"><?= $aproveAll;  ?></span>
+                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách chờ duyệt <span class="text-danger"><?= $aproveAll;  ?></span>
                             </a>
                             <?php } else {?>
-                            <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i>Danh sach
-                                cho duyet cua ban <span class="text-danger"><?= $aprove;  ?></span> </a>
-                            <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i>Danh sach
-                                da duyet cua ban </a>
+                            <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i> Danh sách chờ duyệt của bạn <span class="text-danger"><?= $aprove;  ?></span> </a>
+                            <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i> Danh sách đã duyệt của bạn </a>
                             <?php } ?>
 
                         </div>
@@ -79,15 +75,14 @@ tr th {
                                 <thead>
                                     <tr role="row">
                                         <th>STT</th>
-
                                         <th>Họ và Tên</th>
-                                        <th>Mã Nhân Viên</th>
+                                        <th>Mã Nhân viên</th>
                                         <th>Team</th>
                                         <th>Điện thoại</th>
-                                        <th>Modem điện thoại</th>
+                                        <th>Model điện thoại</th>
                                         <th>Serial#1</th>
                                         <th>Laptop</th>
-                                        <th>Modem laptop</th>
+                                        <th>Model laptop</th>
                                         <th>Serial#2</th>
                                         <th>Khác</th>
                                         <th>Serial#3</th>
@@ -96,7 +91,7 @@ tr th {
                                 </thead>
                                 <tbody>
 
-                                    <?php $i = 0; foreach ($user as $value):?>
+                                    <?php $i = 1; foreach ($user as $value):?>
                                     <?php if($value['status'] == 0){?>
                                     <?php if($admin->role == 0){ ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_">
@@ -171,7 +166,7 @@ tr th {
                 <div class="modal-body">
                     <?= form_open_multipart('userlist/add') ?>
                     <div class="form-group">
-                        <label for="manv" class="col-form-label">mã nhân viên</label>
+                        <label for="manv" class="col-form-label">Mã nhân viên</label>
 
                         <input type="text" class="form-control " id="manv" name="manv" placeholder="Mã nhân viên"
                             required>
@@ -195,17 +190,17 @@ tr th {
                         <label for="phone" class="col-form-label">Điện thoại</label>
                         <input type="checkbox" id="phone" name="phone">
                         <input type="text" class="form-control my-1 d-none" id="model_phone" name="model_phone"
-                            placeholder="MoDem Phone">
+                            placeholder="Model Phone">
                         <input type="text" class="form-control my-1 d-none" id="serial1" name="serial1"
-                            placeholder="Serial Phone">
+                            placeholder="Serial# Phone">
                     </div>
                     <div class="form-group">
                         <label for="laptop" class="col-form-label">Laptop</label>
                         <input type="checkbox" id="laptop" name="laptop">
                         <input type="text" class="form-control my-1 d-none" id="model_laptop" name="model_laptop"
-                            placeholder="MoDem Laptop">
+                            placeholder="Model Laptop">
                         <input type="text" class="form-control my-1 d-none" id="serial2" name="serial2"
-                            placeholder="Serial Phone">
+                            placeholder="Serial# Laptop">
                     </div>
                     <div class="form-group">
                         <label for="orther" class="col-form-label">Khác</label>
@@ -213,10 +208,10 @@ tr th {
 
                     </div>
                     <div class="form-group">
-                        <label for="serial3" class="col-form-label">serial</label>
+                        <label for="serial3" class="col-form-label">Serial# Khác</label>
 
                         <input type="text" class="form-control " disabled id="serial3" name="serial3"
-                            placeholder="Serial">
+                            placeholder="Serial# Khác">
                     </div>
 
                     <div class="form-group">

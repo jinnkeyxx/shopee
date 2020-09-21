@@ -49,8 +49,7 @@ tr th {
                                 sách xuống </a>
                             <?php if($admin->role == 0){?>
 
-                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i>Danh sach
-                                cho duyet
+                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách chờ duyệt
                             </a>
                             <?php } ?>
                         </div>
@@ -62,18 +61,15 @@ tr th {
                                     <tr role="row">
                                         <th>STT</th>
                                         <th>Họ và Tên</th>
-                                        <th>email</th>
-                                        <th>username</th>
-                                        <th>password</th>
-                                        <th>chúc vụ</th>
-
-                                        <th>ảnh đại diện</th>
-
-
+                                        <th>Email</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
+                                        <th>Chức vụ</th>
+                                        <th>Ảnh đại diện</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 0; foreach ($user as $value):?>
+                                    <?php $i = 1; foreach ($user as $value):?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box_user"
                                                 data-fullname="<?= $value['fullname'];?>"
@@ -95,7 +91,7 @@ tr th {
                                                     echo "Admin";
                                                 }
                                                 else {
-                                                    echo "MOD";
+                                                    echo "Nhân viên";
                                                 } 
                                             ?>
                                         </td>
