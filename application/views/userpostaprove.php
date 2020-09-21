@@ -47,11 +47,9 @@ tr th {
 
 
                         <div align="left">
-                            <button type="submit" name="multiple_update" id="multiple_update" class="btn btn-info"><i
-                                    class="fas fa-edit"></i> Cập nhật</button>
 
-                            <button type="button" class="btn btn-danger" name="bulk_delete_submit"
-                                id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
+
+
 
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
@@ -76,11 +74,15 @@ tr th {
                                 <thead>
                                     <tr role="row">
                                         <th>STT</th>
+
                                         <th>Họ và Tên</th>
+                                        <th>Mã Nhân Viên</th>
                                         <th>Team</th>
                                         <th>Điện thoại</th>
+                                        <th>Modem điện thoại</th>
                                         <th>Serial#1</th>
                                         <th>Laptop</th>
+                                        <th>Modem laptop</th>
                                         <th>Serial#2</th>
                                         <th>Khác</th>
                                         <th>Serial#3</th>
@@ -90,27 +92,18 @@ tr th {
                                 <tbody>
 
                                     <?php $i = 0; foreach ($user as $value):?>
-                                    <?php if($value['user_post'] == $admin->username && $value['status'] == 0){  ?>
+                                    <?php if($value['status'] == 0 && $value['user_post'] == $admin->username){  ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
-                                        <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
-                                                data-fullname="<?= $value['fullname'];?>"
-                                                data-team="<?= $value['team']; ?>"
-                                                data-serial1="<?= $value['serial']; ?>"
-                                                data-phone="<?= $value['phone']; ?>"
-                                                data-laptop="<?= $value['laptop'] ?>"
-                                                data-serial2="<?= $value['serial2'] ?>"
-                                                data-orther="<?= $value['orther']; ?>"
-                                                data-serial3="<?= $value['serial3'] ?>"
-                                                data-images="<?= $value['images']; ?>"
-                                                data-image_old="<?= $value['images']; ?>"
-                                                data-user_post="<?= $value['user_post']; ?>">
-                                        </td>
+                                        <td> <?= $i++; ?> </td>
 
                                         <td><?= $value['fullname']; ?></td>
+                                        <td><?= $value['manv']; ?></td>
                                         <td><?= $value['team']; ?></td>
                                         <td><?= $value['phone']; ?></td>
+                                        <td><?= $value['model_phone']; ?></td>
                                         <td><?= $value['serial']; ?></td>
                                         <td><?= $value['laptop']; ?></td>
+                                        <td><?= $value['model_laptop']; ?></td>
                                         <td><?= $value['serial2']; ?></td>
                                         <td><?= $value['orther']; ?></td>
                                         <td><?= $value['serial3']; ?></td>

@@ -68,11 +68,15 @@ tr th {
                                 <thead>
                                     <tr role="row">
                                         <th>STT</th>
+
                                         <th>Họ và Tên</th>
+                                        <th>Mã Nhân Viên</th>
                                         <th>Team</th>
                                         <th>Điện thoại</th>
+                                        <th>Modem điện thoại</th>
                                         <th>Serial#1</th>
                                         <th>Laptop</th>
+                                        <th>Modem laptop</th>
                                         <th>Serial#2</th>
                                         <th>Khác</th>
                                         <th>Serial#3</th>
@@ -86,9 +90,11 @@ tr th {
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                                 data-fullname="<?= $value['fullname'];?>"
-                                                data-team="<?= $value['team']; ?>"
+                                                data-manv="<?= $value['manv']; ?>" data-team="<?= $value['team']; ?>"
                                                 data-serial1="<?= $value['serial']; ?>"
                                                 data-phone="<?= $value['phone']; ?>"
+                                                data-model_phone="<?= $value['model_phone']; ?>"
+                                                data-model_laptop="<?= $value['model_laptop']; ?>"
                                                 data-laptop="<?= $value['laptop'] ?>"
                                                 data-serial2="<?= $value['serial2'] ?>"
                                                 data-orther="<?= $value['orther']; ?>"
@@ -99,15 +105,18 @@ tr th {
                                         </td>
 
                                         <td><?= $value['fullname']; ?></td>
+                                        <td><?= $value['manv']; ?></td>
                                         <td><?= $value['team']; ?></td>
                                         <td><?= $value['phone']; ?></td>
+                                        <td><?= $value['model_phone']; ?></td>
                                         <td><?= $value['serial']; ?></td>
                                         <td><?= $value['laptop']; ?></td>
+                                        <td><?= $value['model_laptop']; ?></td>
                                         <td><?= $value['serial2']; ?></td>
                                         <td><?= $value['orther']; ?></td>
                                         <td><?= $value['serial3']; ?></td>
                                         <td>
-                                            <div class="media" style="margin-top:-10px">
+                                            <div class=" media" style="margin-top:-10px">
                                                 <div class="avatar">
                                                     <img class="mt-1 ml-2 mr-3"
                                                         style="margin-left:0px;width:80px;height:80px"

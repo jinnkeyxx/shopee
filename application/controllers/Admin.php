@@ -11,6 +11,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Admin_model');
+        $this->load->model('User_model');
     }
 
 
@@ -131,7 +132,7 @@ class Admin extends CI_Controller
         if($this->session->userdata('login'))
         {
             if($this->session->userdata('role') == 0){
-            
+                 $data['aprove'] = $this->User_model->getuser();
                 $data['title'] = "User login";
                 $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
                 // var_dump($data['admin']->fullname);

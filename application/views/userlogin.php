@@ -48,11 +48,10 @@ tr th {
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
                             <?php if($admin->role == 0){?>
-                            <a class="btn-primary btn" href="userlist"><i class="fas fa-download"></i>Danh sach users
-                            </a>
+
                             <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
-                                cho
-                                duyet
+                                cho duyet <?php if($aprove > 0){ ?><span
+                                    class="text-danger"><?= $aprove;  ?></span><?php } ?>
                             </a>
                             <?php } ?>
                         </div>

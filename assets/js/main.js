@@ -195,8 +195,8 @@ $(document).ready(() => {
     var count = 0;
     var count1 = 0;
     $('#phone').click(() => {
-        coun++;
-        if (count == 1) {
+        count++;
+        if (count % 2 !== 0) {
             $('input#serial1').removeClass('d-none')
             $('input#serial1').css('display', 'block');
             $('input#model_phone').removeClass('d-none')
@@ -208,10 +208,11 @@ $(document).ready(() => {
             $('input#model_phone').css('display', 'none');
         }
 
+
     });
     $('#laptop').click(() => {
         count1++;
-        if (count1 == 1) {
+        if (count1 % 2 !== 0) {
             $('input#serial2').removeClass('d-none')
             $('input#serial2').css('display', 'block');
             $('input#model_laptop').removeClass('d-none')
@@ -221,7 +222,7 @@ $(document).ready(() => {
             $('input#serial2').css('display', 'none');
             $('input#model_laptop').css('display', 'none');
         }
-        // count = 0;
+
     });
     $('#orther').keyup(() => {
         let text = $('#orther').val()

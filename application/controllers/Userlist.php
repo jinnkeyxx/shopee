@@ -51,7 +51,7 @@ class Userlist extends CI_Controller
             // exit();
             
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
-            $data['admin']->id;
+            // $data['admin']->id;
 
            
             $this->load->view('template/meta', $data);
@@ -90,15 +90,15 @@ class Userlist extends CI_Controller
                                 'fullname'  => $row->getCellAtIndex(1),
                                 'team'      => $row->getCellAtIndex(2),
                                 'phone'     => $row->getCellAtIndex(3),
-                                'modem_phone' => $row->getCellAtIndex(4),
+                                'model_phone' => $row->getCellAtIndex(4),
                                 'serial'    => $row->getCellAtIndex(5),
                                 'laptop'    => $row->getCellAtIndex(6),
-                                'modem_laptop'    => $row->getCellAtIndex(7),
+                                'model_laptop'    => $row->getCellAtIndex(7),
                                 'serial2'   => $row->getCellAtIndex(8),
                                 'orther'    => $row->getCellAtIndex(9),
                                 'serial3'   => $row->getCellAtIndex(10),
                                 'images'    => $row->getCellAtIndex(11),
-                                
+                                'status' => 0,
                                 'user_post' => $data['admin']->username, 
                                 
                             );
@@ -111,15 +111,15 @@ class Userlist extends CI_Controller
                                 'fullname'  => $row->getCellAtIndex(1),
                                 'team'      => $row->getCellAtIndex(2),
                                 'phone'     => $row->getCellAtIndex(3),
-                                'modem_phone' => $row->getCellAtIndex(4),
+                                'model_phone' => $row->getCellAtIndex(4),
                                 'serial'    => $row->getCellAtIndex(5),
                                 'laptop'    => $row->getCellAtIndex(6),
-                                'modem_laptop'    => $row->getCellAtIndex(7),
+                                'model_laptop'    => $row->getCellAtIndex(7),
                                 'serial2'   => $row->getCellAtIndex(8),
                                 'orther'    => $row->getCellAtIndex(9),
                                 'serial3'   => $row->getCellAtIndex(10),
                                 'images'    => $row->getCellAtIndex(11),
-                                $status = 1,
+                                'status' => 1,
                                 'user_post' => $data['admin']->username, 
                             );
                             $this->User_model->import_data($databarang);

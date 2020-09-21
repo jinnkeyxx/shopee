@@ -96,7 +96,8 @@ tr th {
                                 <tbody>
 
                                     <?php $i = 0; foreach ($user as $value):?>
-                                    <?php if($value['status'] == 0){  ?>
+                                    <?php if($value['status'] == 0){?>
+                                    <?php if($admin->role == 0){ ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                                 data-fullname="<?= $value['fullname'];?>"
@@ -111,8 +112,11 @@ tr th {
                                                 data-serial3="<?= $value['serial3'] ?>"
                                                 data-images="<?= $value['images']; ?>"
                                                 data-image_old="<?= $value['images']; ?>"
-                                                data-user_post="<?= $value['user_post']; ?>">
+                                                data-user_post="<?= $value['user_post']; ?>"> <?= $i++; ?>
                                         </td>
+                                        <?php } else { ?>
+                                        <td> <?= $i++; ?> </td>
+                                        <?php } ?>
 
                                         <td><?= $value['fullname']; ?></td>
                                         <td><?= $value['manv']; ?></td>
@@ -164,11 +168,13 @@ tr th {
                     <div class="form-group">
                         <label for="manv" class="col-form-label">mã nhân viên</label>
 
-                        <input type="text" class="form-control " id="manv" name="manv">
+                        <input type="text" class="form-control " id="manv" name="manv" placeholder="Mã nhân viên"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="fullname" class="col-form-label">Họ Tên:</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname" required>
+                        <input type="text" class="form-control" id="fullname" name="fullname" required
+                            placeholder="Họ Tên">
                     </div>
                     <div class="form-group">
                         <label for="Team" class="col-form-label">Team</label>
@@ -183,30 +189,35 @@ tr th {
                     <div class="form-group">
                         <label for="phone" class="col-form-label">Điện thoại</label>
                         <input type="checkbox" id="phone" name="phone">
-                        <input type="text" class="form-control d-none" id="model_phone" name="model_phone">
-                        <input type="text" class="form-control d-none" id="serial1" name="serial1">
+                        <input type="text" class="form-control my-1 d-none" id="model_phone" name="model_phone"
+                            placeholder="MoDem Phone">
+                        <input type="text" class="form-control my-1 d-none" id="serial1" name="serial1"
+                            placeholder="Serial Phone">
                     </div>
                     <div class="form-group">
                         <label for="laptop" class="col-form-label">Laptop</label>
                         <input type="checkbox" id="laptop" name="laptop">
-                        <input type="text" class="form-control d-none" id="model_laptop" name="model_laptop">
-                        <input type="text" class="form-control d-none" id="serial2" name="serial2">
+                        <input type="text" class="form-control my-1 d-none" id="model_laptop" name="model_laptop"
+                            placeholder="MoDem Laptop">
+                        <input type="text" class="form-control my-1 d-none" id="serial2" name="serial2"
+                            placeholder="Serial Phone">
                     </div>
                     <div class="form-group">
                         <label for="orther" class="col-form-label">Khác</label>
-                        <input type="text" id="orther" name="orther" class="form-control">
+                        <input type="text" id="orther" name="orther" class="form-control" placeholder="Thiết bị khác">
 
                     </div>
                     <div class="form-group">
-                        <label for="orther" class="col-form-label">serial</label>
+                        <label for="serial3" class="col-form-label">serial</label>
 
-                        <input type="text" class="form-control " disabled id="serial3" name="serial3">
+                        <input type="text" class="form-control " disabled id="serial3" name="serial3"
+                            placeholder="Serial">
                     </div>
 
                     <div class="form-group">
                         <label for="images" class="col-form-label">Hình ảnh</label>
 
-                        <input type="file" class="form-control" id="images" name="img">
+                        <input type="file" class="form-control" id="images" name="img" required>
                     </div>
                 </div>
                 <div class="modal-footer">
