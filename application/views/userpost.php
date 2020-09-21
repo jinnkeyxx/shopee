@@ -76,7 +76,7 @@ tr th {
                                 style="margin-top: 13px !important">
                                 <thead>
                                     <tr role="row">
-                                    <th>STT</th>
+                                        <th>STT</th>
 
                                         <th>Họ và Tên</th>
                                         <th>Mã Nhân Viên</th>
@@ -98,7 +98,7 @@ tr th {
                                     <?php if($value['user_post'] == $admin->username && $value['status'] == 1){  ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
-                                        data-fullname="<?= $value['fullname'];?>"
+                                                data-fullname="<?= $value['fullname'];?>"
                                                 data-manv="<?= $value['manv']; ?>" data-team="<?= $value['team']; ?>"
                                                 data-serial1="<?= $value['serial']; ?>"
                                                 data-phone="<?= $value['phone']; ?>"
@@ -160,6 +160,12 @@ tr th {
                 </div>
                 <div class="modal-body">
                     <?= form_open_multipart('userlist/add') ?>
+                    <div class="form-group">
+                        <label for="manv" class="col-form-label">mã nhân viên</label>
+
+                        <input type="text" class="form-control " id="manv" name="manv" placeholder="Mã nhân viên"
+                            required>
+                    </div>
                     <div class="form-group">
                         <label for="fullname" class="col-form-label">Họ Tên:</label>
                         <input type="text" class="form-control" id="fullname" name="fullname" required>
