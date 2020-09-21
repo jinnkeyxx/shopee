@@ -23,7 +23,11 @@ class Userlist extends CI_Controller
         if($this->session->userdata('login')){
             $data['title'] = 'User List';
             $data['user'] = $this->User_model->getDataBarang();
-            $data['admin'] = $this->Admin_model->get_row();
+            // echo print_r($data['user']->status);
+            // exit();
+            $data['aprove'] = $this->User_model->getuser();
+            
+            $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 
            
@@ -31,6 +35,33 @@ class Userlist extends CI_Controller
             $this->load->view('template/header', $data);
             $this->load->view('index', $data);
             $this->load->view('template/footer', $data);
+        }else {
+             redirect('login');
+        }
+       
+    }
+    public function userlistaprove()
+    {
+        if($this->session->userdata('login')){
+            if($this->session->userdata('role') == 0)
+            {
+            $data['title'] = 'User List';
+            $data['user'] = $this->User_model->getDataBarang();
+            // echo print_r($data['user']->status);
+            // exit();
+            
+            $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+            $data['admin']->id;
+
+           
+            $this->load->view('template/meta', $data);
+            $this->load->view('template/header', $data);
+            $this->load->view('userlistaprove', $data);
+            $this->load->view('template/footer', $data);
+            } else {
+             redirect('userlist');
+
+            }
         }else {
              redirect('login');
         }
@@ -51,18 +82,77 @@ class Userlist extends CI_Controller
                 $numRow = 0;
                 foreach ($sheet->getRowIterator() as $row) {
                     if ($numRow > 0) {
+                        $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+                        if($data['admin']->role == 0)
+                        {
+                            $databarang = array(
+                                'fullname'  => $row->getCellAtIndex(0),
+                                'team'      => $row->getCellAtIndex(1),
+                                'phone'     => $row->getCellAtIndex(2),
+                                'serial'    => $row->getCellAtIndex(3),
+                                'laptop'    => $row->getCellAtIndex(4),
+                                'serial2'   => $row->getCellAtIndex(5),
+                                'orther'    => $row->getCellAtIndex(6),
+                                'serial3'   => $row->getCellAtIndex(7),
+                                'images'    => $row->getCellAtIndex(8),
+                                'user_post' => $data['admin']->username, 
+                                
+                            );
+                            $this->User_model->import_data($databarang);
+                        }
+                        else 
+                        {
+                            $databarang = array(
+                                'fullname'  => $row->getCellAtIndex(0),
+                                'team'      => $row->getCellAtIndex(1),
+                                'phone'     => $row->getCellAtIndex(2),
+                                'serial'    => $row->getCellAtIndex(3),
+                                'laptop'    => $row->getCellAtIndex(4),
+                                'serial2'   => $row->getCellAtIndex(5),
+                                'orther'    => $row->getCellAtIndex(6),
+                                'serial3'   => $row->getCellAtIndex(7),
+                                'images'    => $row->getCellAtIndex(8),
+                                'status' => 1,
+                                'user_post' => $data['admin']->username, 
+                            );
+                            $this->User_model->import_data($databarang);
+                        }
+                    }
+                    $numRow++;
+                }
+                $reader->close();
+                unlink('uploads/' . $file['file_fullname']);
+                $this->session->set_flashdata('Success', 'Thêm Data thành công !!!');
+                redirect('userlist');
+            }
+        } else {
+            echo "Error :" . $this->upload->display_errors();
+        };
+    }
+    public function uploaduser()
+    {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'xlsx|xls';
+        $config['file_name'] = 'doc' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('importexcel')) {
+            $file = $this->upload->data();
+            $reader = ReaderEntityFactory::createXLSXReader();
+            $reader->open('uploads/' . $file['file_name']);
+            foreach ($reader->getSheetIterator() as $sheet) {
+                $numRow = 0;
+                foreach ($sheet->getRowIterator() as $row) {
+                    if ($numRow > 0) {
                         $databarang = array(
                             'fullname'  => $row->getCellAtIndex(0),
-                            'team'      => $row->getCellAtIndex(1),
-                            'phone'     => $row->getCellAtIndex(2),
-                            'serial'    => $row->getCellAtIndex(3),
-                            'laptop'    => $row->getCellAtIndex(4),
-                            'serial2'   => $row->getCellAtIndex(5),
-                            'orther'    => $row->getCellAtIndex(6),
-                            'serial3'   => $row->getCellAtIndex(7),
-                            'images'    => $row->getCellAtIndex(8),
+                            'email'      => $row->getCellAtIndex(1),
+                            'username'     => $row->getCellAtIndex(2),
+                            'password'    => $row->getCellAtIndex(3),
+                            'role'    => $row->getCellAtIndex(4),
+                            
+                            'image'    => $row->getCellAtIndex(5),
                         );
-                        $this->User_model->import_data($databarang);
+                        $this->Admin_model->import_data($databarang);
                     }
                     $numRow++;
                 }
@@ -77,10 +167,11 @@ class Userlist extends CI_Controller
     }
     public function update()
     {
-       if(isset($_POST['hidden_id']))
-        {
+      
             
             $fullname = $_POST['fullname'];
+            // var_dump($fullname);
+            // exit();
             $team = $_POST['team'];
             $laptop = $_POST['laptop'];            $phone = $_POST['phone'];
             $serial1 = $_POST['serial1'];
@@ -89,13 +180,16 @@ class Userlist extends CI_Controller
             $orther = $_POST['orther'];
             $serial1 = $_POST['serial1'];
             $images_old = $_POST['image_old'];
-            
+            $user_post = $_POST['user_post'];
             $id = $_POST['hidden_id'];
             $data = [];
             $img=[];
             
             for($count = 0; $count < count($id); $count++)
+            
             {
+                
+                
                 $path = './uploads/';
                 $this->load->library('upload');
            
@@ -120,12 +214,14 @@ class Userlist extends CI_Controller
                         'orther' => $orther[$count],
                         'serial3' => $serial3[$count],
                         'images' => base_url().'uploads/'. $file['file_name'],
-                        'id'   => $id[$count]
+                        'user_post'=>$user_post[$count],
+                        'id'   => $id[$count],
+
                     );
                     $this->User_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
 
-                    redirect('userlist'); 
+                   
                 
                 
                 }
@@ -141,9 +237,83 @@ class Userlist extends CI_Controller
                         'orther' => $orther[$count],
                         'serial3' => $serial3[$count],
                         'images' => $images_old[$count],
+                        'user_post'=>$user_post[$count],
                         'id'   => $id[$count]
                     );
+                    
                     $this->User_model->import_data($data);
+                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+
+                    
+                }
+               
+            }
+             redirect('userlist'); 
+        
+       
+          
+
+    }
+    public function update_user()
+    {
+       if(isset($_POST['hidden_id']))
+        {
+            
+            $fullname = $_POST['fullname'];
+            $email = $_POST['email'];
+            $username = $_POST['username'];            
+            $password = $_POST['password'];
+            $role = $_POST['role'];
+            
+            // $role = (int)$role;
+            $images_old = $_POST['image_old'];
+            
+            $id = $_POST['hidden_id'];
+            $data = [];
+            $img=[];
+           
+            for($count = 0; $count < count($id); $count++)
+            {
+                $path = './uploads/';
+                $this->load->library('upload');
+           
+            
+                $this->upload->initialize(array(
+                    "upload_path"       =>  $path,
+                    "allowed_types"     =>  "gif|jpg|png",
+                    
+                ));
+           
+                if($this->upload->do_upload("image"))
+                {
+                
+                    $file = $this->upload->data();
+                    $data = array(
+                        'fullname'   => $fullname[$count],
+                        'email'  => $email[$count],
+                        'username'  => $username[$count],
+                        'password' => $password[$count],
+                        'role'   => $role[$count],
+                        'image' => base_url().'uploads/'. $file['file_name'],
+                        'id'   => $id[$count]
+                    );
+                    $this->Admin_model->import_data($data);
+                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+                    redirect('userlogin'); 
+                
+                }
+                else 
+                {
+                    $data = array(
+                        'fullname'   => $fullname[$count],
+                        'email'  => $email[$count],
+                        'username'  => $username[$count],
+                        'password' => $password[$count],
+                        'role'   => $role[$count],
+                        'image' => $images_old[$count],
+                        'id'   => $id[$count]
+                    );
+                    $this->Admin_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
 
                     redirect('userlist'); 
@@ -168,11 +338,33 @@ class Userlist extends CI_Controller
     {
             $ids = $_POST['hidden_id'];
            
-            
+            // echo $ids;
+            // exit();
              // If id array is not empty
             if(!empty($ids)){
                 // Delete records from the database
                 $delete = $this->User_model->delete($ids);
+                
+                // If delete is successful
+                if($delete){
+                    echo json_encode(array('status' => true , 'messages' => 'Xóa thành công'));
+                }else{
+                    echo json_encode(array('status' => false , 'messages' => 'Xóa không thành công'));
+                }
+            }else{
+                echo json_encode(array('status' => false , 'messages' => 'Xóa không thành công'));
+                
+            }
+    }
+     public function delete_user()
+    {
+            $ids = $_POST['hidden_id'];
+           
+            
+             // If id array is not empty
+            if(!empty($ids)){
+                // Delete records from the database
+                $delete = $this->Admin_model->delete($ids);
                 
                 // If delete is successful
                 if($delete){
@@ -233,7 +425,10 @@ class Userlist extends CI_Controller
             $file = $this->upload->data();
             $img = $file['file_name'];
         }
-          $data = array(
+        $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+        if($data['admin']->role == 0)
+        {
+            $data = array(
             'fullname'   => $fullname,
             'team'  => $team,
             'phone'  => $phone,
@@ -243,10 +438,76 @@ class Userlist extends CI_Controller
             'serial2' => $serial2,
             'serial3' => $serial3,
             'images' => base_url().'uploads/'.$img,
+            'user_post' => $data['admin']->username,
             );
             $this->User_model->import_data($data);
             $this->session->set_flashdata('Thêm thành công');
-            redirect('userlist');
+        }else {
+            $data = array(
+            'fullname'   => $fullname,
+            'team'  => $team,
+            'phone'  => $phone,
+            'serial' => $serial,
+            'laptop'   => $laptop,
+            'orther' => $orther,
+            'serial2' => $serial2,
+            'serial3' => $serial3,
+            'status' => 1,
+            'images' => base_url().'uploads/'.$img,
+            'user_post' => $data['admin']->username,
+            );
+            $this->User_model->import_data($data);
+            $this->session->set_flashdata('Thêm thành công');
+            // redirect('userlist');
+        }
+            redirect('userpost');
+
+          
+            
+    }
+
+    public function adduser()
+    {
+        $img = "";
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $role = $_POST['role'];
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['file_name'] = 'img' . time();
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('img')) {
+            $file = $this->upload->data();
+            $img = $file['file_name'];
+            $data = array(
+                'fullname'   => $fullname,
+                'email'  => $email,
+                'username'  => $username,
+                'password' => $password,
+                'role'   => $role,
+                'image' => base_url().'uploads/'.$img,
+            );
+            $this->Admin_model->import_data($data);
+
+        }else {
+            $data = array(
+                'fullname'   => $fullname,
+                'email'  => $email,
+                'username'  => $username,
+                'password' => $password,
+                'role'   => $role,
+                
+                'image' => base_url().'assets\images\users\profile2.png',
+
+            );
+            $this->Admin_model->import_data($data);
+
+        }
+        
+            $this->session->set_flashdata('Thêm thành công');
+            redirect('userlogin');
     }
         
     public function checkout()
@@ -256,5 +517,144 @@ class Userlist extends CI_Controller
         $this->load->view('checkout');
         $this->load->view('template/footer', $data);
     }
+    public function profile()
+    {   $data['title'] = "Profle";
+        $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+        // die($data['admin']->fullname);
+        $this->load->view('template/meta' , $data);
+        $this->load->view('template/header' , $data);
+        $this->load->view('profile' , $data);
+        $this->load->view('template/footer' , $data );
+    }
+    public function aprove()
+    {
+       if(isset($_POST['hidden_id']))
+        {
+            
+            $fullname = $_POST['fullname'];
+            $team = $_POST['team'];
+            $laptop = $_POST['laptop'];            $phone = $_POST['phone'];
+            $serial1 = $_POST['serial1'];
+            $serial2 = $_POST['serial2'];
+            $serial3 = $_POST['serial3'];
+            $orther = $_POST['orther'];
+            $serial1 = $_POST['serial1'];
+            $images_old = $_POST['image_old'];
+            $user_post = $_POST['user_post'];
+            // var_dump($user_post);
+            // exit();
+            $id = $_POST['hidden_id'];
+            $data = [];
+            $img=[];
+            $trangthai = '0';
+            for($count = 0; $count < count($id); $count++)
+            {
+                $path = './uploads/';
+                $this->load->library('upload');
+           
+            
+                $this->upload->initialize(array(
+                    "upload_path"       =>  $path,
+                    "allowed_types"     =>  "gif|jpg|png",
+                    
+                ));
+           
+                if($this->upload->do_upload("image"))
+                {
+                
+                    $file = $this->upload->data();
+                    $data = array(
+                        'fullname'   => $fullname[$count],
+                        'team'  => $team[$count],
+                        'phone'  => $phone[$count],
+                        'serial' => $serial1[$count],
+                        'laptop'   => $laptop[$count],
+                        'serial2' => $serial2[$count],
+                        'orther' => $orther[$count],
+                        'serial3' => $serial3[$count],
+                        'images' => base_url().'uploads/'. $file['file_name'],
+                        'status' => $trangthai[$count],
+                        'user_post' => $user_post[$count],
+                        'id'   => $id[$count]
+                    );
+                    $this->User_model->import_data($data);
+                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+
+                    
+                
+                
+                }
+                else 
+                {
+                    $data = array(
+                        'fullname'   => $fullname[$count],
+                        'team'  => $team[$count],
+                        'phone'  => $phone[$count],
+                        'serial' => $serial1[$count],
+                        'laptop'   => $laptop[$count],
+                        'serial2' => $serial2[$count],
+                        'orther' => $orther[$count],
+                        'serial3' => $serial3[$count],
+                        'images' => $images_old[$count],
+                        'status' => $trangthai[$count],
+                        'user_post' => $user_post[$count],
+                        'id'   => $id[$count]
+                    );
+                    $this->User_model->import_data($data);
+                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+
+                    
+                }
+            }
+            redirect('userlist'); 
+       
+        }
+       
+          
+
+    }
+    public function userpost()
+    {
+         if($this->session->userdata('login')){
+            $data['title'] = 'User List';
+            $data['user'] = $this->User_model->getDataBarang();
+            // echo print_r($data['user']->status);
+            // exit();
+            
+            $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+            $data['admin']->id;
+
+           
+            $this->load->view('template/meta', $data);
+            $this->load->view('template/header', $data);
+            $this->load->view('userpost', $data);
+            $this->load->view('template/footer', $data);
+        }else {
+             redirect('login');
+        }
+    }
+    public function userpostaprove()
+    {
+         if($this->session->userdata('login')){
+            $data['title'] = 'User List';
+            $data['user'] = $this->User_model->getDataBarang();
+            // echo print_r($data['user']->status);
+            // exit();
+            
+            $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+            $data['admin']->id;
+
+           
+            $this->load->view('template/meta', $data);
+            $this->load->view('template/header', $data);
+            $this->load->view('userpostaprove', $data);
+            $this->load->view('template/footer', $data);
+        }else {
+             redirect('login');
+        }
+    }
+    
+
+    
     
 }

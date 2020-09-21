@@ -19,9 +19,6 @@ tr th {
                         data-whatever="@mdo"><i class="fas fa-user-plus"></i> ĐĂNG KÝ VÀO</button>
                     <a type="button" class="btn btn-success" href="checkout"><i class="fas fa-user-plus"></i> ĐĂNG KÝ
                         RA</a>
-                    <!-- <button name="select_all" id="select_all" class="btn btn-info"><i class="fas fa-edit"></i>chon
-                        tat
-                        ca</button> -->
                     <hr>
                     <h4>Tải lên danh sách người dùng</h4>
 
@@ -42,32 +39,25 @@ tr th {
                 </div>
             </div>
             <div class="card mt-2">
+                <!-- <button name="select_all" id="select_all" class="btn btn-info"><i class="fas fa-edit"></i>chon tat
+                    ca</button> -->
                 <div class="card-body">
-                    <form method="post" id="update_form" action="userlist/update" enctype='multipart/form-data'>
+                    <form method="post" id="update_form" action="userlist/aprove" enctype='multipart/form-data'>
 
 
                         <div align="left">
-                            <?php if($admin->role == 0){?>
                             <button type="submit" name="multiple_update" id="multiple_update" class="btn btn-info"><i
                                     class="fas fa-edit"></i> Cập nhật</button>
 
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit"
                                 id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
-                            <?php } ?>
+
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
                             <?php if($admin->role == 0){?>
                             <a class="btn-primary btn" href="userlogin"><i class="fas fa-download"></i>Danh sach admin
                             </a>
-                            <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
-                                cho duyet <?php if($aprove > 0){ ?><span
-                                    class="text-danger"><?= $aprove;  ?></span><?php } ?>
-                            </a>
-                            <?php } else {?>
-                            <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i>Danh sach
-                                cho duyet cua ban </a>
-                            <a class="btn-primary btn" href="userpostaprove"><i class="fas fa-download"></i>Danh sach
-                                da duyet cua ban </a>
+
                             <?php } ?>
 
                         </div>
@@ -92,7 +82,7 @@ tr th {
                                 <tbody>
 
                                     <?php $i = 0; foreach ($user as $value):?>
-                                    <?php if($value['status'] == 0){  ?>
+                                    <?php if($value['status'] == 1){  ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                                 data-fullname="<?= $value['fullname'];?>"

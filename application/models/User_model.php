@@ -16,7 +16,8 @@ class User_Model extends CI_Model
 
     public function getDataBarang()
     {
-        return $this->db->get('users')->result_array();
+        // return $this->db->order_by('users' ,)->result_array();
+       return $this->db->order_by('id' , 'DESC')->get('users')->result_array();
     }
     public function delete($id){
         if(is_array($id)){
@@ -38,5 +39,17 @@ class User_Model extends CI_Model
         }else {
             return false;
         }
+    }
+    public function update($data)
+    {
+        $this->db->update('users' , $data);
+    }
+    public function getuser()
+    {
+        $this->db->where("status" , 1);
+        $result = $this->db->get('users');
+        
+        return $result->num_rows();
+
     }
 }

@@ -9,8 +9,9 @@ class Admin_Model extends CI_Model
     }
     public function getDataBarang()
     {
-        return $this->db->get('admin')->result_array();
+        return $this->db->get($this->tblName)->result_array();
     }
+    
     public function import_data($databarang)
     {
         $jumlah = count($databarang);
@@ -29,9 +30,9 @@ class Admin_Model extends CI_Model
             return false;
         }
     }
-    public function get_row()
+    public function get_row($id)
     {
-        $this->db->where("id" , 0);
+        $this->db->where("id" , $id);
         $result = $this->db->get('admin');
         if($result->num_rows() > 0){
             return $result->row();
@@ -40,6 +41,16 @@ class Admin_Model extends CI_Model
         }
         
     }
+     public function delete($id){
+        if(is_array($id)){
+            $this->db->where_in('id', $id);
+        }else{
+            $this->db->where('id', $id);
+        }
+        $delete = $this->db->delete($this->tblName);
+        return $delete?true:false;
+    }
+   
    
     
 }

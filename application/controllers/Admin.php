@@ -56,12 +56,13 @@ class Admin extends CI_Controller
     }
     public function install()
     {
-    
+        // $data['admin'] = $this->session->userdata('fullname');
         $data['user'] = $this->Admin_model->getDataBarang();
         
         $check =  count($data['user']);
         
         if($check <= 0){
+            
             $data['title'] = "Install";
             $this->load->view('template/meta', $data);
             $this->load->view('install');
@@ -78,14 +79,21 @@ class Admin extends CI_Controller
         $email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password'];
+        
+        $path = './uploads/';
+        $this->load->library('upload');
         $datanew = [
-            'id' => 0,
+                    
             'fullname' => $fullname,
             'username' => $username,
             'password' => $password,
-            'email' => $email
+            'email' => $email,
+            'role' => 0,
+            'image' => base_url().'assets\images\users\profile2.png',
         ];
-        $save = $this->Admin_model->import_data($datanew);
+            $save = $this->Admin_model->import_data($datanew);
+
+                
         echo json_encode(array('status' => true , 'messages' => 'cài đặt thành công'));
             
     }
@@ -99,7 +107,9 @@ class Admin extends CI_Controller
             $data = [
                 'id' => $reps->id,
                 'username' => $reps->username,
-                'login' => TRUE
+                'login' => TRUE,
+                'fullname' => $reps->fullname,
+                'role' => $reps->role,
             ];
             $this->session->set_userdata($data);
             echo json_encode(array('status' => true , 'messages' => 'Đăng nhập thành công'));
@@ -115,4 +125,34 @@ class Admin extends CI_Controller
         $this->session->sess_destroy();
         redirect('login');
     }
+    public function userlogin()
+    {
+        
+        if($this->session->userdata('login'))
+        {
+            if($this->session->userdata('role') == 0){
+            
+                $data['title'] = "User login";
+                $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+                // var_dump($data['admin']->fullname);
+                // exit();
+                $data['user'] = $this->Admin_model->getDataBarang();
+                $this->load->view('template/meta' , $data);
+                $this->load->view('template/header' , $data);
+                
+                $this->load->view('userlogin', $data);
+                $this->load->view('template/footer');
+            }
+            else {
+                redirect('userlist');
+            }
+            
+        }
+        else 
+        {
+            redirect('login');
+
+        }
+    }
+    
 }

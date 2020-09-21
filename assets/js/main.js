@@ -49,13 +49,9 @@ $(document).ready(() => {
 
                     },
                     success: (reps) => {
-                        if (reps.status != true) {
-                            toastr["error"]('Đăng nhập thất bại')
 
-                        } else {
-                            toastr["success"]('Đăng nhập thành công vui lòng đợi 2s');
-                            load(2000)
-                        }
+                        toastr["success"]('Đăng nhập thành công vui lòng đợi 2s');
+                        load(2000)
                     }
                 })
             }
@@ -101,16 +97,17 @@ $(document).ready(() => {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
 
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
-            html += '<td><input type="text" name="team[]" class="form-control" value="' + $(this).data("team") + '" /></td>';
-            html += '<td><input type="text" name="phone[]" class="form-control" value="' + $(this).data("phone") + '" /></td>';
+            html += '<td><select  name="team[]" class="form-control"><option value="Inventory" >Inventory</option> <option value="Inbound" >Inbound</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
+            html += '<td><select name="phone[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
             html += '<td><input type="text" name="serial1[]" class="form-control" value="' + $(this).data("serial1") + '" /></td>';
-            html += '<td><input type="text" name="laptop[]" class="form-control" value="' + $(this).data("laptop") + '" /></td>';
+            html += '<td><select name="laptop[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
             html += '<td><input type="text" name="serial2[]" class="form-control" value="' + $(this).data("serial2") + '" /></td>';
             html += '<td><input type="text" name="orther[]" class="form-control" value="' + $(this).data("orther") + '" /></td>';
 
             html += '<td><input type="text" name="serial3[]" class="form-control" value="' + $(this).data("serial3") + '" /><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
             html += '<td><input type="file" name="image" class="form-control"/></td>';
             html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
+            html += '<td><input type="hidden" value="' + $(this).data('user_post') + '" name="user_post[]" class="form-control"/></td>';
         } else {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-images="' + $(this).data('images') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" class="check_box" /></td>';
             html += '<td>' + $(this).data('fullname') + '</td>';
@@ -121,24 +118,38 @@ $(document).ready(() => {
             html += '<td>' + $(this).data('serial2') + '</td>';
             html += '<td>' + $(this).data('orther') + '</td>';
             html += '<td>' + $(this).data('serial3') + '</td>';
-            html += '<td> <img class="mt-1 ml-2 mr-3" src=' + $(this).data('images') + '></td>';
+            html += '<td> <img class="mt-1 ml-2 mr-3" style="margin-left:0px;width:80px;height:80px" src=' + $(this).data('images') + '></td>';
+        }
+        $(this).closest('tr').html(html);
+
+    });
+    $(document).on('click', '.check_box_user', function() {
+        var html = '';
+        if (this.checked) {
+            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-email="' + $(this).data('email') + '" data-username="' + $(this).data('username') + '" data-password="' + $(this).data('password') + '" data-role="' + $(this).data('role') + '" data-images="' + $(this).data('images') + '" class="check_box_user" checked /></td>';
+            html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
+            html += '<td><input type="email" name="email[]" class="form-control" value="' + $(this).data("email") + '" /></td>';
+            html += '<td><input type="text" name="username[]" class="form-control" value="' + $(this).data("username") + '" /></td>';
+            html += '<td><input type="text" name="password[]" class="form-control" value="' + $(this).data("password") + '" /></td>';
+            html += '<td><select name="role[]" class="form-control"> <option value="0"> Admin  </option> <option value="1"> Mod</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+            html += '<td><input type="file" name="image" class="form-control"/></td>';
+            html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
+
+        } else {
+            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-email="' + $(this).data('email') + '" data-username="' + $(this).data('username') + '" data-password="' + $(this).data('password') + '" data-role="' + $(this).data('role') + '" data-images="' + $(this).data('images') + '" class="check_box_user" /></td>';
+            html += '<td>' + $(this).data('fullname') + '</td>';
+            html += '<td>' + $(this).data('email') + '</td>';
+
+            html += '<td>' + $(this).data('username') + '</td>';
+            html += '<td>' + $(this).data('password') + '</td>';
+            html += '<td>' + $(this).data('role') + '</td>';
+            html += '<td> <img class="mt-1 ml-2 mr-3 img-fluid" style="margin-left:0px;width:80px;height:80px" src=' + $(this).data('images') + '></td>';
         }
         $(this).closest('tr').html(html);
 
     });
 
-    var options = {
-        beforeSend: function() {
-            // Replace this with your loading gif image
 
-        },
-        complete: function(response) {
-            // Output AJAX response to the div container
-            alert('ac')
-
-        }
-    };
-    $('#update_form').ajaxForm(options);
     // alert('the form was successfully processed');
     $('#bulk_delete_submit').click(() => {
         if ($('.check_box:checked').length > 0) {
@@ -146,6 +157,23 @@ $(document).ready(() => {
                 url: 'userlist/delete',
                 method: "POST",
                 data: $('#update_form').serialize(),
+                success: function(data) {
+
+                    toastr["success"]('Xóa thành công');
+                    load(1000)
+                }
+
+            })
+        } else {
+            toastr["error"]('Không có danh sách được chọn');
+        }
+    });
+    $('#dele_user').click(() => {
+        if ($('.check_box_user:checked').length > 0) {
+            $.ajax({
+                url: 'userlist/delete_user',
+                method: "POST",
+                data: $('#update_user').serialize(),
                 success: function(data) {
 
                     toastr["success"]('Xóa thành công');
@@ -157,12 +185,7 @@ $(document).ready(() => {
             toastr["error"]('Không có danh sách được chọn');
         }
     });
-    $('#add').on('submit', function(event) {
-        event.preventDefault();
 
-
-
-    });
     var count = 0;
     $('#phone').click(() => {
         count = 1
@@ -213,5 +236,9 @@ $(document).ready(() => {
             })
         }
     })
+    $(document).on('click', '#select_all', function() {
+        $('.check_box').click();
+        $('.check_box').prop('checked');
 
+    })
 })
