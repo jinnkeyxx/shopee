@@ -54,9 +54,10 @@ tr th {
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit"
                                 id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
                             <?php } ?>
+
+                            <?php if($admin->role == 0){?>
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
-                            <?php if($admin->role == 0){?>
                             <a class="btn-primary btn" href="userlogin"><i class="fas fa-download"></i>Danh sach admin
                             </a>
                             <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
