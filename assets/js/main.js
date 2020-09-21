@@ -94,9 +94,9 @@ $(document).ready(() => {
     $(document).on('click', '.check_box', function() {
         var html = '';
         var laptop = $(this).data('laptop')
-        var phone = $(this).data('model_phone')
+        var phone = $(this).data('phone')
         var team = $(this).data('team')
-            // alert(laptop)
+            // alert(phone)
         if (this.checked) {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-manv="' + $(this).data('manv') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-model_phone="' + $(this).data('model_phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-model_laptop="' + $(this).data('model_laptop') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
 
@@ -121,7 +121,7 @@ $(document).ready(() => {
             if (phone == 'Yes') {
                 html += '<td><select name="phone[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
 
-            } else {
+            } else if (phone == 'No') {
                 html += '<td><select name="phone[]" class="form-control"> <option value="No" >No</option><option value="Yes"> Yes </option></select></td>';
 
             }
