@@ -60,12 +60,11 @@ tr th {
                             <a class="btn-primary btn" href="userlogin"><i class="fas fa-download"></i>Danh sach admin
                             </a>
                             <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
-                                cho duyet <?php if($aprove > 0){ ?><span
-                                    class="text-danger"><?= $aproveAll;  ?></span><?php } ?>
+                                cho duyet <span class="text-danger"><?= $aproveAll;  ?></span>
                             </a>
                             <?php } else {?>
                             <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i>Danh sach
-                                cho duyet cua ban </a>
+                                cho duyet cua ban <span class="text-danger"><?= $aprove;  ?></span> </a>
                             <a class="btn-primary btn" href="userpostaprove"><i class="fas fa-download"></i>Danh sach
                                 da duyet cua ban </a>
                             <?php } ?>
@@ -98,8 +97,9 @@ tr th {
                                     <?php $i = 0; foreach ($user as $value):?>
                                     <?php if($value['status'] == 0){?>
                                     <?php if($admin->role == 0){ ?>
-                                    <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
-                                        <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
+                                    <tr id="table_<?= $value['id']; ?>" class="sorting_">
+                                        <td>
+                                            <input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                                 data-fullname="<?= $value['fullname'];?>"
                                                 data-manv="<?= $value['manv']; ?>" data-team="<?= $value['team']; ?>"
                                                 data-serial1="<?= $value['serial']; ?>"
@@ -112,8 +112,11 @@ tr th {
                                                 data-serial3="<?= $value['serial3'] ?>"
                                                 data-images="<?= $value['images']; ?>"
                                                 data-image_old="<?= $value['images']; ?>"
-                                                data-user_post="<?= $value['user_post']; ?>"> <?= $i++; ?>
+                                                data-user_post="<?= $value['user_post']; ?>" />
+                                            <?= $i++; ?>
+
                                         </td>
+
                                         <?php } else { ?>
                                         <td> <?= $i++; ?> </td>
                                         <?php } ?>

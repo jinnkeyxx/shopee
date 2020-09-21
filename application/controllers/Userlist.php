@@ -25,7 +25,7 @@ class Userlist extends CI_Controller
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();
-            $data['aprove'] = $this->User_model->getuser($this->session->userdata('fullname'));
+            $data['aprove'] = $this->User_model->getuser($this->session->userdata('username'));
             $data['aproveAll'] = $this->User_model->getusers();
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
@@ -485,7 +485,7 @@ class Userlist extends CI_Controller
                 'user_post' => $data['admin']->username,
                 );
                 $this->User_model->import_data($data);
-                $this->session->set_flashdata('Thêm thành công');
+                $this->session->set_flashdata('Success','Thêm thành công');
 
             }else {
                 $data = array(
@@ -513,7 +513,7 @@ class Userlist extends CI_Controller
         }
           
         
-            redirect('userpost');
+            redirect('userlist');
 
           
             
@@ -711,7 +711,7 @@ class Userlist extends CI_Controller
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();
-            $data['aprove'] = $this->User_model->getuser($this->session->userdata('fullname'));
+            $data['aprove'] = $this->User_model->getuser($this->session->userdata('username'));
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 
@@ -731,7 +731,7 @@ class Userlist extends CI_Controller
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();
-            $data['aprove'] = $this->User_model->getuser($this->session->userdata('fullname'));
+            $data['aprove'] = $this->User_model->getuser($this->session->userdata('username'));
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 

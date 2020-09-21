@@ -50,8 +50,7 @@ tr th {
                             <?php if($admin->role == 0){?>
 
                             <a class="btn-primary btn" href="userlistaprove"><i class="fas fa-download"></i>Danh sach
-                                cho duyet <?php if($aprove > 0){ ?><span
-                                    class="text-danger"><?= $aproveAll;  ?></span><?php } ?>
+                                cho duyet
                             </a>
                             <?php } ?>
                         </div>
@@ -75,7 +74,7 @@ tr th {
                                 </thead>
                                 <tbody>
                                     <?php $i = 0; foreach ($user as $value):?>
-                                    <tr id="table_<?= $value['id']; ?>" class="sorting_<?= $i++; ?>">
+                                    <tr id="table_<?= $value['id']; ?>" class="sorting_">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box_user"
                                                 data-fullname="<?= $value['fullname'];?>"
                                                 data-email="<?= $value['email']; ?>"
@@ -83,6 +82,7 @@ tr th {
                                                 data-password="<?= $value['password']; ?>"
                                                 data-role="<?= $value['role']; ?>"
                                                 data-images="<?= $value['image']; ?>">
+                                            <?= $i++; ?>
                                         </td>
 
                                         <td><?= $value['fullname']; ?></td>
