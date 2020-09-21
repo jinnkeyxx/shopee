@@ -35,6 +35,9 @@
                                    <div class="dropdown-header noti-title">
                                        <h6 class="text-overflow m-0">Xin chào !</h6>
                                    </div>
+                                   <div class="dropdown-header noti-title">
+                                       <a href="profile" class="text-overflow m-0">Profile !</a>
+                                   </div>
 
 
 
