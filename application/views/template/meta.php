@@ -32,7 +32,7 @@
     <!-- App Css-->
     <link href="<?= base_url() ?>assets\css\app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css">
     <link href="<?= base_url() ?>assets\libs\custombox\custombox.min.css" rel="stylesheet">
-
+    <link href="<?= base_url() ?>assets\sweetalert2.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 

@@ -22,6 +22,7 @@ $(document).ready(() => {
             window.location.reload();
         }, time)
     }
+
     $('form#form-install').submit((e) => {
         e.preventDefault()
         let fullname = $('#fullname')
@@ -199,35 +200,63 @@ $(document).ready(() => {
 
 
     // alert('the form was successfully processed');
+
     $('#bulk_delete_submit').click(() => {
         if ($('.check_box:checked').length > 0) {
-            $.ajax({
-                url: 'userlist/delete',
-                method: "POST",
-                data: $('#update_form').serialize(),
-                success: function(data) {
+            Swal.fire({
+                title: 'Bạn có thực sự muốn xóa?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Xóa`,
+                denyButtonText: `Bỏ xóa`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'userlist/delete',
+                        method: "POST",
+                        data: $('#update_form').serialize(),
+                        success: function(data) {
 
-                    toastr["success"]('Xóa thành công');
-                    load(1000)
+                            toastr["success"]('Xóa thành công');
+                            load(1000)
+                        }
+
+                    })
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                 }
-
             })
+
         } else {
             toastr["error"]('Không có danh sách được chọn');
         }
     });
     $('#dele_user').click(() => {
         if ($('.check_box_user:checked').length > 0) {
-            $.ajax({
-                url: 'userlist/delete_user',
-                method: "POST",
-                data: $('#update_user').serialize(),
-                success: function(data) {
+            Swal.fire({
+                title: 'Bạn có thực sự muốn xóa?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Xóa`,
+                denyButtonText: `Bỏ xóa`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'userlist/delete_user',
+                        method: "POST",
+                        data: $('#update_user').serialize(),
+                        success: function(data) {
 
-                    toastr["success"]('Xóa thành công');
-                    load(2000)
+                            toastr["success"]('Xóa thành công');
+                            load(1000)
+                        }
+
+                    })
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                 }
-
             })
         } else {
             toastr["error"]('Không có danh sách được chọn');

@@ -358,20 +358,23 @@ class Userlist extends CI_Controller
     {
             $ids = $_POST['hidden_id'];
            
-            // echo $ids;
+           
+
             // exit();
              // If id array is not empty
             if(!empty($ids)){
-                // Delete records from the database
-                $delete = $this->User_model->delete($ids);
                 
-                // If delete is successful
-                if($delete){
-                    echo json_encode(array('status' => true , 'messages' => 'Xóa thành công'));
-                }else{
-                    echo json_encode(array('status' => false , 'messages' => 'Xóa không thành công'));
-                }
-            }else{
+                    $delete = $this->User_model->delete($ids[$count]);
+                    if($delete){
+                        echo json_encode(array('status' => true , 'messages' => 'Xóa thành công'));
+                    }else{
+                        echo json_encode(array('status' => false , 'messages' => 'Xóa không thành công'));
+                    }
+                
+                
+                
+            }
+            else{
                 echo json_encode(array('status' => false , 'messages' => 'Xóa không thành công'));
                 
             }

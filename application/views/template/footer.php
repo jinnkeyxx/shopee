@@ -25,6 +25,7 @@
 <script src="<?= base_url()?>assets\libs\pdfmake\pdfmake.min.js"></script>
 <script src="<?= base_url()?>assets\libs\pdfmake\vfs_fonts.js"></script>
 <!-- <script src="<?= base_url()?>assets\js\pages\datatables.init.js"></script> -->
+<script src="<?= base_url()?>assets\sweetalert2.all.min.js"></script>
 <script src="<?= base_url()?>assets\js\extention\choices.js"></script>
 
 <!-- Custom Export DataTable -->
