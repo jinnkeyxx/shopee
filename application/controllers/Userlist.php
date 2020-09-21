@@ -103,6 +103,7 @@ class Userlist extends CI_Controller
                                 
                             );
                             $this->User_model->import_data($databarang);
+                            $this->session->set_flashdata('Success', 'Thêm mới thành công!!!');
                         }
                         else 
                         {
@@ -123,6 +124,7 @@ class Userlist extends CI_Controller
                                 'user_post' => $data['admin']->username, 
                             );
                             $this->User_model->import_data($databarang);
+                            $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
                         }
                     }
                     $numRow++;
@@ -160,6 +162,7 @@ class Userlist extends CI_Controller
                             'image'    => $row->getCellAtIndex(5),
                         );
                         $this->Admin_model->import_data($databarang);
+                        
                     }
                     $numRow++;
                 }
@@ -316,7 +319,7 @@ class Userlist extends CI_Controller
                     );
                     $this->Admin_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
-                    redirect('userlogin'); 
+                    
                 
                 }
                 else 
@@ -333,10 +336,10 @@ class Userlist extends CI_Controller
                     $this->Admin_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
 
-                    redirect('userlist'); 
+                    
                 }
             }
-       
+            redirect('userlogin'); 
         }
        
           
@@ -515,6 +518,7 @@ class Userlist extends CI_Controller
                 'image' => base_url().'uploads/'.$img,
             );
             $this->Admin_model->import_data($data);
+            $this->session->set_flashdata('Success', 'Thêm mới thành công!!!');
 
         }else {
             $data = array(
@@ -528,6 +532,7 @@ class Userlist extends CI_Controller
 
             );
             $this->Admin_model->import_data($data);
+            $this->session->set_flashdata('Success', 'Thêm mới thành công!!!');
 
         }
         

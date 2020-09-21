@@ -50,7 +50,8 @@ const choices = new Choices('[data-trigger]', {
 });
 </script>
 
-<?php  if(isset($this->session)){
+<?php  if($this->session->flashdata('Success'))
+{
     echo "<script>toastr['success']('{$this->session->flashdata('Success')}') </script>";
 }
 ?>
