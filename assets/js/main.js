@@ -94,13 +94,16 @@ $(document).ready(() => {
     $(document).on('click', '.check_box', function() {
         var html = '';
         if (this.checked) {
-            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
+            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-manv="' + $(this).data('manv') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-model_phone="' + $(this).data('model_phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-model_laptop="' + $(this).data('model_laptop') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" data-images="' + $(this).data('images') + '" class="check_box" checked /></td>';
 
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
+            html += '<td><input type="text" name="manv[]" class="form-control" value="' + $(this).data("manv") + '" /></td>';
             html += '<td><select  name="team[]" class="form-control"><option value="Inventory" >Inventory</option> <option value="Inbound" >Inbound</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
             html += '<td><select name="phone[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
+            html += '<td><input type="text" name="model_phone[]" class="form-control" value="' + $(this).data("model_phone") + '" /></td>';
             html += '<td><input type="text" name="serial1[]" class="form-control" value="' + $(this).data("serial1") + '" /></td>';
             html += '<td><select name="laptop[]" class="form-control"> <option value="Yes" >Yes</option><option value="No"> No </option></select></td>';
+            html += '<td><input type="text" name="model_laptop[]" class="form-control" value="' + $(this).data("model_laptop") + '" /></td>';
             html += '<td><input type="text" name="serial2[]" class="form-control" value="' + $(this).data("serial2") + '" /></td>';
             html += '<td><input type="text" name="orther[]" class="form-control" value="' + $(this).data("orther") + '" /></td>';
 
@@ -109,12 +112,15 @@ $(document).ready(() => {
             html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
             html += '<td><input type="hidden" value="' + $(this).data('user_post') + '" name="user_post[]" class="form-control"/></td>';
         } else {
-            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-images="' + $(this).data('images') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" class="check_box" /></td>';
+            html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-manv="' + $(this).data('manv') + '" data-images="' + $(this).data('images') + '" data-team="' + $(this).data('team') + '" data-phone="' + $(this).data('phone') + '" data-model_phone="' + $(this).data('model_phone') + '" data-serial1="' + $(this).data('serial1') + '" data-laptop="' + $(this).data('laptop') + '" data-model_laptop="' + $(this).data('model_laptop') + '" data-serial2="' + $(this).data('serial2') + '" data-orther="' + $(this).data('orther') + '" data-serial3="' + $(this).data('serial3') + '" class="check_box" /></td>';
             html += '<td>' + $(this).data('fullname') + '</td>';
+            html += '<td>' + $(this).data('manv') + '</td>';
             html += '<td>' + $(this).data('team') + '</td>';
             html += '<td>' + $(this).data('phone') + '</td>';
+            html += '<td>' + $(this).data('model_phone') + '</td>';
             html += '<td>' + $(this).data('serial1') + '</td>';
             html += '<td>' + $(this).data('laptop') + '</td>';
+            html += '<td>' + $(this).data('model_laptop') + '</td>';
             html += '<td>' + $(this).data('serial2') + '</td>';
             html += '<td>' + $(this).data('orther') + '</td>';
             html += '<td>' + $(this).data('serial3') + '</td>';
@@ -187,25 +193,33 @@ $(document).ready(() => {
     });
 
     var count = 0;
+    var count1 = 0;
     $('#phone').click(() => {
-        count = 1
+        coun++;
         if (count == 1) {
             $('input#serial1').removeClass('d-none')
             $('input#serial1').css('display', 'block');
-            count = 2
+            $('input#model_phone').removeClass('d-none')
+            $('input#model_phone').css('display', 'block');
+
+
         } else {
             $('input#serial1').css('display', 'none');
+            $('input#model_phone').css('display', 'none');
         }
 
     });
     $('#laptop').click(() => {
-        count = 1
-        if (count == 1) {
+        count1++;
+        if (count1 == 1) {
             $('input#serial2').removeClass('d-none')
             $('input#serial2').css('display', 'block');
-            count = 2
+            $('input#model_laptop').removeClass('d-none')
+            $('input#model_laptop').css('display', 'block');
+
         } else {
             $('input#serial2').css('display', 'none');
+            $('input#model_laptop').css('display', 'none');
         }
         // count = 0;
     });
@@ -219,26 +233,28 @@ $(document).ready(() => {
             $('#serial3').removeAttr('disabled');
         }
     });
-    $('#search').submit((e) => {
-        e.preventDefault()
-        keyword = $('#inputsearch')
-        if (keyword.val() == "") {
-            toastr["error"]('moi nhap keyword');
-        } else {
-            $.ajax({
-                url: 'userlist/serach',
-                method: "POST",
-                data: { keyword: keyword.val() },
-                success: function(data) {
 
-                }
-
-            })
-        }
-    })
     $(document).on('click', '#select_all', function() {
         $('.check_box').click();
         $('.check_box').prop('checked');
 
     })
 })
+$('#checkout').submit(function(e) {
+    e.preventDefault()
+    var search = $('#search_text').val();
+    if (search != '') {
+        $.ajax({
+            url: "Checkout/fetch",
+            method: "POST",
+            data: {
+                query: search
+            },
+            success: function(data) {
+                $('#result').html(data);
+            }
+        })
+    } else {
+        $('#result').html("");
+    }
+});

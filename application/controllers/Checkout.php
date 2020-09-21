@@ -12,7 +12,7 @@ class Checkout  extends CI_Controller {
 
   function index()
   {
-    $data['admin'] = $this->Admin_model->get_row();
+    $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
     $data['admin']->id;
 
     $data['title'] = "Check Out User";
@@ -27,12 +27,12 @@ class Checkout  extends CI_Controller {
   {
     $output = '';
     $query = '';
-    $this->load->model('checkout_model');
+    $this->load->model('Checkout_model');
     if($this->input->post('query'))
     {
      $query = $this->input->post('query');
    }
-   $data = $this->checkout_model->fetch_data($query);
+   $data = $this->Checkout_model->fetch_data($query);
    $output .= '
    <div class="table-responsive">
    <table class="table table-bordered table-hover table-checkable nowrap">

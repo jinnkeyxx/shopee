@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th9 21, 2020 lúc 06:32 AM
+-- Thời gian đã tạo: Th9 21, 2020 lúc 09:43 AM
 -- Phiên bản máy phục vụ: 10.4.13-MariaDB
 -- Phiên bản PHP: 7.4.8
 
@@ -83,10 +83,13 @@ CREATE TABLE `checkout` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `manv` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `team` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_phone` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `serial` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `laptop` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_laptop` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `serial2` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `orther` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `serial3` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -131,7 +134,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `checkin`
@@ -149,7 +152,7 @@ ALTER TABLE `checkout`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

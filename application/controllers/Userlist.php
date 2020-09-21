@@ -89,12 +89,15 @@ class Userlist extends CI_Controller
                                 'fullname'  => $row->getCellAtIndex(0),
                                 'team'      => $row->getCellAtIndex(1),
                                 'phone'     => $row->getCellAtIndex(2),
-                                'serial'    => $row->getCellAtIndex(3),
-                                'laptop'    => $row->getCellAtIndex(4),
-                                'serial2'   => $row->getCellAtIndex(5),
-                                'orther'    => $row->getCellAtIndex(6),
-                                'serial3'   => $row->getCellAtIndex(7),
-                                'images'    => $row->getCellAtIndex(8),
+                                'modem_phone' => $row->getCellAtIndex(3),
+                                'serial'    => $row->getCellAtIndex(4),
+                                'laptop'    => $row->getCellAtIndex(5),
+                                'modem_laptop'    => $row->getCellAtIndex(6),
+                                'serial2'   => $row->getCellAtIndex(7),
+                                'orther'    => $row->getCellAtIndex(8),
+                                'serial3'   => $row->getCellAtIndex(9),
+                                'images'    => $row->getCellAtIndex(10),
+                                'manv' => $row->getCellAtIndex(11),
                                 'user_post' => $data['admin']->username, 
                                 
                             );
@@ -106,13 +109,16 @@ class Userlist extends CI_Controller
                                 'fullname'  => $row->getCellAtIndex(0),
                                 'team'      => $row->getCellAtIndex(1),
                                 'phone'     => $row->getCellAtIndex(2),
-                                'serial'    => $row->getCellAtIndex(3),
-                                'laptop'    => $row->getCellAtIndex(4),
-                                'serial2'   => $row->getCellAtIndex(5),
-                                'orther'    => $row->getCellAtIndex(6),
-                                'serial3'   => $row->getCellAtIndex(7),
-                                'images'    => $row->getCellAtIndex(8),
-                                'status' => 1,
+                                'modem_phone' => $row->getCellAtIndex(3),
+                                'serial'    => $row->getCellAtIndex(4),
+                                'laptop'    => $row->getCellAtIndex(5),
+                                'modem_laptop'    => $row->getCellAtIndex(6),
+                                'serial2'   => $row->getCellAtIndex(7),
+                                'orther'    => $row->getCellAtIndex(8),
+                                'serial3'   => $row->getCellAtIndex(9),
+                                'images'    => $row->getCellAtIndex(10),
+                                'manv' => $row->getCellAtIndex(11),
+                                $status = 1,
                                 'user_post' => $data['admin']->username, 
                             );
                             $this->User_model->import_data($databarang);
@@ -170,15 +176,19 @@ class Userlist extends CI_Controller
       
             
             $fullname = $_POST['fullname'];
-            // var_dump($fullname);
-            // exit();
+            
             $team = $_POST['team'];
-            $laptop = $_POST['laptop'];            $phone = $_POST['phone'];
+            $laptop = $_POST['laptop'];   
+            $model_laptop = $_POST['model_laptop'];
+            $phone = $_POST['phone'];
+            $model_phone = $_POST['model_phone'];
             $serial1 = $_POST['serial1'];
             $serial2 = $_POST['serial2'];
             $serial3 = $_POST['serial3'];
             $orther = $_POST['orther'];
             $serial1 = $_POST['serial1'];
+            $manv = $_POST['manv'];
+            
             $images_old = $_POST['image_old'];
             $user_post = $_POST['user_post'];
             $id = $_POST['hidden_id'];
@@ -208,13 +218,16 @@ class Userlist extends CI_Controller
                         'fullname'   => $fullname[$count],
                         'team'  => $team[$count],
                         'phone'  => $phone[$count],
+                        'model_phone' => $model_phone[$count],
                         'serial' => $serial1[$count],
                         'laptop'   => $laptop[$count],
+                        'model_laptop' => $model_laptop[$count],
                         'serial2' => $serial2[$count],
                         'orther' => $orther[$count],
                         'serial3' => $serial3[$count],
                         'images' => base_url().'uploads/'. $file['file_name'],
                         'user_post'=>$user_post[$count],
+                        'manv' => $manv[$count],
                         'id'   => $id[$count],
 
                     );
@@ -230,14 +243,17 @@ class Userlist extends CI_Controller
                     $data = array(
                         'fullname'   => $fullname[$count],
                         'team'  => $team[$count],
-                        'phone'  => $phone[$count],
+                         'phone'  => $phone[$count],
+                        'model_phone' => $model_phone[$count],
                         'serial' => $serial1[$count],
                         'laptop'   => $laptop[$count],
+                        'model_laptop' => $model_laptop[$count],
                         'serial2' => $serial2[$count],
                         'orther' => $orther[$count],
                         'serial3' => $serial3[$count],
                         'images' => $images_old[$count],
                         'user_post'=>$user_post[$count],
+                        'manv' => $manv[$count],
                         'id'   => $id[$count]
                     );
                     
@@ -384,7 +400,9 @@ class Userlist extends CI_Controller
         $team = $_POST['team'];
         $serial = $_POST['serial1'];
         $serial2 = $_POST['serial2'];
-        
+        $model_phone = $_POST['model_phone'];
+        $model_laptop = $_POST['model_laptop'];
+        $manv = $_POST['manv'];
         if(isset($_POST['serial3'])){
             $serial3 = $_POST['serial3'];
         }
@@ -434,7 +452,10 @@ class Userlist extends CI_Controller
             'phone'  => $phone,
             'serial' => $serial,
             'laptop'   => $laptop,
+            'model_phone' =>$model_phone,
+            'model_laptop' =>$model_laptop,
             'orther' => $orther,
+            'manv' => $manv,
             'serial2' => $serial2,
             'serial3' => $serial3,
             'images' => base_url().'uploads/'.$img,
@@ -449,7 +470,10 @@ class Userlist extends CI_Controller
             'phone'  => $phone,
             'serial' => $serial,
             'laptop'   => $laptop,
+            'model_phone' =>$model_phone,
+            'model_laptop' =>$model_laptop,
             'orther' => $orther,
+            'manv' => $manv,
             'serial2' => $serial2,
             'serial3' => $serial3,
             'status' => 1,
