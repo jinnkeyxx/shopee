@@ -40,6 +40,31 @@ class Userlist extends CI_Controller
         }
        
     }
+
+    public function userlist()
+    {
+        if($this->session->userdata('login')){
+            $data['title'] = 'User List';
+            $data['user'] = $this->User_model->getDataBarang();
+            // echo print_r($data['user']->status);
+            // exit();
+            $data['aprove'] = $this->User_model->getuser($this->session->userdata('username'));
+            $data['aproveAll'] = $this->User_model->getusers();
+            $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+            $data['admin']->id;
+
+           
+            $this->load->view('template/meta', $data);
+            $this->load->view('template/header', $data);
+            $this->load->view('userpostaprove', $data);
+            $this->load->view('template/footer', $data);
+        }else {
+             redirect('login');
+        }
+       
+    }
+
+    
     public function userlistaprove()
     {
         if($this->session->userdata('login')){

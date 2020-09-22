@@ -15,3 +15,4 @@ $route['profile'] = 'Userlist/profile';
 $route['userpost'] = 'Userlist/userpost';
 $route['userlistapprove'] = 'Userlist/userlistaprove';
 $route['userpostapprove'] = 'Userlist/userpostaprove';
+$route['userlist'] = 'Userlist/userlist';
