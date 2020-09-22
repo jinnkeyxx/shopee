@@ -39,7 +39,7 @@ class Admin extends CI_Controller
         if($check > 0)
         {
             if($this->session->userdata('login')){
-                redirect('userlist'); 
+                redirect('dashboard'); 
             }
             else {
                 $data['title'] = "Login to system";

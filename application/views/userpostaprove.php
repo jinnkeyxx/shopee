@@ -15,7 +15,7 @@ tr th {
         <div class="col-12 py-2">
             <div class="card">
                 <div class="card-body" style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
-                    <h1 class="otto">DANH SÁCH ĐÃ ĐƯỢC DUYỆT CỦA BẠN</h1>
+                    <h1 class="otto">DANH SÁCH TÀI KHOẢN</h1>
                 </div>
             </div>
             <div class="card mt-2">
@@ -28,9 +28,7 @@ tr th {
                             <?php if($admin->role == 0){?>
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
-                            <a class="btn-primary btn" href="userlogin"><i class="fas fa-download"></i> Quản lý Tài
-                                khoản
-                            </a>
+
                             <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách
                                 chờ duyệt <span> </span>
                             </a>
@@ -38,9 +36,11 @@ tr th {
                             <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i> Danh sách chờ
                                 duyệt của bạn <?php if($aprove > 0){ ?><span
                                     class="text-danger"><?= $aprove;  ?></span><?php  } ?></a>
-                            
+                            <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i> Danh sách
+                                đã
+                                duyệt của bạn
+                            </a>
                             <?php } ?>
-
                         </div>
                         <br>
                         <div class="table-responsive">
