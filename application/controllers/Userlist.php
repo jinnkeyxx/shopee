@@ -619,6 +619,11 @@ class Userlist extends CI_Controller
             redirect('userlist'); 
        
         }
+        else {
+             $this->session->set_flashdata('Error', 'Không có danh sách được chọn!!!');
+            redirect('userlist'); 
+            
+        }
           
 
     }
