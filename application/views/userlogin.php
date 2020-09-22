@@ -13,45 +13,32 @@ tr th {
 <div class="container py-5">
     <div class="row ">
         <div class="col-12 py-2">
-            <div class="card">
-                <div class="card-body">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-                        data-whatever="@mdo"><i class="fas fa-user-plus"></i>Thêm người dùng</button>
-
-                    <hr>
-                    <h4>Tải lên danh sách người dùng</h4>
-
-                    <?= form_open_multipart('userlist/uploaduser') ?>
-                    <div class="form-row">
-                        <div class="col-4">
-                            <input type="file" class="form-control-file" id="importexcel" name="importexcel"
-                                accept=".xlsx,.xls" required>
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary"> <i class="fas fa-upload"></i> Import</button>
-                        </div>
-
-                    </div>
-                    <?= form_close(); ?>
+        <div class="card">
+                <div class="card-body" style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
+                    <h1 class="otto">QUẢN LÝ TÀI KHOẢN NGƯỜI DÙNG</h1>
                 </div>
             </div>
             <div class="card mt-2">
                 <div class="card-body">
                     <form method="post" id="update_user" action="userlist/update_user" enctype='multipart/form-data'>
                         <div align="left">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo"><i class="fas fa-user-plus"></i> Thêm Tài khoản</button>
+
                             <button type="submit" name="multiple_update" id="multiple_update" class="btn btn-info"><i
-                                    class="fas fa-edit"></i> Cập nhật</button>
+                                    class="fas fa-edit"></i> Cập nhật </button>
 
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit" id="dele_user"><i
                                     class="fas fa-trash"></i> Xóa</button>
 
-                            <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
-                                sách xuống </a>
-                            <?php if($admin->role == 0){?>
+                            <!-- <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
+                                sách xuống </a> -->
+
+                            <!-- <?php if($admin->role == 0){?>
 
                             <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách chờ duyệt
                             </a>
-                            <?php } ?>
+                            <?php } ?> -->
                         </div>
                         <br>
                         <div class="table-responsive">

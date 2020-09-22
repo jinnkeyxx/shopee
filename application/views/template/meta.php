@@ -9,7 +9,8 @@
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+
     <link href="<?= base_url() ;?>assets/css/main.css" rel="stylesheet" />
 
     <!-- App favicon -->
@@ -38,6 +39,7 @@
 
     <style type="text/css">
     body {
+        /* font-family: 'Oswald', sans-serif; */
         background-color: #F25220 !important;
     }
 
@@ -52,6 +54,15 @@
 
     .text-muted {
         color: #fff !important;
+    }
+
+    .card-body {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.0rem;
+        
     }
     </style>
 </head>

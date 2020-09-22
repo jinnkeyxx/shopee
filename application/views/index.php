@@ -19,6 +19,11 @@ tr th {
                         data-whatever="@mdo"><i class="fas fa-user-plus"></i> ĐĂNG KÝ VÀO</button>
                     <a type="button" class="btn btn-success" href="checkout"><i class="fas fa-user-plus"></i> ĐĂNG KÝ
                         RA</a>
+
+                    <?php if($admin->role == 0){?>
+                    <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i> QUẢN LÝ TÀI KHOẢN
+                    </a>
+                    <?php } ?>
                     <!-- <button name="select_all" id="select_all" class="btn btn-info"><i class="fas fa-edit"></i>chon
                         tat
                         ca</button> -->
@@ -58,13 +63,15 @@ tr th {
                             <?php if($admin->role == 0){?>
                             <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
-                            <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i> Quản lý tài khoản
-                            </a>
-                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách chờ duyệt <span class="text-danger"><?= $aproveAll;  ?></span>
+
+                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách
+                                chờ duyệt <span class="text-danger"><?= $aproveAll;  ?></span>
                             </a>
                             <?php } else {?>
-                            <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i> Danh sách chờ duyệt của bạn <span class="text-danger"><?= $aprove;  ?></span> </a>
-                            <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i> Danh sách đã duyệt của bạn </a>
+                            <a class="btn-primary btn" href="userpost"><i class="fas fa-download"></i> Danh sách chờ
+                                duyệt của bạn <span class="text-danger"><?= $aprove;  ?></span> </a>
+                            <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i> Danh sách
+                                đã duyệt của bạn </a>
                             <?php } ?>
 
                         </div>
