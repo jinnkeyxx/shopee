@@ -208,7 +208,7 @@ $(document).ready(() => {
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: `Xóa`,
-                denyButtonText: `Bỏ xóa`,
+
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
@@ -239,7 +239,7 @@ $(document).ready(() => {
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: `Xóa`,
-                denyButtonText: `Bỏ xóa`,
+
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
