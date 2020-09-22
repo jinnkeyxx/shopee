@@ -44,12 +44,6 @@ $(document).ready(function() {
 });
 </script>
 
-<script>
-const choices = new Choices('[data-trigger]', {
-    searchEnabled: false,
-    itemSelectText: '',
-});
-</script>
 
 <?php  if($this->session->flashdata('Success'))
 {

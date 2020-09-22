@@ -1,20 +1,20 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 <style>
-    table.table.table-bordered.table-hover.table-checkable.dt-responsive.nowrap {
-        color: #fff;
-    }
-    
-    tr th {
-        background-color: #fff;
-        color: blue;
-        font-size: 14pt;
-        text-align: center;
-        vertical-align: middle;
-    }
-    
-    tr td {
-        color: black;
-    }
+table.table.table-bordered.table-hover.table-checkable.dt-responsive.nowrap {
+    color: #fff;
+}
+
+tr th {
+    background-color: #fff;
+    color: blue;
+    font-size: 14pt;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr td {
+    color: black;
+}
 </style>
 
 <body>
@@ -35,7 +35,9 @@
                     <div class="form-group">
                         <div class="input-group">
                             <form action="" id="checkout" method="post">
-                                <input type="text" name="search_text" id="search_text" placeholder="Search Users by Serial Number" class="form-control" style="width: 300px; height: 50px" />
+                                <input type="text" name="search_text" id="search_text"
+                                    placeholder="Search Users by Serial Number" class="form-control"
+                                    style="width: 300px; height: 50px" />
 
                                 <br>
                                 <button type="submit" class="btn btn-info"> Tìm kiếm </button>
