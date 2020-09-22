@@ -9,7 +9,7 @@
                             <img src="assets\images\logo-light.png" alt="" height="22" class="logo-light mx-auto">
                             <img src="assets\images\logo-dark.png" alt="" height="22" class="logo-dark mx-auto">
                         </a>
-                        <p class="text-muted mt-2 mb-4">Cài đặt</p>
+                        <H1 class="text-muted mt-2 mb-4">CÀI ĐẶT</H1>
                     </div>
                     <div class="card">
 
@@ -27,15 +27,16 @@
                                         required="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Tên tài khoản</label>
-                                    <input class="form-control" type="text" id="username"
-                                        placeholder="Enter your username" required="">
-                                </div>
-                                <div class="form-group">
                                     <label for="email">Địa chỉ email</label>
                                     <input class="form-control" type="email" id="email" required=""
                                         placeholder="Enter your email">
                                 </div>
+                                <div class="form-group">
+                                    <label for="username">Tài khoản</label>
+                                    <input class="form-control" type="text" id="username"
+                                        placeholder="Enter your username" required="">
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="password">Mật khẩu</label>
                                     <input class="form-control" type="password" required="" id="password"

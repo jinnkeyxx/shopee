@@ -6,7 +6,7 @@
 <script src="<?= base_url() ?>assets\libs\raphael\raphael.min.js"></script> -->
 
 <!-- Dashboard init js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="assets/js/toastr.min.js"></script>
 
 <script src="<?= base_url() ?>assets\js\main.js"></script>
 <script src="<?= base_url() ?>assets\libs\custombox\custombox.min.js"></script>
@@ -26,7 +26,6 @@
 <script src="<?= base_url()?>assets\libs\pdfmake\vfs_fonts.js"></script>
 <!-- <script src="<?= base_url()?>assets\js\pages\datatables.init.js"></script> -->
 <script src="<?= base_url()?>assets\sweetalert2.all.min.js"></script>
-<script src="<?= base_url()?>assets\js\extention\choices.js"></script>
 
 <!-- Custom Export DataTable -->
 <script type="text/javascript">
@@ -44,12 +43,6 @@ $(document).ready(function() {
 });
 </script>
 
-<script>
-const choices = new Choices('[data-trigger]', {
-    searchEnabled: false,
-    itemSelectText: '',
-});
-</script>
 
 <?php  if($this->session->flashdata('Success'))
 {

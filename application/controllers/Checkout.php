@@ -15,7 +15,7 @@ class Checkout  extends CI_Controller {
     $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
     $data['admin']->id;
 
-    $data['title'] = "Check Out User";
+    $data['title'] = "Check Out Users";
     $this->load->view('template/meta' ,$data);
     $this->load->view('template/header' ,$data);
     $this->load->view('checkout');

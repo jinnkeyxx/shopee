@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 <style>
     table.table.table-bordered.table-hover.table-checkable.dt-responsive.nowrap {
         color: #fff;
@@ -53,7 +53,3 @@
 
     </div>
     <div style="clear:both"></div>
-    <br />
-    <br />
-    <br />
-    <br />

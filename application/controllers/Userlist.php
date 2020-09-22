@@ -21,7 +21,7 @@ class Userlist extends CI_Controller
     public function index()
     {
         if($this->session->userdata('login')){
-            $data['title'] = 'User List';
+            $data['title'] = 'User Management';
             $data['user'] = $this->User_model->getDataBarang();
             // echo print_r($data['user']->status);
             // exit();

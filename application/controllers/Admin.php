@@ -42,7 +42,7 @@ class Admin extends CI_Controller
                 redirect('userlist'); 
             }
             else {
-                $data['title'] = "login";
+                $data['title'] = "Login to system";
                 $this->load->view('template/meta', $data);
                 $this->load->view('login');
                 $this->load->view('template/footer'); 
@@ -95,7 +95,7 @@ class Admin extends CI_Controller
             $save = $this->Admin_model->import_data($datanew);
 
                 
-        echo json_encode(array('status' => true , 'messages' => 'cài đặt thành công'));
+        echo json_encode(array('status' => true , 'messages' => 'Cài đặt thành công !!!'));
             
     }
     public function api()
@@ -134,7 +134,7 @@ class Admin extends CI_Controller
             if($this->session->userdata('role') == 0){
                 $data['aprove'] = $this->User_model->getuser($this->session->userdata('id'));
                 $data['aproveAll'] = $this->User_model->getusers(); 
-                $data['title'] = "User login";
+                $data['title'] = "Login User";
                 $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
                 // var_dump($data['admin']->fullname);
                 // exit();
