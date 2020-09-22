@@ -412,11 +412,12 @@ class Userlist extends CI_Controller
                 'user_post' => $data['admin']->username,
                 );
                 $this->User_model->import_data($data);
-                $this->session->set_flashdata('Thêm thành công');
+                $this->session->set_flashdata('Success','Thêm thành công');
              redirect('userpost');
             }
         }else {
             $this->session->set_flashdata('Error','Lỗi trùng mã nhân viên');
+            redirect('userlist');
         }
         redirect('approvelistuser');
 

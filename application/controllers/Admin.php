@@ -146,7 +146,7 @@ class Admin extends CI_Controller
                 $this->load->view('template/footer');
             }
             else {
-                redirect('dashbroad');
+                redirect('dashboard');
             }
             
         }
