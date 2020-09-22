@@ -3,7 +3,7 @@
     <div class="account-pages mt-2 mb-5">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-10 col-xl-5">
+                <div class="col-md-10 col-lg-10 col-xl-6">
                     <div class="text-center">
                         <a href="" class="logo">
                             <img src="assets\images\shopee-logo.png" alt="" height="100" class="logo-light mx-auto">

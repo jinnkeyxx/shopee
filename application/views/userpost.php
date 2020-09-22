@@ -69,7 +69,7 @@ tr th {
                                 </thead>
                                 <tbody>
 
-                                    <?php $i = 0; foreach ($user as $value):?>
+                                    <?php $i = 1; foreach ($user as $value):?>
                                     <?php if($value['user_post'] == $admin->username && $value['status'] == 1){  ?>
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"

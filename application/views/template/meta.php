@@ -35,7 +35,7 @@
     <link href="<?= base_url() ?>assets\sweetalert2.css" rel="stylesheet">
     <link rel="stylesheet" href="assets\css\toastr.min.css">
 
-    <script src="<?= base_url() ?>assets/js/2.1.3/jquery-3.3.1.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
 
     <style type="text/css">
         html,

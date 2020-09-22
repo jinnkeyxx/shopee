@@ -245,7 +245,7 @@ class Userlist extends CI_Controller
         }
         else {
              $this->session->set_flashdata('Error', 'Không có danh sách được chọn!!!');
-            redirect('userlist'); 
+            redirect('approvelistuser'); 
             
         }
        
@@ -419,11 +419,7 @@ class Userlist extends CI_Controller
             $this->session->set_flashdata('Error','Lỗi trùng mã nhân viên');
         }
         redirect('approvelistuser');
-          
-        
 
-          
-            
     }
 
     public function adduser()
@@ -475,7 +471,6 @@ class Userlist extends CI_Controller
             $this->session->set_flashdata('Error' ,'Tên tài khoản đã tồn tại');
         }
         
-            
             redirect('approvelistuser');
     }
         
@@ -568,7 +563,6 @@ class Userlist extends CI_Controller
                 if($this->upload->do_upload("image"))
                 {
                     
-                    
                     $file = $this->upload->data();
                     $data = array(
                         'fullname'   => $fullname[$count],
@@ -590,9 +584,6 @@ class Userlist extends CI_Controller
                     $this->User_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
 
-                    
-                
-                
                 }
                 else 
                 {
@@ -626,7 +617,7 @@ class Userlist extends CI_Controller
         }
         else {
              $this->session->set_flashdata('Error', 'Không có danh sách được chọn!!!');
-            redirect('userlist'); 
+            redirect('userpost'); 
             
         }
           
@@ -672,8 +663,5 @@ class Userlist extends CI_Controller
              redirect('login');
         }
     }
-    
 
-    
-    
 }
