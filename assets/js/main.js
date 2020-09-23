@@ -312,6 +312,8 @@ $(document).ready(() => {
 
     })
 })
+
+
 $('#checkout').submit(function(e) {
     e.preventDefault()
     var search = $('#search_text').val();
@@ -386,12 +388,17 @@ $('#checkout').submit(function(e) {
         $('#result').html(`<img src="assets/images/loader2.gif" style="width: 100%"/>`);
     }
 
-    function swall(text, icon) {
-        return Swal.fire(
-            'Thông báo!',
-            text,
-            icon
-        )
-
-    }
+   
+   
 });
+$(document).on('click' , '.selectall' , function(){
+    $('.check_box').click()
+})
+function swall(text, icon) {
+    return Swal.fire(
+        'Thông báo!',
+        text,
+        icon
+    )
+
+}

@@ -72,15 +72,17 @@
                             <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i> Danh sách
                                 đã duyệt của bạn </a>
                             <?php } ?>
-
                         </div>
                         <br>
                         <div class="table-responsive">
                             <table id="datatable" class="table table-bordered table-hover table-checkable nowrap" style="margin-top: 13px !important">
                                 <thead>
                                     <tr role="row">
-                                        <th>STT <input type="checkbox" value=""/>
+                                        <th>STT
+                            <input type="checkbox" value="" class="selectall"/>
+
                                         </th>
+
                                         <th>Họ và Tên</th>
                                         <th>Mã Nhân viên</th>
                                         <th>Team</th>
