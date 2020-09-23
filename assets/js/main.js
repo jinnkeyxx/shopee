@@ -205,9 +205,10 @@ $(document).ready(() => {
         if ($('.check_box:checked').length > 0) {
             Swal.fire({
                 title: 'Bạn có thực sự muốn xóa?',
-                showDenyButton: true,
+                showDenyButton: false,
                 showCancelButton: true,
-                confirmButtonText: `Xóa`,
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Trở về',
 
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
@@ -232,13 +233,42 @@ $(document).ready(() => {
             toastr["error"]('Không có danh sách được chọn');
         }
     });
+
+    $('#deleteAll').click(() => {
+        Swal.fire({
+            title: 'Bạn có thực sự muốn xóa?',
+            showCancelButton: true,
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Trở về',
+
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: 'userlist/deleteAll',
+                    method: "POST",
+
+                    success: function(data) {
+
+                        toastr["success"]('Xóa thành công');
+                        load(1000)
+                    }
+
+                })
+            }
+            // else if (result.isDenied) {
+            //     Swal.fire('Changes are not saved', '', 'info')
+            // }
+        })
+    })
     $('#dele_user').click(() => {
         if ($('.check_box_user:checked').length > 0) {
             Swal.fire({
                 title: 'Bạn có thực sự muốn xóa?',
-                showDenyButton: true,
+                // showDenyButton: true,
                 showCancelButton: true,
-                confirmButtonText: `Xóa`,
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Trở về',
 
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
@@ -254,9 +284,10 @@ $(document).ready(() => {
                         }
 
                     })
-                } else if (result.isDenied) {
-                    Swal.fire('Changes are not saved', '', 'info')
                 }
+                // else if (result.isDenied) {
+                //     Swal.fire('Changes are not saved', '', 'info')
+                // }
             })
         } else {
             toastr["error"]('Không có danh sách được chọn');
@@ -372,13 +403,13 @@ $('#checkout').submit(function(e) {
                             serial3 = "";
                         }
 
-                        $('#result').html(`<img src="${value['images']}" class="" style="width: 90%"/>
+                        $('#result').html(`<img src="${value['images']}" class="" style="width: 80%;height: 300px"/>
                         <h2>${value['fullname']}</h2>
                         <h2>${team}</h2>
                         <br>
-                        <h2>Điện thoại: ${serial}</h2>
-                        <h2>Laptop: ${serial2}</h2>
-                        <h2>Khác: ${serial3}</h2>
+                        <h3>Điện thoại: ${serial}</h3>
+                        <h3>Laptop: ${serial2}</h3>
+                        <h3>Khác: ${serial3}</h3>
                         `);
                     }
                 }
@@ -388,12 +419,16 @@ $('#checkout').submit(function(e) {
         $('#result').html(`<img src="assets/images/loader2.gif" style="width: 100%"/>`);
     }
 
-   
-   
+
+
 });
-$(document).on('click' , '.selectall' , function(){
+$(document).on('click', '.selectall', function() {
     $('.check_box').click()
 })
+$(document).on('click', '.selectall_user', function() {
+    $('.check_box_user').click()
+})
+
 function swall(text, icon) {
     return Swal.fire(
         'Thông báo!',

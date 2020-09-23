@@ -57,6 +57,10 @@
                                     class="fas fa-edit"></i> Cập nhật</button>
 
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit" id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
+
+                            <button type="button" class="btn btn-danger" name="deleteAll" id="deleteAll"><i
+                                class="fas fa-trash"></i> Xóa tất cả</button>
+
                             <?php } ?>
 
                             <?php if($admin->role == 0){?>
@@ -79,8 +83,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th>STT
-                            <input type="checkbox" value="" class="selectall"/>
-
+                                            <input type="checkbox" value="" class="selectall" />
                                         </th>
 
                                         <th>Họ và Tên</th>

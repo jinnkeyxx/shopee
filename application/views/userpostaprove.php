@@ -49,7 +49,9 @@ tr th {
                                 style="margin-top: 13px !important">
                                 <thead>
                                     <tr role="row">
-                                        <th>STT</th>
+                                        <th>STT
+                                        <input type="checkbox" value="" class="selectall"/>
+                                        </th>
                                         <th>Họ và Tên</th>
                                         <th>Mã Nhân viên</th>
                                         <th>Team</th>

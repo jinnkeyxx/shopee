@@ -35,10 +35,10 @@
                     <div class="form-group">
                         <div class="input-group">
                             <form action="" id="checkout" method="post">
-                                <input type="text" name="search_text" id="search_text" placeholder="Search Users by Serial Number" class="form-control" style="width: 300px; height: 50px" />
+                                <input type="text" name="search_text" id="search_text" placeholder="Tìm kiếm theo Serial Number" class="form-control" style="width: 300px; height: 50px" />
 
                                 <br>
-                                <button type="submit" class="btn btn-info"> Tìm kiếm </button>
+                                <button type="submit" class="btn btn-primary"> Tìm kiếm </button>
                             </form>
                         </div>
                     </div>

@@ -30,15 +30,12 @@ tr th {
 
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit" id="dele_user"><i
                                     class="fas fa-trash"></i> Xóa</button>
-
+                                    
+                                    <!-- deleteAll -->
                             <!-- <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a> -->
 
-                            <!-- <?php if($admin->role == 0){?>
-
-                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách chờ duyệt
-                            </a>
-                            <?php } ?> -->
+            
                         </div>
                         <br>
                         <div class="table-responsive">
@@ -46,7 +43,9 @@ tr th {
                                 style="margin-top: 13px !important">
                                 <thead>
                                     <tr role="row">
-                                        <th>STT</th>
+                                        <th>STT
+                                        <input type="checkbox" value="" class="selectall_user"/>
+                                        </th>
                                         <th>Họ và Tên</th>
                                         <th>Email</th>
                                         <th>Username</th>

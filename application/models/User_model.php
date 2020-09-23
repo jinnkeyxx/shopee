@@ -72,4 +72,9 @@ class User_Model extends CI_Model
             return true;
         }
     }
+    public function deleteAll()
+    {
+        $this->db->empty_table('users');
+    }
+    
 }

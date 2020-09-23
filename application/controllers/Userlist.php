@@ -309,6 +309,10 @@ class Userlist extends CI_Controller
             }
     }
     }
+    public function deleteAll()
+    {
+        $this->User_model->deleteAll();
+    }
     public function delete_user()
     {
             $ids = $_POST['hidden_id'];
