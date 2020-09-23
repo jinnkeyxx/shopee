@@ -29,18 +29,23 @@
 
 <!-- Custom Export DataTable -->
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#datatable').DataTable({
-        dom: 'Bfrtip',
-        lengthMenu: [
-            [10, 25, 50, 100, -1],
-            ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
-        ],
-        buttons: [
-            'pageLength'
-        ]
+    $(document).ready(function() {
+        $('#datatable').DataTable({
+            dom: 'Bfrtip',
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                ['10 rows', '25 rows', '50 rows', '100 rows', 'Show all']
+            ],
+            buttons: [
+                'pageLength'
+            ],
+            "aoColumnDefs": [{
+                "bSearchable": false,
+                "aTargets": [0]
+            }]
+
+        });
     });
-});
 </script>
 
 
