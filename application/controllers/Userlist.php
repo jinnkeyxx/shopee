@@ -56,7 +56,7 @@ class Userlist extends CI_Controller
            
             $this->load->view('template/meta', $data);
             $this->load->view('template/header', $data);
-            $this->load->view('userpostaprove', $data);
+            $this->load->view('index', $data);
             $this->load->view('template/footer', $data);
         }else {
              redirect('login');

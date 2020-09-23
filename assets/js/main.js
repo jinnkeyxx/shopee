@@ -350,13 +350,13 @@ $('#checkout').submit(function(e) {
                             team = '';
                         }
                         if (value['phone'] === "Yes") {
-                            serial = value['serial'] + ', ';
+                            serial = value['serial'];
                             // $flag = 'true';
                         } else {
                             serial = '';
                         }
                         if (value['laptop'] === "Yes") {
-                            serial2 = value['serial2'] + ', ';
+                            serial2 = value['serial2'];
                             // $flag = 'true';
                         } else {
                             serial2 = '';
@@ -370,10 +370,13 @@ $('#checkout').submit(function(e) {
                             serial3 = "";
                         }
 
-                        $('#result').html(`<img src="${value['images']}" class="" style="width: 60%"/>
+                        $('#result').html(`<img src="${value['images']}" class="" style="width: 90%"/>
                         <h2>${value['fullname']}</h2>
                         <h2>${team}</h2>
-                        <h2>${serial} ${serial2} ${serial3}</h1>
+                        <br>
+                        <h2>Điện thoại: ${serial}</h2>
+                        <h2>Laptop: ${serial2}</h2>
+                        <h2>Khác: ${serial3}</h2>
                         `);
                     }
                 }

@@ -16,6 +16,36 @@ tr th {
             <div class="card">
                 <div class="card-body" style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
                     <h1 class="otto">DANH SÁCH CHỜ DUYỆT CỦA BẠN</h1>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo"><i class="fas fa-user-plus"></i> ĐĂNG KÝ VÀO</button>
+                    <!-- <a type="button" class="btn btn-success" href="checkout"><i class="fas fa-user-plus"></i> ĐĂNG KÝ
+                        RA</a> -->
+
+                    <?php if($admin->role == 0){?>
+                    <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i> QUẢN LÝ TÀI KHOẢN
+                    </a>
+                    <?php } ?>
+                    <!-- <button name="select_all" id="select_all" class="btn btn-info"><i class="fas fa-edit"></i>chon
+                        tat
+                        ca</button> -->
+                    <hr>
+                    <h4>Tải lên danh sách người dùng</h4>
+
+                    <?= form_open_multipart('userlist/uploaddata') ?>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <input type="file" class="form-control-file" id="importexcel" name="importexcel"
+                                accept=".xlsx,.xls" required>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary"> <i class="fas fa-upload"></i> Import</button>
+                        </div>
+                        <div class="col">
+                            <?= $this->session->flashdata('pesan'); ?>
+                        </div>
+                    </div>
+                    <?= form_close(); ?>
+                    <br>
                 </div>
             </div>
             <div class="card mt-2">

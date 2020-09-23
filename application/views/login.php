@@ -6,10 +6,10 @@
                 <div class="col-md-10 col-lg-10 col-xl-6">
                     <div class="text-center">
                         <a href="" class="logo">
-                            <img src="assets\images\shopee-logo.png" alt="" height="100" class="logo-light mx-auto">
-                            <img src="assets\images\shopee-logo.png" alt="" height="100" class="logo-dark mx-auto">
+                            <!-- <img src="assets\images\logo\logo-shopee-trang-2.png" alt="Logo Shopee" height="200" class="logo-light mx-auto"> -->
+                            <img src="assets\images\logo\logo-shopee-trang-vuong.png" alt="Logo Shopee" height="100" class="logo-dark mx-auto">
                         </a>
-                        <h3 style="color: #fff" class="text-muted mt-2 mb-3">HỆ THỐNG QUẢN LÝ RA VÀO NHÂN VIÊN</h3>
+                        <h3 style="color: #fff" class="text-muted mt-2 mb-3">HỆ THỐNG QUẢN LÝ NHÂN VIÊN RA VÀO</h3>
                     </div>
                     <div class="card">
 

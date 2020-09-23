@@ -58,10 +58,10 @@
                     <div class="logo-box">
                         <a href="<?= base_url(); ?>" class="logo logo-light">
                             <span class="logo-lg">
-                                <img src="<?= base_url() ?>assets\images\shopee-logo.png" alt="shopee-logo" height="50">
+                                <img src="<?= base_url() ?>assets\images\logo-shopee.png" alt="Logo Shopee" height="50">
                             </span>
                             <span class="logo-sm">
-                                <img src="<?= base_url() ?>assets\images\shopee-logo.png" alt="shopee-logo" height="50">
+                                <img src="<?= base_url() ?>assets\images\logo-shopee.png" alt="Logo Shopee" height="50">
                             </span>
                         </a>
 
