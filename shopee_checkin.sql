@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th9 21, 2020 lúc 09:43 AM
--- Phiên bản máy phục vụ: 10.4.13-MariaDB
--- Phiên bản PHP: 7.4.8
+-- Host: 127.0.0.1:3306
+-- Generation Time: Sep 23, 2020 at 07:59 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,35 +18,46 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `shopee_checkin`
+-- Database: `shopee_checkin`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` int(3) NOT NULL,
   `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `fullname`, `email`, `username`, `password`, `role`, `image`, `created_at`, `updated_at`) VALUES
+(11, 'Võ Thái An', 'thaian@devforum.info', 'admin', '123', 0, 'http://localhost/shopee/assets\\images\\users\\profile2.png', '2020-09-22 16:11:04', '2020-09-22 16:11:04'),
+(15, 'NV 001', 'nv001@mailinator.com', 'nv001', '123', 1, 'http://localhost/shopee/uploads/img1600857327.png', '2020-09-23 17:35:27', '2020-09-23 17:35:27');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `checkin`
+-- Table structure for table `checkin`
 --
 
-CREATE TABLE `checkin` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `checkin`;
+CREATE TABLE IF NOT EXISTS `checkin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `team` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` int(2) NOT NULL,
@@ -54,34 +65,38 @@ CREATE TABLE `checkin` (
   `serial` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `orther` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `checkout`
+-- Table structure for table `checkout`
 --
 
-CREATE TABLE `checkout` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `checkout`;
+CREATE TABLE IF NOT EXISTS `checkout` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `serial` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `orther` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `manv` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `team` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -95,64 +110,9 @@ CREATE TABLE `users` (
   `serial3` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `images` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(2) NOT NULL,
-  `user_post` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `checkin`
---
-ALTER TABLE `checkin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `checkout`
---
-ALTER TABLE `checkout`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT cho bảng `checkin`
---
-ALTER TABLE `checkin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `checkout`
---
-ALTER TABLE `checkout`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  `user_post` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
