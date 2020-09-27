@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 23, 2020 at 07:59 PM
+-- Generation Time: Sep 27, 2020 at 08:05 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.2.33
 
@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -45,9 +46,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `fullname`, `email`, `username`, `password`, `role`, `image`, `created_at`, `updated_at`) VALUES
-(11, 'Võ Thái An', 'thaian@devforum.info', 'admin', '123', 0, 'http://localhost/shopee/assets\\images\\users\\profile2.png', '2020-09-22 16:11:04', '2020-09-22 16:11:04'),
-(15, 'NV 001', 'nv001@mailinator.com', 'nv001', '123', 1, 'http://localhost/shopee/uploads/img1600857327.png', '2020-09-23 17:35:27', '2020-09-23 17:35:27');
+INSERT INTO `admin` (`id`, `fullname`, `email`, `username`, `password`, `role`, `image`, `created_at`, `updated_at`, `status`) VALUES
+(11, 'Võ Thái An', 'thaian@devforum.info', 'admin', '123', 0, 'http://localhost/shopee/assets\\images\\users\\profile2.png', '2020-09-22 16:11:04', '2020-09-22 16:11:04', 0),
+(15, 'NV 001', 'nv001@mailinator.com', 'nv001', '123', 1, 'http://localhost/shopee/uploads/logo-fanpage-100px.png', '2020-09-28 03:02:40', '2020-09-28 03:02:40', 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `status` int(2) NOT NULL,
   `user_post` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

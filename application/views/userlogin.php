@@ -157,7 +157,7 @@ tr th {
                         <label for="role" class="col-form-label">Chức Vụ</label>
                         <select class="form-control" name="role">
                             <option value="0">Admin</option>
-                            <option value="1">Mod</option>
+                            <option value="1">Nhân viên</option>
                         </select>
                     </div>
                     <div class="form-group">
