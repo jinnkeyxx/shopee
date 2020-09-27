@@ -211,7 +211,7 @@ class Userlist extends CI_Controller
             $username = $_POST['username'];            
             $password = $_POST['password'];
             $role = $_POST['role'];
-            
+            $status = $_POST['status'];
             // $role = (int)$role;
             $images_old = $_POST['image_old'];
             
@@ -242,6 +242,7 @@ class Userlist extends CI_Controller
                         'password' => $password[$count],
                         'role'   => $role[$count],
                         'image' => base_url().'uploads/'. $file['file_name'],
+                        'status' => $status[$count],
                         'id'   => $id[$count]
                     );
                     $this->Admin_model->import_data($data);
@@ -258,6 +259,7 @@ class Userlist extends CI_Controller
                         'password' => $password[$count],
                         'role'   => $role[$count],
                         'image' => $images_old[$count],
+                        'status' => $status[$count],
                         'id'   => $id[$count]
                     );
                     $this->Admin_model->import_data($data);
@@ -424,25 +426,32 @@ class Userlist extends CI_Controller
 
 
             }else {
-                $data = array(
-                'fullname'   => $fullname,
-                'team'  => $team,
-                'phone'  => $phone,
-                'serial' => $serial,
-                'laptop'   => $laptop,
-                'model_phone' =>$model_phone,
-                'model_laptop' =>$model_laptop,
-                'orther' => $orther,
-                'manv' => $manv,
-                'serial2' => $serial2,
-                'serial3' => $serial3,
-                'status' => 1,
-                'images' => base_url().'uploads/'.$img,
-                'user_post' => $data['admin']->username,
-                );
-                $this->User_model->import_data($data);
-                $this->session->set_flashdata('Success','Thêm thành công');
-             redirect('userpost');
+                if($data['admin']->status == 0)
+                {
+                    $data = array(
+                    'fullname'   => $fullname,
+                    'team'  => $team,
+                    'phone'  => $phone,
+                    'serial' => $serial,
+                    'laptop'   => $laptop,
+                    'model_phone' =>$model_phone,
+                    'model_laptop' =>$model_laptop,
+                    'orther' => $orther,
+                    'manv' => $manv,
+                    'serial2' => $serial2,
+                    'serial3' => $serial3,
+                    'status' => 1,
+                    'images' => base_url().'uploads/'.$img,
+                    'user_post' => $data['admin']->username,
+                    );
+                    $this->User_model->import_data($data);
+                    $this->session->set_flashdata('Success','Thêm thành công');
+                    redirect('userpost');
+                } 
+                else{
+                    $this->session->set_flashdata('Error','Tài khoản bị khóa');
+                    redirect('userpost');
+                }
             }
         }else {
             $this->session->set_flashdata('Error','Lỗi trùng mã nhân viên');

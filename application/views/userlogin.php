@@ -51,7 +51,9 @@ tr th {
                                         <th>Username</th>
                                         <th>Password</th>
                                         <th>Chức vụ</th>
+                                        <th>Trạng thái</th>
                                         <th>Ảnh đại diện</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +65,9 @@ tr th {
                                                 data-username="<?= $value['username']; ?>"
                                                 data-password="<?= $value['password']; ?>"
                                                 data-role="<?= $value['role']; ?>"
-                                                data-images="<?= $value['image']; ?>">
+                                                data-images="<?= $value['image']; ?>"
+                                                data-status="<?= $value['status']; ?>"
+                                                >
                                             <?= $i++; ?>
                                         </td>
 
@@ -81,7 +85,18 @@ tr th {
                                                 } 
                                             ?>
                                         </td>
-
+                                        <td>
+                                            <?php
+                                                if($value['status'] == 0)
+                                                {
+                                                    echo "Đang hoạt động";
+                                                }
+                                                else 
+                                                {
+                                                    echo "Đang khóa";
+                                                }
+                                            ?>
+                                        </td>
 
                                         <td>
                                             <div class="media" style="margin-top:-10px">
@@ -93,6 +108,7 @@ tr th {
                                             </div>
                                             <!-- /./ -->
                                         </td>
+                                      
                                     </tr>
                                     <?php  endforeach;  ?>
                                 </tbody>

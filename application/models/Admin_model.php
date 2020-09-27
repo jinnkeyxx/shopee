@@ -23,6 +23,7 @@ class Admin_Model extends CI_Model
     {
         $this->db->where("username" ,$username);
         $this->db->where("password" , $password);
+        // $this->db->where("status" , 0);
         $result = $this->db->get('admin');
         if($result->num_rows() > 0){
             return $result->row();

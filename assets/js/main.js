@@ -163,10 +163,17 @@ $(document).ready(() => {
     $(document).on('click', '.check_box_user', function() {
         var html = '';
         var role = "";
+        var status = "";
         if ($(this).data('role') == "1") {
             role = "MOD";
         } else {
             role = "ADMIN";
+        }
+        if ($(this).data('status') == "1") {
+            status = "Đang khóa";
+           
+        } else {
+            status = "Đang hoạt động";
         }
         if (this.checked) {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-email="' + $(this).data('email') + '" data-username="' + $(this).data('username') + '" data-password="' + $(this).data('password') + '" data-role="' + $(this).data('role') + '" data-images="' + $(this).data('images') + '" class="check_box_user" checked /></td>';
@@ -181,9 +188,18 @@ $(document).ready(() => {
                 html += '<td><select name="role[]" class="form-control"> <option value="1"> MOD  </option> <option value="0"> Admin</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
 
             }
-            html += '<td><input type="file" name="image" class="form-control"/></td>';
-            html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
+            if (status == 'Đang hoạt động' || status == "Hoạt động") {
+                html += '<td><select name="status[]" class="form-control"> <option value="0"> Hoạt động  </option> <option value="1"> Khóa</option> </select></td>';
 
+            } else {
+                html += '<td><select name="status[]" class="form-control"> <option value="1"> Khóa  </option> <option value="0"> Hoạt động</option> </select></td>';
+
+            }
+            html += '<td><input type="file" name="image" class="form-control"/></td>';
+            
+            
+            html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
+            
         } else {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-email="' + $(this).data('email') + '" data-username="' + $(this).data('username') + '" data-password="' + $(this).data('password') + '" data-role="' + $(this).data('role') + '" data-images="' + $(this).data('images') + '" class="check_box_user" /></td>';
             html += '<td>' + $(this).data('fullname') + '</td>';
@@ -192,7 +208,9 @@ $(document).ready(() => {
             html += '<td>' + $(this).data('username') + '</td>';
             html += '<td>' + $(this).data('password') + '</td>';
             html += '<td>' + role + '</td>';
+            html += '<td>' + status + '</td>';
             html += '<td> <img class="mt-1 ml-2 mr-3 img-fluid" style="margin-left:0px;width:80px;height:80px" src=' + $(this).data('images') + '></td>';
+            
         }
         $(this).closest('tr').html(html);
 

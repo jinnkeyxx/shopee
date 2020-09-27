@@ -111,9 +111,17 @@ class Admin extends CI_Controller
                 'login' => TRUE,
                 'fullname' => $reps->fullname,
                 'role' => $reps->role,
+                'status' => $reps->status,
             ];
-            $this->session->set_userdata($data);
-            echo json_encode(array('status' => true , 'messages' => 'Đăng nhập thành công'));
+            if($reps->status == 0)
+            {
+                $this->session->set_userdata($data);
+                echo json_encode(array('status' => true , 'messages' => 'Đăng nhập thành công'));
+            }
+            else
+            {
+                echo json_encode(array('status' => false , 'messages' => 'Tài khoản của bạn đã bị khóa'));
+            }
         }else {
             echo json_encode(array('status' => false , 'messages' => 'Đăng nhập không thành công'));
             
