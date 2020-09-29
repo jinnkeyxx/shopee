@@ -533,7 +533,7 @@ class Userlist extends CI_Controller
     {
         if(isset($_POST['hidden_id']))
         {
-            
+            $trangthai = "0";
             $fullname = $_POST['fullname'];
             $team = $_POST['team'];
             $laptop = $_POST['laptop'];           
@@ -570,14 +570,8 @@ class Userlist extends CI_Controller
             $id = $_POST['hidden_id'];
             $data = [];
             $img=[];
-            $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
-            if($data['admin']->role == 0)
-            { 
-                $trangthai = '0';
-            }
-            else {
-                $trangthai = '1';
-            }
+            
+            
            
             for($count = 0; $count < count($id); $count++)
             {
@@ -593,6 +587,15 @@ class Userlist extends CI_Controller
                     
                     $serial3 = "";
                 }
+                $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
+                if($data['admin']->role == 0)
+                { 
+                    $trangthai = '0';
+                }
+                else
+                {
+                    $trangthai = '1';
+                }
                 $config['upload_path'] = './uploads/';
                 $config['allowed_types'] = 'jpg|png|jpeg';
                 $config['file_name'] = 'img' . time();
@@ -601,9 +604,12 @@ class Userlist extends CI_Controller
            
                 if($this->upload->do_upload("image"))
                 {
+
                     
                     $file = $this->upload->data();
-                    $data = array(
+                    if($data['admin']->role == 0)
+                    { 
+                         $data = array(
                         'fullname'   => $fullname[$count],
                         'manv' => $manv[$count],
                         'team'  => $team[$count],
@@ -616,18 +622,16 @@ class Userlist extends CI_Controller
                         'model_laptop' =>$model_laptop[$count],
                         'serial3' => $serial3[$count],
                         'images' => base_url().'uploads/'. $file['file_name'],
-                        'status' => $trangthai[$count],
+                        'status' => 0,
                         'user_post' => $user_post[$count],
                         'id'   => $id[$count]
-                    );
-                    $this->User_model->import_data($data);
-                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
-
-                }
-                else 
-                {
-                    
-                    $data = array(
+                        );
+                         $this->User_model->import_data($data);
+                        $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+                    }
+                    else 
+                    {
+                         $data = array(
                         'fullname'   => $fullname[$count],
                         'manv' => $manv[$count],
                         'team'  => $team[$count],
@@ -639,12 +643,66 @@ class Userlist extends CI_Controller
                         'model_phone' =>$model_phone[$count],
                         'model_laptop' =>$model_laptop[$count],
                         'serial3' => $serial3[$count],
-                        'status' => $trangthai[$count],
+                        'images' => base_url().'uploads/'. $file['file_name'],
+                        'status' => 1,
                         'user_post' => $user_post[$count],
-                        'status' => $trangthai[$count],
+                        'id'   => $id[$count],
+                        );
+                         $this->User_model->import_data($data);
+                        $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+                    }
+                   
+                    
+
+                }
+                else 
+                {
+                    if($data['admin']->role == 0)
+                    { 
+                         $data = array(
+                        'fullname'   => $fullname[$count],
+                        'manv' => $manv[$count],
+                        'team'  => $team[$count],
+                        'phone'  => $phone[$count],
+                        'serial' => $serial1[$count],
+                        'laptop'   => $laptop[$count],
+                        'serial2' => $serial2[$count],
+                        'orther' => $orther[$count],
+                        'model_phone' =>$model_phone[$count],
+                        'model_laptop' =>$model_laptop[$count],
+                        'serial3' => $serial3[$count],
                         'images' => $images_old[$count],
+                        'status' => 0,
+                        'user_post' => $user_post[$count],
                         'id'   => $id[$count]
-                    );
+                        );
+                         $this->User_model->import_data($data);
+                        $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+                    }
+                    else 
+                    {
+                         $data = array(
+                        'fullname'   => $fullname[$count],
+                        'manv' => $manv[$count],
+                        'team'  => $team[$count],
+                        'phone'  => $phone[$count],
+                        'serial' => $serial1[$count],
+                        'laptop'   => $laptop[$count],
+                        'serial2' => $serial2[$count],
+                        'orther' => $orther[$count],
+                        'model_phone' =>$model_phone[$count],
+                        'model_laptop' =>$model_laptop[$count],
+                        'serial3' => $serial3[$count],
+                        'images' => $images_old[$count],
+                        'status' => 1,
+                        'user_post' => $user_post[$count],
+                        'id'   => $id[$count],
+                        );
+                         $this->User_model->import_data($data);
+                        $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
+                    }
+                    
+                    
                     $this->User_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
                 
