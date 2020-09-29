@@ -104,16 +104,16 @@ $(document).ready(() => {
             html += '<td><input type="text" name="fullname[]" class="form-control" value="' + $(this).data("fullname") + '" /></td>';
             html += '<td><input type="text" name="manv[]" class="form-control" value="' + $(this).data("manv") + '" /></td>';
             if (team == 'Inventory') {
-                html += '<td><select  name="team[]" class="form-control"><option value="Inventory" >Inventory</option> <option value="Inbound" >Inbound</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
+                html += '<td><select  name="team[]" class="form-control"><option value="Inventory" >Inventory</option> <option value="Inbound" >Inbound</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> <option value="Khác">Khác </option></select></td>';
 
             } else if (team == 'Inbound') {
-                html += '<td><select  name="team[]" class="form-control"> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> </select></td>';
+                html += '<td><select  name="team[]" class="form-control"> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option> <option value="Outbound" >Outbound</option> <option value="Return" >Return</option> <option value="Khác">Khác </option></select></td>';
 
             } else if (team == 'Outbound') {
-                html += '<td><select  name="team[]" class="form-control"> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option>  <option value="Return" >Return</option> </select></td>';
+                html += '<td><select  name="team[]" class="form-control"> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option>  <option value="Return" >Return</option> <option value="Khác">Khác </option></select></td>';
 
             } else if (team == 'Return') {
-                html += '<td><select  name="team[]" class="form-control">  <option value="Return" >Return</option> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option>  </select></td>';
+                html += '<td><select  name="team[]" class="form-control">  <option value="Return" >Return</option> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option> <option value="Khác">Khác </option></select></td>';
 
             } else {
                 html += '<td><select  name="team[]" class="form-control"> <option value="Khác">Khác </option> <option value="Return" >Return</option> <option value="Outbound" >Outbound</option> <option value="Inbound" >Inbound</option> <option value="Inventory" >Inventory</option>  </select></td>';
@@ -171,7 +171,7 @@ $(document).ready(() => {
         }
         if ($(this).data('status') == "1") {
             status = "Đang khóa";
-           
+
         } else {
             status = "Đang hoạt động";
         }
@@ -182,10 +182,10 @@ $(document).ready(() => {
             html += '<td><input type="text" name="username[]" class="form-control" value="' + $(this).data("username") + '" /></td>';
             html += '<td><input type="text" name="password[]" class="form-control" value="' + $(this).data("password") + '" /></td>';
             if (role == 'ADMIN' || role == 'Admin') {
-                html += '<td><select name="role[]" class="form-control"> <option value="0"> Admin  </option> <option value="1"> Mod</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+                html += '<td><select name="role[]" class="form-control"> <option value="0"> Admin  </option> <option value="1"> Nhân viên </option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
 
             } else {
-                html += '<td><select name="role[]" class="form-control"> <option value="1"> MOD  </option> <option value="0"> Admin</option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
+                html += '<td><select name="role[]" class="form-control"> <option value="1"> Nhân viên  </option> <option value="0"> Admin </option> </select><input type="hidden" name="hidden_id[]" value="' + $(this).attr('id') + '" /></td>';
 
             }
             if (status == 'Đang hoạt động' || status == "Hoạt động") {
@@ -196,10 +196,10 @@ $(document).ready(() => {
 
             }
             html += '<td><input type="file" name="image" class="form-control"/></td>';
-            
-            
+
+
             html += '<td><input type="hidden" value="' + $(this).data('images') + '" name="image_old[]" class="form-control"/></td>';
-            
+
         } else {
             html = '<td><input type="checkbox" id="' + $(this).attr('id') + '" data-fullname="' + $(this).data('fullname') + '" data-email="' + $(this).data('email') + '" data-username="' + $(this).data('username') + '" data-password="' + $(this).data('password') + '" data-role="' + $(this).data('role') + '" data-images="' + $(this).data('images') + '" class="check_box_user" /></td>';
             html += '<td>' + $(this).data('fullname') + '</td>';
@@ -210,7 +210,7 @@ $(document).ready(() => {
             html += '<td>' + role + '</td>';
             html += '<td>' + status + '</td>';
             html += '<td> <img class="mt-1 ml-2 mr-3 img-fluid" style="margin-left:0px;width:80px;height:80px" src=' + $(this).data('images') + '></td>';
-            
+
         }
         $(this).closest('tr').html(html);
 

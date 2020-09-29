@@ -18,16 +18,7 @@ tr th {
                     <h1 class="otto">DANH SÁCH CHỜ DUYỆT CỦA BẠN</h1>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
                         data-whatever="@mdo"><i class="fas fa-user-plus"></i> ĐĂNG KÝ VÀO</button>
-                    <!-- <a type="button" class="btn btn-success" href="checkout"><i class="fas fa-user-plus"></i> ĐĂNG KÝ
-                        RA</a> -->
 
-                    <?php if($admin->role == 0){?>
-                    <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i> QUẢN LÝ TÀI KHOẢN
-                    </a>
-                    <?php } ?>
-                    <!-- <button name="select_all" id="select_all" class="btn btn-info"><i class="fas fa-edit"></i>chon
-                        tat
-                        ca</button> -->
                     <hr>
                     <h4>Tải lên danh sách người dùng</h4>
 
@@ -60,20 +51,8 @@ tr th {
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit"
                                 id="bulk_delete_submit"><i class="fas fa-trash"></i> Xóa</button>
 
-                            <!-- <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
-                                sách xuống </a> -->
-                            <?php if($admin->role == 0){?>
-                            <a class="btn-primary btn" href="approvelistuser"><i class="fas fa-download"></i> Quản lý
-                                Tài khoản
-                            </a>
-                            <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách
-                                chờ duyệt
-                            </a>
-                            <?php } else {?>
-
                             <a class="btn-primary btn" href="userpostapprove"><i class="fas fa-download"></i> Danh sách
                                 đã duyệt của bạn </a>
-                            <?php } ?>
 
                         </div>
                         <br>
@@ -106,7 +85,8 @@ tr th {
                                     <tr id="table_<?= $value['id']; ?>" class="sorting_">
                                         <td><input type="checkbox" id="<?= $value['id'] ?>" class="check_box"
                                                 data-fullname="<?= $value['fullname'];?>"
-                                                data-manv="<?= $value['manv']; ?>" data-team="<?= $value['team']; ?>"
+                                                data-manv="<?= $value['manv']; ?>"
+                                                data-team="<?= $value['team']; ?>"
                                                 data-serial1="<?= $value['serial']; ?>"
                                                 data-phone="<?= $value['phone']; ?>"
                                                 data-model_phone="<?= $value['model_phone']; ?>"
@@ -134,9 +114,7 @@ tr th {
                                         <td>
                                             <div class="media" style="margin-top:-10px">
                                                 <div class="avatar">
-                                                    <img class="mt-1 ml-2 mr-3"
-                                                        style="margin-left:0px;width:80px;height:80px"
-                                                        src="<?= $value['images']; ?>">
+                                                    <img class="mt-1 ml-2 mr-3" style="margin-left:0px;width:80px;height:80px" src="<?= $value['images']; ?>">
                                                 </div>
                                             </div>
                                             <!-- /./ -->
@@ -228,3 +206,4 @@ tr th {
             </div>
         </div>
     </div>
+</div>

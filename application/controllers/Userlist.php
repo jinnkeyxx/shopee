@@ -12,24 +12,19 @@ class Userlist extends CI_Controller
         parent::__construct();
         $this->load->model('User_model');
         $this->load->model('Admin_model');
-        // $this->load->helper('url');
         $this->load->helper(array('form', 'url'));
     }
-
-
 
     public function index()
     {
         if($this->session->userdata('login')){
             $data['title'] = 'User Management';
             $data['user'] = $this->User_model->getDataBarang();
-            // echo print_r($data['user']->status);
-            // exit();
+
             $data['aprove'] = $this->User_model->getuser($this->session->userdata('username'));
             $data['aproveAll'] = $this->User_model->getusers();
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
-
            
             $this->load->view('template/meta', $data);
             $this->load->view('template/header', $data);
@@ -52,7 +47,6 @@ class Userlist extends CI_Controller
             $data['aproveAll'] = $this->User_model->getusers();
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
-
            
             $this->load->view('template/meta', $data);
             $this->load->view('template/header', $data);
@@ -72,12 +66,8 @@ class Userlist extends CI_Controller
             {
             $data['title'] = 'User List';
             $data['user'] = $this->User_model->getDataBarang();
-            // echo print_r($data['user']->status);
-            // exit();
             
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
-            // $data['admin']->id;
-
            
             $this->load->view('template/meta', $data);
             $this->load->view('template/header', $data);
@@ -163,6 +153,8 @@ class Userlist extends CI_Controller
             echo "Error :" . $this->upload->display_errors();
         };
     }
+
+
     public function uploaduser()
     {
         $config['upload_path'] = './uploads/';
@@ -183,7 +175,6 @@ class Userlist extends CI_Controller
                             'username'     => $row->getCellAtIndex(2),
                             'password'    => $row->getCellAtIndex(3),
                             'role'    => $row->getCellAtIndex(4),
-                            
                             'image'    => $row->getCellAtIndex(5),
                         );
                         $this->Admin_model->import_data($databarang);
@@ -247,8 +238,6 @@ class Userlist extends CI_Controller
                     );
                     $this->Admin_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
-                    
-                
                 }
                 else 
                 {
@@ -263,9 +252,7 @@ class Userlist extends CI_Controller
                         'id'   => $id[$count]
                     );
                     $this->Admin_model->import_data($data);
-                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
-
-                    
+                    $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');  
                 }
             }
             redirect('approvelistuser'); 
@@ -276,11 +263,10 @@ class Userlist extends CI_Controller
             
         }
        
-          
-
     }
-    public function excel()
 
+
+    public function excel()
     {
         $data['title'] = "User";
         $data['user'] = $this->User_model->getDataBarang(); 
@@ -288,12 +274,12 @@ class Userlist extends CI_Controller
         $this->load->view('excel' , $data);
            
     }
+
+
     public function delete()
     {
-          {
             $ids = $_POST['hidden_id'];
            
-            
              // If id array is not empty
             if(!empty($ids)){
                 // Delete records from the database
@@ -310,16 +296,16 @@ class Userlist extends CI_Controller
                 
             }
     }
-    }
+
     public function deleteAll()
     {
         $this->User_model->deleteAll();
     }
+
     public function delete_user()
     {
             $ids = $_POST['hidden_id'];
            
-            
              // If id array is not empty
             if(!empty($ids)){
                 // Delete records from the database
@@ -336,6 +322,8 @@ class Userlist extends CI_Controller
                 
             }
     }
+
+
     public function add()
     {
         $img = "";
@@ -424,7 +412,6 @@ class Userlist extends CI_Controller
                 $this->session->set_flashdata('Success','Thêm thành công');
                 redirect('userlist');
 
-
             }else {
                 if($data['admin']->status == 0)
                 {
@@ -471,7 +458,6 @@ class Userlist extends CI_Controller
         $role = $_POST['role'];
         if($this->Admin_model->add_user($username)){
 
-            
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['file_name'] = 'img' . time();
@@ -660,8 +646,9 @@ class Userlist extends CI_Controller
             
         }
           
-
     }
+
+
     public function userpost()
     {
          if($this->session->userdata('login')){
@@ -673,7 +660,6 @@ class Userlist extends CI_Controller
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 
-           
             $this->load->view('template/meta', $data);
             $this->load->view('template/header', $data);
             $this->load->view('userpost', $data);
@@ -682,6 +668,8 @@ class Userlist extends CI_Controller
              redirect('login');
         }
     }
+
+
     public function userpostaprove()
     {
          if($this->session->userdata('login')){
@@ -693,7 +681,6 @@ class Userlist extends CI_Controller
             $data['admin'] = $this->Admin_model->get_row($this->session->userdata('id'));
             $data['admin']->id;
 
-           
             $this->load->view('template/meta', $data);
             $this->load->view('template/header', $data);
             $this->load->view('userpostaprove', $data);
