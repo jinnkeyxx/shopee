@@ -396,7 +396,12 @@ $('#checkout').submit(function(e) {
                         // console.log(value['phone'])
 
                         if (value['team'] !== "") {
-                            team = value['team'] + " Team";
+                            if (value['team'] == "Khác") {
+                                team = "Team " + value['team'];
+                            } else {
+                                team = value['team'] + " Team";
+                            }
+
                         } else {
                             team = '';
                         }
