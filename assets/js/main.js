@@ -377,6 +377,7 @@ $('#checkout').submit(function(e) {
             success: function(data) {
                 $('#result').html(data);
                 $('#search_text').val('');
+                $('#search_text').focus();
                 if (data.status == false) {
 
                     swall('Không tìm thấy Serial#', 'error')

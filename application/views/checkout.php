@@ -36,7 +36,7 @@ tr td {
                             <form action="" id="checkout" method="post">
                                 <input type="text" name="search_text" id="search_text"
                                     placeholder="Tìm kiếm theo Serial Number" class="form-control"
-                                    style="width: 300px; height: 50px" />
+                                    style="width: 300px; height: 50px" autofocus />
 
                                 <br>
                                 <button type="submit" class="btn btn-primary"> Tìm kiếm </button>
