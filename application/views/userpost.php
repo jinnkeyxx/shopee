@@ -41,11 +41,11 @@ tr th {
             </div>
             <div class="card mt-2">
                 <div class="card-body">
-                    <form method="post" id="update_form" action="userlist/aprove" eenctype='multipart/form-data'>
+                <form method="post" id="update_form" action="userlist/aprove" enctype='multipart/form-data'>
 
 
                         <div align="left">
-                            <button type="submit" name="multiple_update" id="multiple_update" class="btn btn-info"><i
+                        <button type="submit" name="multiple_update" id="multiple_update" class="btn btn-info"><i
                                     class="fas fa-edit"></i> Cập nhật</button>
 
                             <button type="button" class="btn btn-danger" name="bulk_delete_submit"

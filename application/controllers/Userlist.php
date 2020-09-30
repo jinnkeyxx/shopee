@@ -515,6 +515,7 @@ class Userlist extends CI_Controller
         $this->load->view('profile' , $data);
         $this->load->view('template/footer' , $data );
     }
+    
     public function aprove()
     {
         if(isset($_POST['hidden_id']))
@@ -631,6 +632,7 @@ class Userlist extends CI_Controller
                         'images' => $images_old[$count],
                         'id'   => $id[$count]
                     );
+                    
                     $this->User_model->import_data($data);
                     $this->session->set_flashdata('Success', 'Cập nhật thành công!!!');
                 
