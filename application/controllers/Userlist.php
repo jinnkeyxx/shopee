@@ -176,14 +176,14 @@ echo "\xEF\xBB\xBF"; //UTF-8 BOM
 
         $sheet->setCellValue('I1', 'model laptop');       
 
-        $sheet->setCellValue('K1', 'serial2');   
-        $sheet->setCellValue('L1', 'orther');       
+        $sheet->setCellValue('J1', 'serial2');   
+        $sheet->setCellValue('K1', 'orther');       
 
-        $sheet->setCellValue('M1', 'serial3');       
+        $sheet->setCellValue('L1', 'serial3');       
 
-        $sheet->setCellValue('N1', 'images');  
-        $sheet->setCellValue('O1', 'status');  
-        $sheet->setCellValue('P1', 'người đăng');       
+        $sheet->setCellValue('M1', 'images');  
+        $sheet->setCellValue('N1', 'status');  
+        $sheet->setCellValue('O1', 'người đăng');       
 
 
 
@@ -201,13 +201,13 @@ echo "\xEF\xBB\xBF"; //UTF-8 BOM
             $sheet->setCellValue('H' . $rows, $val['laptop']);
 
             $sheet->setCellValue('I' . $rows, $val['model_laptop']);
-            $sheet->setCellValue('K' . $rows, $val['serial2']);
-            $sheet->setCellValue('L' . $rows, $val['orther']);
-            $sheet->setCellValue('M' . $rows, $val['serial3']);
-            $sheet->setCellValue('N' . $rows, $val['images']);
+            $sheet->setCellValue('J' . $rows, $val['serial2']);
+            $sheet->setCellValue('K' . $rows, $val['orther']);
+            $sheet->setCellValue('L' . $rows, $val['serial3']);
+            $sheet->setCellValue('M' . $rows, $val['images']);
 
-            $sheet->setCellValue('O' . $rows, $val['status']);
-            $sheet->setCellValue('P' . $rows, $val['user_post']);
+            $sheet->setCellValue('N' . $rows, $val['status']);
+            $sheet->setCellValue('O' . $rows, $val['user_post']);
 
             $rows++;
         } 
