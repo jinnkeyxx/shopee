@@ -155,37 +155,31 @@ class Userlist extends CI_Controller
         };
     }
     public function createExcel() {
-//         header('Content-Type:application/octet-stream/');
-// header("Content-Disposition:attachment; filename =user.xlsx");
-// header('Pragma:no-cache');
-// header('Expires: 0');
-echo "\xEF\xBB\xBF"; //UTF-8 BOM
-		$fileName = 'user.xlsx';  
+        // header('Content-Type:application/octet-stream/');
+        // header("Content-Disposition:attachment; filename =user.xlsx");
+        // header('Pragma:no-cache');
+        // header('Expires: 0');
+        echo "\xEF\xBB\xBF"; //UTF-8 BOM
+
+		$fileName = 'user_file.xlsx';  
 		$employeeData = $this->User_model->employeeList();
 		$spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
-       	$sheet->setCellValue('A1', 'stt');
-        $sheet->setCellValue('B1', 'Mã nhân viên');
-        $sheet->setCellValue('C1', 'Họ tên');
-        $sheet->setCellValue('D1', 'team');
-	    $sheet->setCellValue('E1', 'phone');
-        $sheet->setCellValue('F1', 'model phone'); 
-        $sheet->setCellValue('G1', 'serial');       
-
-        $sheet->setCellValue('H1', 'laptpp');       
-
-        $sheet->setCellValue('I1', 'model laptop');       
-
-        $sheet->setCellValue('J1', 'serial2');   
-        $sheet->setCellValue('K1', 'orther');       
-
-        $sheet->setCellValue('L1', 'serial3');       
-
-        $sheet->setCellValue('M1', 'images');  
-        $sheet->setCellValue('N1', 'status');  
-        $sheet->setCellValue('O1', 'người đăng');       
-
-
+       	$sheet->setCellValue('A1', 'STT');
+        $sheet->setCellValue('B1', 'Mã NV');
+        $sheet->setCellValue('C1', 'HỌ TÊN');
+        $sheet->setCellValue('D1', 'TEAM');
+	    $sheet->setCellValue('E1', 'PHONE');
+        $sheet->setCellValue('F1', 'MODEL PHONE'); 
+        $sheet->setCellValue('G1', 'SERIAL PHONE');       
+        $sheet->setCellValue('H1', 'LAPTOP');       
+        $sheet->setCellValue('I1', 'MODEL LAPTOP');       
+        $sheet->setCellValue('J1', 'SERIAL LAPTOP');   
+        $sheet->setCellValue('K1', 'ORTHER');       
+        $sheet->setCellValue('L1', 'SERIAL ORTHER');       
+        $sheet->setCellValue('M1', 'HÌNH ẢNH');  
+        // $sheet->setCellValue('N1', 'STATUS');  
+        // $sheet->setCellValue('O1', 'CREATED USER');
 
 
         $rows = 2;
@@ -194,20 +188,18 @@ echo "\xEF\xBB\xBF"; //UTF-8 BOM
             $sheet->setCellValue('B' . $rows, $val['manv']);
             $sheet->setCellValue('C' . $rows, $val['fullname']);
             $sheet->setCellValue('D' . $rows, $val['team']);
-	    $sheet->setCellValue('E' . $rows, $val['phone']);
+	        $sheet->setCellValue('E' . $rows, $val['phone']);
             $sheet->setCellValue('F' . $rows, $val['model_phone']);
             $sheet->setCellValue('G' . $rows, $val['serial2']);
-
             $sheet->setCellValue('H' . $rows, $val['laptop']);
-
             $sheet->setCellValue('I' . $rows, $val['model_laptop']);
             $sheet->setCellValue('J' . $rows, $val['serial2']);
             $sheet->setCellValue('K' . $rows, $val['orther']);
             $sheet->setCellValue('L' . $rows, $val['serial3']);
             $sheet->setCellValue('M' . $rows, $val['images']);
 
-            $sheet->setCellValue('N' . $rows, $val['status']);
-            $sheet->setCellValue('O' . $rows, $val['user_post']);
+            // $sheet->setCellValue('N' . $rows, $val['status']);
+            // $sheet->setCellValue('O' . $rows, $val['user_post']);
 
             $rows++;
         } 
