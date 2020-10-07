@@ -87,7 +87,7 @@ class Userlist extends CI_Controller
     public function uploaddata()
     {
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'xls';
+        $config['allowed_types'] = 'xlsx';
         $config['file_name'] = 'doc' . time();
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('importexcel')) {
