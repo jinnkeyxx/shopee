@@ -64,7 +64,7 @@
                             <?php } ?>
 
                             <?php if($admin->role == 0){?>
-                            <a class="btn-warning btn" href="userlist/excel"><i class="fas fa-download"></i> Tải danh
+                            <a class="btn-warning btn" href="userlist/createExcel"><i class="fas fa-download"></i> Tải danh
                                 sách xuống </a>
 
                             <a class="btn-primary btn" href="userlistapprove"><i class="fas fa-download"></i> Danh sách

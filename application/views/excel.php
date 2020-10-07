@@ -1,6 +1,6 @@
 <?php 
 header('Content-Type:application/octet-stream/');
-header("Content-Disposition:attachment; filename =$title.xls");
+header("Content-Disposition:attachment; filename =$title.xlsx");
 header('Pragma:no-cache');
 header('Expires: 0');
 echo "\xEF\xBB\xBF"; //UTF-8 BOM

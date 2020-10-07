@@ -76,5 +76,11 @@ class User_Model extends CI_Model
     {
         $this->db->empty_table('users');
     }
+    public function employeeList() {
+		$this->db->select(array('id', 'manv', 'fullname', 'team', 'phone', 'model_phone' , 'serial' , 'laptop' , 'model_laptop', 'serial2' , 'orther' , 'serial3' ,'images' , 'status' , 'user_post'));
+		$this->db->from('users');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
     
 }

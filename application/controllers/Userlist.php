@@ -3,7 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require_once APPPATH . 'third_party/Spout/Autoloader/autoload.php';
 
 use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
-
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Userlist extends CI_Controller
 {
 
@@ -86,7 +87,7 @@ class Userlist extends CI_Controller
     public function uploaddata()
     {
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'xlsx|xls';
+        $config['allowed_types'] = 'xls';
         $config['file_name'] = 'doc' . time();
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('importexcel')) {
@@ -153,6 +154,68 @@ class Userlist extends CI_Controller
             echo "Error :" . $this->upload->display_errors();
         };
     }
+    public function createExcel() {
+//         header('Content-Type:application/octet-stream/');
+// header("Content-Disposition:attachment; filename =user.xlsx");
+// header('Pragma:no-cache');
+// header('Expires: 0');
+echo "\xEF\xBB\xBF"; //UTF-8 BOM
+		$fileName = 'user.xlsx';  
+		$employeeData = $this->User_model->employeeList();
+		$spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+       	$sheet->setCellValue('A1', 'stt');
+        $sheet->setCellValue('B1', 'Mã nhân viên');
+        $sheet->setCellValue('C1', 'Họ tên');
+        $sheet->setCellValue('D1', 'team');
+	    $sheet->setCellValue('E1', 'phone');
+        $sheet->setCellValue('F1', 'model phone'); 
+        $sheet->setCellValue('G1', 'serial');       
+
+        $sheet->setCellValue('H1', 'laptpp');       
+
+        $sheet->setCellValue('I1', 'model laptop');       
+
+        $sheet->setCellValue('K1', 'serial2');   
+        $sheet->setCellValue('L1', 'orther');       
+
+        $sheet->setCellValue('M1', 'serial3');       
+
+        $sheet->setCellValue('N1', 'images');  
+        $sheet->setCellValue('O1', 'status');  
+        $sheet->setCellValue('P1', 'người đăng');       
+
+
+
+
+        $rows = 2;
+        foreach ($employeeData as $key => $val){
+            $sheet->setCellValue('A' . $rows, $key+1);
+            $sheet->setCellValue('B' . $rows, $val['manv']);
+            $sheet->setCellValue('C' . $rows, $val['fullname']);
+            $sheet->setCellValue('D' . $rows, $val['team']);
+	    $sheet->setCellValue('E' . $rows, $val['phone']);
+            $sheet->setCellValue('F' . $rows, $val['model_phone']);
+            $sheet->setCellValue('G' . $rows, $val['serial2']);
+
+            $sheet->setCellValue('H' . $rows, $val['laptop']);
+
+            $sheet->setCellValue('I' . $rows, $val['model_laptop']);
+            $sheet->setCellValue('K' . $rows, $val['serial2']);
+            $sheet->setCellValue('L' . $rows, $val['orther']);
+            $sheet->setCellValue('M' . $rows, $val['serial3']);
+            $sheet->setCellValue('N' . $rows, $val['images']);
+
+            $sheet->setCellValue('O' . $rows, $val['status']);
+            $sheet->setCellValue('P' . $rows, $val['user_post']);
+
+            $rows++;
+        } 
+        $writer = new Xlsx($spreadsheet);
+		$writer->save("uploads/".$fileName);
+		header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url()."/uploads/".$fileName);              
+    }   
 
 
     public function uploaduser()
